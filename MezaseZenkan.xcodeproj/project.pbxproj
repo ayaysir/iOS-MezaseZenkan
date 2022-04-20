@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CA48A56F7CA7CDB765FD08B /* Pods_MezaseZenkan_MezaseZenkanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEA7A2005E07B93ACA1FAA0 /* Pods_MezaseZenkan_MezaseZenkanUITests.framework */; };
+		440D7312281065B10092BD7A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 440D7311281065B10092BD7A /* GoogleService-Info.plist */; };
+		440D73142810672A0092BD7A /* SampleData.json in Sources */ = {isa = PBXBuildFile; fileRef = 440D73132810672A0092BD7A /* SampleData.json */; };
+		440D7316281067A80092BD7A /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D7315281067A80092BD7A /* Race.swift */; };
+		440D731728106B720092BD7A /* SampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 440D73132810672A0092BD7A /* SampleData.json */; };
+		440D7890281079240092BD7A /* images in Resources */ = {isa = PBXBuildFile; fileRef = 440D788F281079240092BD7A /* images */; };
 		4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F69E281045C4001EAC58 /* AppDelegate.swift */; };
 		4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A0281045C4001EAC58 /* SceneDelegate.swift */; };
 		4471F6A3281045C4001EAC58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A2281045C4001EAC58 /* ViewController.swift */; };
@@ -17,6 +23,8 @@
 		4471F6B9281045C6001EAC58 /* MezaseZenkanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6B8281045C6001EAC58 /* MezaseZenkanTests.swift */; };
 		4471F6C3281045C6001EAC58 /* MezaseZenkanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6C2281045C6001EAC58 /* MezaseZenkanUITests.swift */; };
 		4471F6C5281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6C4281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift */; };
+		53F43677C57FC7480384E89D /* Pods_MezaseZenkanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74BE9A44492FB5E4D9DA32F /* Pods_MezaseZenkanTests.framework */; };
+		E1A24D47CA7A3FDC7568A8E2 /* Pods_MezaseZenkan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D62A78F831CFF4DA519385CA /* Pods_MezaseZenkan.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20314C079A130ED9CB5518DB /* Pods-MezaseZenkan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan.release.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan.release.xcconfig"; sourceTree = "<group>"; };
+		440D7311281065B10092BD7A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		440D73132810672A0092BD7A /* SampleData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleData.json; sourceTree = "<group>"; };
+		440D7315281067A80092BD7A /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
+		440D788F281079240092BD7A /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		4471F69B281045C4001EAC58 /* MezaseZenkan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MezaseZenkan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4471F69E281045C4001EAC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4471F6A0281045C4001EAC58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +64,14 @@
 		4471F6BE281045C6001EAC58 /* MezaseZenkanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MezaseZenkanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4471F6C2281045C6001EAC58 /* MezaseZenkanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MezaseZenkanUITests.swift; sourceTree = "<group>"; };
 		4471F6C4281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MezaseZenkanUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		50068F5BB17842F27C1B1C63 /* Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5A4D1CFAA6A5013FC8531FBE /* Pods-MezaseZenkanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkanTests.debug.xcconfig"; path = "Target Support Files/Pods-MezaseZenkanTests/Pods-MezaseZenkanTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6DEA7A2005E07B93ACA1FAA0 /* Pods_MezaseZenkan_MezaseZenkanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MezaseZenkan_MezaseZenkanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90E2260AA6AA0C216C600C73 /* Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9DAA25A3778CB1B75883CE28 /* Pods-MezaseZenkan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan.debug.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan.debug.xcconfig"; sourceTree = "<group>"; };
+		A69BFFE8E907FAA537C01F81 /* Pods-MezaseZenkanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkanTests.release.xcconfig"; path = "Target Support Files/Pods-MezaseZenkanTests/Pods-MezaseZenkanTests.release.xcconfig"; sourceTree = "<group>"; };
+		B74BE9A44492FB5E4D9DA32F /* Pods_MezaseZenkanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MezaseZenkanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D62A78F831CFF4DA519385CA /* Pods_MezaseZenkan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MezaseZenkan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A24D47CA7A3FDC7568A8E2 /* Pods_MezaseZenkan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53F43677C57FC7480384E89D /* Pods_MezaseZenkanTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +95,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CA48A56F7CA7CDB765FD08B /* Pods_MezaseZenkan_MezaseZenkanUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		154226C4070A076870D55D58 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D62A78F831CFF4DA519385CA /* Pods_MezaseZenkan.framework */,
+				6DEA7A2005E07B93ACA1FAA0 /* Pods_MezaseZenkan_MezaseZenkanUITests.framework */,
+				B74BE9A44492FB5E4D9DA32F /* Pods_MezaseZenkanTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4471F692281045C4001EAC58 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +119,8 @@
 				4471F6B7281045C6001EAC58 /* MezaseZenkanTests */,
 				4471F6C1281045C6001EAC58 /* MezaseZenkanUITests */,
 				4471F69C281045C4001EAC58 /* Products */,
+				CF4D0D5864B4B4F8B3852A9A /* Pods */,
+				154226C4070A076870D55D58 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,10 +141,14 @@
 				4471F6A0281045C4001EAC58 /* SceneDelegate.swift */,
 				4471F6A2281045C4001EAC58 /* ViewController.swift */,
 				4471F6A4281045C4001EAC58 /* Main.storyboard */,
+				440D788F281079240092BD7A /* images */,
 				4471F6AA281045C6001EAC58 /* Assets.xcassets */,
 				4471F6AC281045C6001EAC58 /* LaunchScreen.storyboard */,
 				4471F6AF281045C6001EAC58 /* Info.plist */,
 				4471F6A7281045C4001EAC58 /* MezaseZenkan.xcdatamodeld */,
+				440D7311281065B10092BD7A /* GoogleService-Info.plist */,
+				440D73132810672A0092BD7A /* SampleData.json */,
+				440D7315281067A80092BD7A /* Race.swift */,
 			);
 			path = MezaseZenkan;
 			sourceTree = "<group>";
@@ -130,6 +170,19 @@
 			path = MezaseZenkanUITests;
 			sourceTree = "<group>";
 		};
+		CF4D0D5864B4B4F8B3852A9A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9DAA25A3778CB1B75883CE28 /* Pods-MezaseZenkan.debug.xcconfig */,
+				20314C079A130ED9CB5518DB /* Pods-MezaseZenkan.release.xcconfig */,
+				50068F5BB17842F27C1B1C63 /* Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig */,
+				90E2260AA6AA0C216C600C73 /* Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig */,
+				5A4D1CFAA6A5013FC8531FBE /* Pods-MezaseZenkanTests.debug.xcconfig */,
+				A69BFFE8E907FAA537C01F81 /* Pods-MezaseZenkanTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +190,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4471F6C8281045C6001EAC58 /* Build configuration list for PBXNativeTarget "MezaseZenkan" */;
 			buildPhases = (
+				C043DAD3CA5D17997C36E007 /* [CP] Check Pods Manifest.lock */,
 				4471F697281045C4001EAC58 /* Sources */,
 				4471F698281045C4001EAC58 /* Frameworks */,
 				4471F699281045C4001EAC58 /* Resources */,
+				59DAECDE5251DDA0BDBCEA41 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,6 +209,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4471F6CB281045C6001EAC58 /* Build configuration list for PBXNativeTarget "MezaseZenkanTests" */;
 			buildPhases = (
+				6B7A6A81A660844B4D1B2180 /* [CP] Check Pods Manifest.lock */,
 				4471F6B0281045C6001EAC58 /* Sources */,
 				4471F6B1281045C6001EAC58 /* Frameworks */,
 				4471F6B2281045C6001EAC58 /* Resources */,
@@ -172,9 +228,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4471F6CE281045C6001EAC58 /* Build configuration list for PBXNativeTarget "MezaseZenkanUITests" */;
 			buildPhases = (
+				428538C37B36CCF54E3535A6 /* [CP] Check Pods Manifest.lock */,
 				4471F6BA281045C6001EAC58 /* Sources */,
 				4471F6BB281045C6001EAC58 /* Frameworks */,
 				4471F6BC281045C6001EAC58 /* Resources */,
+				206DEE86018B9028EF649BE2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -234,7 +292,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				440D7890281079240092BD7A /* images in Resources */,
+				440D731728106B720092BD7A /* SampleData.json in Resources */,
 				4471F6AE281045C6001EAC58 /* LaunchScreen.storyboard in Resources */,
+				440D7312281065B10092BD7A /* GoogleService-Info.plist in Resources */,
 				4471F6AB281045C6001EAC58 /* Assets.xcassets in Resources */,
 				4471F6A6281045C4001EAC58 /* Main.storyboard in Resources */,
 			);
@@ -256,6 +317,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		206DEE86018B9028EF649BE2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		428538C37B36CCF54E3535A6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MezaseZenkan-MezaseZenkanUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		59DAECDE5251DDA0BDBCEA41 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B7A6A81A660844B4D1B2180 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MezaseZenkanTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C043DAD3CA5D17997C36E007 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MezaseZenkan-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4471F697281045C4001EAC58 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -264,6 +428,8 @@
 				4471F6A3281045C4001EAC58 /* ViewController.swift in Sources */,
 				4471F6A9281045C4001EAC58 /* MezaseZenkan.xcdatamodeld in Sources */,
 				4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */,
+				440D73142810672A0092BD7A /* SampleData.json in Sources */,
+				440D7316281067A80092BD7A /* Race.swift in Sources */,
 				4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +604,7 @@
 		};
 		4471F6C9281045C6001EAC58 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DAA25A3778CB1B75883CE28 /* Pods-MezaseZenkan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -451,6 +618,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,6 +634,7 @@
 		};
 		4471F6CA281045C6001EAC58 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20314C079A130ED9CB5518DB /* Pods-MezaseZenkan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -479,6 +648,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -494,6 +664,7 @@
 		};
 		4471F6CC281045C6001EAC58 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A4D1CFAA6A5013FC8531FBE /* Pods-MezaseZenkanTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -519,6 +690,7 @@
 		};
 		4471F6CD281045C6001EAC58 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A69BFFE8E907FAA537C01F81 /* Pods-MezaseZenkanTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -544,6 +716,7 @@
 		};
 		4471F6CF281045C6001EAC58 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50068F5BB17842F27C1B1C63 /* Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -567,6 +740,7 @@
 		};
 		4471F6D0281045C6001EAC58 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90E2260AA6AA0C216C600C73 /* Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
