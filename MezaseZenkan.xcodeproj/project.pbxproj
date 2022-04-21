@@ -13,6 +13,9 @@
 		440D7316281067A80092BD7A /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D7315281067A80092BD7A /* Race.swift */; };
 		440D731728106B720092BD7A /* SampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 440D73132810672A0092BD7A /* SampleData.json */; };
 		440D7890281079240092BD7A /* images in Resources */ = {isa = PBXBuildFile; fileRef = 440D788F281079240092BD7A /* images */; };
+		440D789428117F0B0092BD7A /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D789328117F0B0092BD7A /* PageViewController.swift */; };
+		440D78992811875C0092BD7A /* RaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440D78982811875C0092BD7A /* RaceCell.xib */; };
+		440D789B281187990092BD7A /* RaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D789A281187990092BD7A /* RaceCell.swift */; };
 		4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F69E281045C4001EAC58 /* AppDelegate.swift */; };
 		4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A0281045C4001EAC58 /* SceneDelegate.swift */; };
 		4471F6A3281045C4001EAC58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A2281045C4001EAC58 /* ViewController.swift */; };
@@ -50,6 +53,9 @@
 		440D73132810672A0092BD7A /* SampleData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleData.json; sourceTree = "<group>"; };
 		440D7315281067A80092BD7A /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
 		440D788F281079240092BD7A /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		440D789328117F0B0092BD7A /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		440D78982811875C0092BD7A /* RaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RaceCell.xib; sourceTree = "<group>"; };
+		440D789A281187990092BD7A /* RaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceCell.swift; sourceTree = "<group>"; };
 		4471F69B281045C4001EAC58 /* MezaseZenkan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MezaseZenkan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4471F69E281045C4001EAC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4471F6A0281045C4001EAC58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +118,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		440D7895281187050092BD7A /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				440D78982811875C0092BD7A /* RaceCell.xib */,
+				440D789A281187990092BD7A /* RaceCell.swift */,
+			);
+			path = "Custom View";
+			sourceTree = "<group>";
+		};
 		4471F692281045C4001EAC58 = {
 			isa = PBXGroup;
 			children = (
@@ -137,10 +152,12 @@
 		4471F69D281045C4001EAC58 /* MezaseZenkan */ = {
 			isa = PBXGroup;
 			children = (
+				440D7895281187050092BD7A /* Custom View */,
 				4471F69E281045C4001EAC58 /* AppDelegate.swift */,
 				4471F6A0281045C4001EAC58 /* SceneDelegate.swift */,
 				4471F6A2281045C4001EAC58 /* ViewController.swift */,
 				4471F6A4281045C4001EAC58 /* Main.storyboard */,
+				440D789328117F0B0092BD7A /* PageViewController.swift */,
 				440D788F281079240092BD7A /* images */,
 				4471F6AA281045C6001EAC58 /* Assets.xcassets */,
 				4471F6AC281045C6001EAC58 /* LaunchScreen.storyboard */,
@@ -298,6 +315,7 @@
 				440D7312281065B10092BD7A /* GoogleService-Info.plist in Resources */,
 				4471F6AB281045C6001EAC58 /* Assets.xcassets in Resources */,
 				4471F6A6281045C4001EAC58 /* Main.storyboard in Resources */,
+				440D78992811875C0092BD7A /* RaceCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,8 +444,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4471F6A3281045C4001EAC58 /* ViewController.swift in Sources */,
+				440D789428117F0B0092BD7A /* PageViewController.swift in Sources */,
 				4471F6A9281045C4001EAC58 /* MezaseZenkan.xcdatamodeld in Sources */,
 				4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */,
+				440D789B281187990092BD7A /* RaceCell.swift in Sources */,
 				440D73142810672A0092BD7A /* SampleData.json in Sources */,
 				440D7316281067A80092BD7A /* Race.swift in Sources */,
 				4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */,
