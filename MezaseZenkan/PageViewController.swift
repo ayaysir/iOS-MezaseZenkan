@@ -9,12 +9,17 @@ import UIKit
 
 class PageViewController: UIPageViewController {
     
-    var highRaces: [Race] = []
+    var g1Races: [Race] = []
+    var g2Races: [Race] = []
+    var g3Races: [Race] = []
+    var raceChunks: [[Race]] = []
     
     lazy var vcArray: [UIViewController] = {
-        return [self.vcInstance(tag: 1),
-                self.vcInstance(tag: 2),
-                self.vcInstance(tag: 3)]
+        let array = (0...raceChunks.count - 1).map { index in
+            return self.vcInstance(tag: index)
+        }
+        print("vcAraray", array)
+        return array
     }()
     
     private func vcInstance(tag: Int) -> UIViewController{
@@ -36,11 +41,24 @@ class PageViewController: UIPageViewController {
             //
             let data = try Data(contentsOf: fileLocation!)
             let array = try JSONDecoder().decode(Array<Race>.self, from: data)
-            highRaces = array.filter { ($0.grade == "G1" || $0.grade == "G2" || $0.grade == "G3") && $0.displayOrder > 0 }
-            highRaces.sort {
+            
+            g1Races = array.filter { ($0.grade == "G1") && $0.displayOrder > 0 }
+            g1Races.sort {
                 ($0.grade, $0.displayOrder) < ($1.grade, $1.displayOrder)
             }
-            print(highRaces)
+            
+            g2Races = array.filter { ($0.grade == "G2") && $0.displayOrder > 0 }
+            g2Races.sort {
+                ($0.grade, $0.displayOrder) < ($1.grade, $1.displayOrder)
+            }
+            
+            g3Races = array.filter { ($0.grade == "G3") && $0.displayOrder > 0 }
+            g3Races.sort {
+                ($0.grade, $0.displayOrder) < ($1.grade, $1.displayOrder)
+            }
+            print(g1Races.count, g2Races.count, g3Races.count)
+            raceChunks = g1Races.chunked(into: 15) + g2Races.chunked(into: 15) + g3Races.chunked(into: 15)
+            
         } catch {
             print(error)
         }
@@ -59,16 +77,7 @@ class PageViewController: UIPageViewController {
 
 extension PageViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch collectionView.tag {
-        case 1:
-            return 15
-        case 2:
-            return 7
-        case 3:
-            return 9
-        default:
-            return 0
-        }
+        raceChunks[collectionView.tag].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -76,10 +85,24 @@ extension PageViewController: UICollectionViewDataSource, UICollectionViewDelega
             return UICollectionViewCell()
         }
         
-        cell.update(race: highRaces[indexPath.row])
+//        switch collectionView.tag {
+//        case 1:
+//            cell.update(race: g1Races[indexPath.row])
+//        case 2:
+//            cell.update(race: g2Races[indexPath.row])
+//        case 3:
+//            cell.update(race: g3Races[indexPath.row])
+//        default:
+//            return UICollectionViewCell()
+//        }
+        cell.update(race: raceChunks[collectionView.tag][indexPath.row])
+        
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath, collectionView.tag)
+    }
 }
 
 extension PageViewController: UICollectionViewDelegateFlowLayout {
