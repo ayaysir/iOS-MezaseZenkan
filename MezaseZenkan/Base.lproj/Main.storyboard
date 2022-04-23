@@ -19,13 +19,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Wra-ry-GEW">
-                                <rect key="frame" x="20" y="79" width="728" height="31"/>
+                                <rect key="frame" x="20" y="79" width="728" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="G1"/>
+                                    <segment title="G2"/>
+                                    <segment title="G3"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segRaceGradeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="G5x-Ey-z4f"/>
+                                </connections>
                             </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9mK-5Y-Vgz">
+                                <rect key="frame" x="20" y="117" width="728" height="754"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="trG-I6-UOR" kind="embed" identifier="ContainerToPageVCSegue" id="xfk-re-XkF"/>
+                                </connections>
+                            </containerView>
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="buC-wl-eHr">
                                 <rect key="frame" x="306" y="879" width="156" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -34,19 +45,13 @@
                                     <action selector="pageControlChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ud9-j1-5t2"/>
                                 </connections>
                             </pageControl>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9mK-5Y-Vgz">
-                                <rect key="frame" x="20" y="117" width="728" height="754"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="trG-I6-UOR" kind="embed" id="xfk-re-XkF"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
                         <outlet property="pageControl" destination="buC-wl-eHr" id="urv-Nk-zkq"/>
+                        <outlet property="segRaceGrade" destination="Wra-ry-GEW" id="yFN-Zf-L0v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -68,7 +73,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3EK-Xl-yOT">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.91980725529999996" green="0.73665004109999999" blue="0.54690203609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qJw-NL-hdl">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -96,22 +101,47 @@
             </objects>
             <point key="canvasLocation" x="80" y="1345"/>
         </scene>
-        <!--View Controller-->
+        <!--Grayscale View Controller-->
         <scene sceneID="c2c-d5-Wpo">
             <objects>
-                <viewController id="cDi-5x-IOl" sceneMemberID="viewController">
+                <viewController id="cDi-5x-IOl" customClass="GrayscaleViewController" customModule="MezaseZenkan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s09-mI-Qjk">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Hydrangeas" translatesAutoresizingMaskIntoConstraints="NO" id="fA6-ko-hdb">
+                                <rect key="frame" x="458" y="20" width="290" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Hydrangeas" translatesAutoresizingMaskIntoConstraints="NO" id="v1L-rZ-RNG">
+                                <rect key="frame" x="458" y="228" width="290" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Hydrangeas" translatesAutoresizingMaskIntoConstraints="NO" id="eMq-oV-bCy">
+                                <rect key="frame" x="458" y="436" width="290" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Hydrangeas" translatesAutoresizingMaskIntoConstraints="NO" id="mcs-y2-7S3">
+                                <rect key="frame" x="458" y="688" width="290" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView1" destination="fA6-ko-hdb" id="NBx-bv-HtI"/>
+                        <outlet property="imageView2" destination="v1L-rZ-RNG" id="tsM-UX-9WB"/>
+                        <outlet property="imageView3" destination="eMq-oV-bCy" id="9t8-6O-0gL"/>
+                        <outlet property="imageView4" destination="mcs-y2-7S3" id="NEH-AH-qEt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0rv-9b-KqJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-345" y="-677"/>
+            <point key="canvasLocation" x="-345.3125" y="-677.34375"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Hydrangeas" width="1024" height="768"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

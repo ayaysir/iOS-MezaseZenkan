@@ -7,12 +7,21 @@
 
 import UIKit
 
+protocol PageViewDelegate: AnyObject {
+    func didPageMoved(_ controller: PageViewController, currentGrade: String)
+    func didDataLoadCompleted(_ controller: PageViewController, pageTotalCount: [Int], tagStartInfo: [Int])
+}
+
 class PageViewController: UIPageViewController {
+    
+    weak var containerDelegate: PageViewDelegate?
     
     var g1Races: [Race] = []
     var g2Races: [Race] = []
     var g3Races: [Race] = []
     var raceChunks: [[Race]] = []
+    var tagRaceInfo: [String] = []
+    var sampleFinishedRace: [String: Bool] = ["ホープフルステークス": true, "安田記念": true, "札幌記念": true, "武蔵野ステークス": true]
     
     lazy var vcArray: [UIViewController] = {
         let array = (0...raceChunks.count - 1).map { index in
@@ -56,9 +65,21 @@ class PageViewController: UIPageViewController {
             g3Races.sort {
                 ($0.grade, $0.displayOrder) < ($1.grade, $1.displayOrder)
             }
-            print(g1Races.count, g2Races.count, g3Races.count)
-            raceChunks = g1Races.chunked(into: 15) + g2Races.chunked(into: 15) + g3Races.chunked(into: 15)
             
+            print(g1Races.count, g2Races.count, g3Races.count)
+            
+            raceChunks = g1Races.chunked(into: 15) + g2Races.chunked(into: 15) + g3Races.chunked(into: 15)
+            let g1TagCount = ceil(Double(g1Races.count) / 15)
+            let g2TagCount = ceil(Double(g2Races.count) / 15)
+            let g3TagCount = ceil(Double(g3Races.count) / 15)
+            tagRaceInfo.append(contentsOf: repeatElement("G1", count: Int(g1TagCount)))
+            tagRaceInfo.append(contentsOf: repeatElement("G2", count: Int(g2TagCount)))
+            tagRaceInfo.append(contentsOf: repeatElement("G3", count: Int(g3TagCount)))
+            print(g1TagCount, g2TagCount, g3TagCount, tagRaceInfo)
+            
+            if(containerDelegate != nil) {
+                containerDelegate?.didDataLoadCompleted(self, pageTotalCount: [g1Races.count, g2Races.count, g3Races.count], tagStartInfo: [0, Int(g1TagCount), Int(g1TagCount + g2TagCount)])
+            }
         } catch {
             print(error)
         }
@@ -85,23 +106,16 @@ extension PageViewController: UICollectionViewDataSource, UICollectionViewDelega
             return UICollectionViewCell()
         }
         
-//        switch collectionView.tag {
-//        case 1:
-//            cell.update(race: g1Races[indexPath.row])
-//        case 2:
-//            cell.update(race: g2Races[indexPath.row])
-//        case 3:
-//            cell.update(race: g3Races[indexPath.row])
-//        default:
-//            return UICollectionViewCell()
-//        }
-        cell.update(race: raceChunks[collectionView.tag][indexPath.row])
+        let race = raceChunks[collectionView.tag][indexPath.row]
+        cell.update(race: raceChunks[collectionView.tag][indexPath.row], isFinished: sampleFinishedRace[race.name] ?? false)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath, collectionView.tag)
+        let targetRace = raceChunks[collectionView.tag][indexPath.row]
+        sampleFinishedRace[targetRace.name] = !(sampleFinishedRace[targetRace.name] ?? false)
+        collectionView.reloadItems(at: [indexPath])
     }
 }
 
@@ -120,6 +134,10 @@ extension PageViewController: UICollectionViewDelegateFlowLayout {
         print(cellWidth, cellHeight)
         return CGSize(width: cellWidth, height: cellHeight)
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
     }
 }
 
@@ -164,17 +182,39 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
            return vcArray[nextIndex]
     }
     
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        let currentVC = pageViewController.viewControllers?[0] as! UICollectionViewController
+        print("currentVC.collectionView.tag:", currentVC.collectionView.tag, tagRaceInfo[currentVC.collectionView.tag])
+        
+        if containerDelegate != nil {
+            containerDelegate?.didPageMoved(self, currentGrade: tagRaceInfo[currentVC.collectionView.tag])
+        }
+    }
+    
 }
 
 class RaceCell: UICollectionViewCell {
 
     @IBOutlet weak var imgBanner: UIImageView!
     @IBOutlet weak var lblInfo: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
+    
+    func update(race: Race, isFinished: Bool) {
+        let image = UIImage(named: "images/\(race.bannerURL).png")
+        if let image = image {
+            if isFinished {
+                imgBanner.image = image
+                imgBanner.alpha = 1
+            } else {
+                imgBanner.image = convertToGrayScale(image: image)
+                imgBanner.alpha = 0.5
+            }
+        }
 
-    func update(race: Race) {
-        imgBanner.image = UIImage(named: "images/\(race.bannerURL).png")
-        let infoText = "\(race.period) / \(race.month)月 \(race.half) / \(race.grade)\n\(race.terrain) / \(race.length)m(\(race.lengthType)) / \(race.direction)"
+        let infoText = "\(race.period) / \(race.month)月\(race.half) / \(race.grade)\n\(race.terrain) / \(race.length)m(\(race.lengthType)) / \(race.direction)"
         lblInfo.text = infoText
+        lblTitle.text = race.name
     }
 }
 

@@ -17,6 +17,8 @@
 		440D78992811875C0092BD7A /* RaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440D78982811875C0092BD7A /* RaceCell.xib */; };
 		440D789B281187990092BD7A /* RaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D789A281187990092BD7A /* RaceCell.swift */; };
 		440D78A02812EC9C0092BD7A /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D789F2812EC9C0092BD7A /* Array+.swift */; };
+		440D78A22812F74F0092BD7A /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78A12812F74F0092BD7A /* ImageUtil.swift */; };
+		440D78A42812F85B0092BD7A /* GrayscaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78A32812F85B0092BD7A /* GrayscaleViewController.swift */; };
 		4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F69E281045C4001EAC58 /* AppDelegate.swift */; };
 		4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A0281045C4001EAC58 /* SceneDelegate.swift */; };
 		4471F6A3281045C4001EAC58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A2281045C4001EAC58 /* ViewController.swift */; };
@@ -58,6 +60,8 @@
 		440D78982811875C0092BD7A /* RaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RaceCell.xib; sourceTree = "<group>"; };
 		440D789A281187990092BD7A /* RaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceCell.swift; sourceTree = "<group>"; };
 		440D789F2812EC9C0092BD7A /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
+		440D78A12812F74F0092BD7A /* ImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtil.swift; sourceTree = "<group>"; };
+		440D78A32812F85B0092BD7A /* GrayscaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayscaleViewController.swift; sourceTree = "<group>"; };
 		4471F69B281045C4001EAC58 /* MezaseZenkan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MezaseZenkan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4471F69E281045C4001EAC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4471F6A0281045C4001EAC58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				440D789F2812EC9C0092BD7A /* Array+.swift */,
+				440D78A12812F74F0092BD7A /* ImageUtil.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				440D7311281065B10092BD7A /* GoogleService-Info.plist */,
 				440D73132810672A0092BD7A /* SampleData.json */,
 				440D7315281067A80092BD7A /* Race.swift */,
+				440D78A32812F85B0092BD7A /* GrayscaleViewController.swift */,
 			);
 			path = MezaseZenkan;
 			sourceTree = "<group>";
@@ -459,10 +465,12 @@
 				4471F6A9281045C4001EAC58 /* MezaseZenkan.xcdatamodeld in Sources */,
 				4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */,
 				440D78A02812EC9C0092BD7A /* Array+.swift in Sources */,
+				440D78A42812F85B0092BD7A /* GrayscaleViewController.swift in Sources */,
 				440D789B281187990092BD7A /* RaceCell.swift in Sources */,
 				440D73142810672A0092BD7A /* SampleData.json in Sources */,
 				440D7316281067A80092BD7A /* Race.swift in Sources */,
 				4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */,
+				440D78A22812F74F0092BD7A /* ImageUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
