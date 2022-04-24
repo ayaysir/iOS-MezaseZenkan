@@ -21,6 +21,11 @@ class PageViewController: UIPageViewController {
     var g3Races: [Race] = []
     var raceChunks: [[Race]] = []
     var tagRaceInfo: [String] = []
+    
+    var sampleCurrentMusume: String = "ハルウララ"
+    var sampleMusumeAndFinishedRace: [String: [String: Bool]] = [
+        "ハルウララ": ["ホープフルステークス": true, "安田記念": true, "札幌記念": true, "武蔵野ステークス": true]
+    ]
     var sampleFinishedRace: [String: Bool] = ["ホープフルステークス": true, "安田記念": true, "札幌記念": true, "武蔵野ステークス": true]
     
     lazy var vcArray: [UIViewController] = {
@@ -77,6 +82,9 @@ class PageViewController: UIPageViewController {
             tagRaceInfo.append(contentsOf: repeatElement("G3", count: Int(g3TagCount)))
             print(g1TagCount, g2TagCount, g3TagCount, tagRaceInfo)
             
+            // 각 클리어 레이스 카운트
+            
+            
             if(containerDelegate != nil) {
                 containerDelegate?.didDataLoadCompleted(self, pageTotalCount: [g1Races.count, g2Races.count, g3Races.count], tagStartInfo: [0, Int(g1TagCount), Int(g1TagCount + g2TagCount)])
             }
@@ -107,14 +115,15 @@ extension PageViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
         
         let race = raceChunks[collectionView.tag][indexPath.row]
-        cell.update(race: raceChunks[collectionView.tag][indexPath.row], isFinished: sampleFinishedRace[race.name] ?? false)
+        let isFinished: Bool = sampleMusumeAndFinishedRace[sampleCurrentMusume]![race.name] ?? false
+        cell.update(race: raceChunks[collectionView.tag][indexPath.row], isFinished: isFinished)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let targetRace = raceChunks[collectionView.tag][indexPath.row]
-        sampleFinishedRace[targetRace.name] = !(sampleFinishedRace[targetRace.name] ?? false)
+        sampleMusumeAndFinishedRace[sampleCurrentMusume]![targetRace.name] = !(sampleFinishedRace[targetRace.name] ?? false)
         collectionView.reloadItems(at: [indexPath])
     }
 }
@@ -131,10 +140,7 @@ extension PageViewController: UICollectionViewDelegateFlowLayout {
         let cellWidth = (width - widthPadding) / itemsPerRow
         let cellHeight = (height - heightPadding) / itemsPerColumn
         
-        print(cellWidth, cellHeight)
-        return CGSize(width: cellWidth, height: cellHeight)
-        
-    }
+        return CGSize(width: cellWidth, height: cellHeight)    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
