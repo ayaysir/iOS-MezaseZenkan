@@ -19,6 +19,10 @@
 		440D78A02812EC9C0092BD7A /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D789F2812EC9C0092BD7A /* Array+.swift */; };
 		440D78A22812F74F0092BD7A /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78A12812F74F0092BD7A /* ImageUtil.swift */; };
 		440D78A42812F85B0092BD7A /* GrayscaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78A32812F85B0092BD7A /* GrayscaleViewController.swift */; };
+		440D78A82815AC230092BD7A /* RaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78A72815AC230092BD7A /* RaceViewModel.swift */; };
+		440D78AB2815ACF10092BD7A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78AA2815ACF10092BD7A /* APIService.swift */; };
+		440D78AD2816FA6E0092BD7A /* RaceStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78AC2816FA6E0092BD7A /* RaceStateViewModel.swift */; };
+		440D78AF2816FB1D0092BD7A /* RaceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78AE2816FB1D0092BD7A /* RaceState.swift */; };
 		4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F69E281045C4001EAC58 /* AppDelegate.swift */; };
 		4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A0281045C4001EAC58 /* SceneDelegate.swift */; };
 		4471F6A3281045C4001EAC58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A2281045C4001EAC58 /* ViewController.swift */; };
@@ -62,6 +66,10 @@
 		440D789F2812EC9C0092BD7A /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		440D78A12812F74F0092BD7A /* ImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtil.swift; sourceTree = "<group>"; };
 		440D78A32812F85B0092BD7A /* GrayscaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayscaleViewController.swift; sourceTree = "<group>"; };
+		440D78A72815AC230092BD7A /* RaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceViewModel.swift; sourceTree = "<group>"; };
+		440D78AA2815ACF10092BD7A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		440D78AC2816FA6E0092BD7A /* RaceStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceStateViewModel.swift; sourceTree = "<group>"; };
+		440D78AE2816FB1D0092BD7A /* RaceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceState.swift; sourceTree = "<group>"; };
 		4471F69B281045C4001EAC58 /* MezaseZenkan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MezaseZenkan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4471F69E281045C4001EAC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4471F6A0281045C4001EAC58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +150,32 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		440D78A52815AAB30092BD7A /* Value Object */ = {
+			isa = PBXGroup;
+			children = (
+				440D7315281067A80092BD7A /* Race.swift */,
+				440D78AE2816FB1D0092BD7A /* RaceState.swift */,
+			);
+			path = "Value Object";
+			sourceTree = "<group>";
+		};
+		440D78A62815AB3A0092BD7A /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				440D78A72815AC230092BD7A /* RaceViewModel.swift */,
+				440D78AC2816FA6E0092BD7A /* RaceStateViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		440D78A92815ACE70092BD7A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				440D78AA2815ACF10092BD7A /* APIService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		4471F692281045C4001EAC58 = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +201,9 @@
 		4471F69D281045C4001EAC58 /* MezaseZenkan */ = {
 			isa = PBXGroup;
 			children = (
+				440D78A92815ACE70092BD7A /* Service */,
+				440D78A62815AB3A0092BD7A /* View Model */,
+				440D78A52815AAB30092BD7A /* Value Object */,
 				440D789E2812EC8C0092BD7A /* Utility */,
 				440D7895281187050092BD7A /* Custom View */,
 				4471F69E281045C4001EAC58 /* AppDelegate.swift */,
@@ -181,7 +218,6 @@
 				4471F6A7281045C4001EAC58 /* MezaseZenkan.xcdatamodeld */,
 				440D7311281065B10092BD7A /* GoogleService-Info.plist */,
 				440D73132810672A0092BD7A /* SampleData.json */,
-				440D7315281067A80092BD7A /* Race.swift */,
 				440D78A32812F85B0092BD7A /* GrayscaleViewController.swift */,
 			);
 			path = MezaseZenkan;
@@ -463,11 +499,15 @@
 				4471F6A3281045C4001EAC58 /* ViewController.swift in Sources */,
 				440D789428117F0B0092BD7A /* PageViewController.swift in Sources */,
 				4471F6A9281045C4001EAC58 /* MezaseZenkan.xcdatamodeld in Sources */,
+				440D78AD2816FA6E0092BD7A /* RaceStateViewModel.swift in Sources */,
 				4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */,
 				440D78A02812EC9C0092BD7A /* Array+.swift in Sources */,
+				440D78A82815AC230092BD7A /* RaceViewModel.swift in Sources */,
 				440D78A42812F85B0092BD7A /* GrayscaleViewController.swift in Sources */,
 				440D789B281187990092BD7A /* RaceCell.swift in Sources */,
 				440D73142810672A0092BD7A /* SampleData.json in Sources */,
+				440D78AB2815ACF10092BD7A /* APIService.swift in Sources */,
+				440D78AF2816FB1D0092BD7A /* RaceState.swift in Sources */,
 				440D7316281067A80092BD7A /* Race.swift in Sources */,
 				4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */,
 				440D78A22812F74F0092BD7A /* ImageUtil.swift in Sources */,

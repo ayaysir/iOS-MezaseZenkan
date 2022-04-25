@@ -11,9 +11,15 @@ class ViewController: UIViewController {
     
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
-    var tagStartInfo: [Int] = []
+    var tagStartInfo: [String: Int] = [:]
+    var pageTotalCount: [Int] = []
     var pageVC: PageViewController?
     var currentSegIndex = 0
+    var finishedRaceCount: [String: Int]? {
+        didSet {
+            print("afdsfd:", finishedRaceCount)
+        }
+    }
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var segRaceGrade: UISegmentedControl!
@@ -30,7 +36,8 @@ class ViewController: UIViewController {
     
     @IBAction func segRaceGradeChanged(_ sender: UISegmentedControl) {
         let selectedSegIndex = sender.selectedSegmentIndex
-        let targetPageIndex = tagStartInfo[selectedSegIndex]
+        let grade = selectedSegIndex == 0 ? "G1" : selectedSegIndex == 1 ? "G2" : "G3"
+        let targetPageIndex = tagStartInfo[grade] ?? 0
         
         if let pageVC = pageVC {
             if selectedSegIndex == currentSegIndex {
@@ -55,12 +62,21 @@ class ViewController: UIViewController {
 
 extension ViewController: PageViewDelegate {
     
-    func didDataLoadCompleted(_ controller: PageViewController, pageTotalCount: [Int], tagStartInfo: [Int]) {
+    func didChangedFinishedRaceCount(_ controller: PageViewController, finishedRaceCount: [String : Int]) {
         for i in 0...2 {
-            segRaceGrade.setTitle("G\(i + 1) (\(pageTotalCount[i]))", forSegmentAt: i)
+            let raceGradeText: String = "G\(i + 1)"
+            segRaceGrade.setTitle("\(raceGradeText) (\(finishedRaceCount[raceGradeText] ?? 0)/\(pageTotalCount[i]))", forSegmentAt: i)
         }
-        print(#function, tagStartInfo)
+    }
+    
+    func didDataLoadCompleted(_ controller: PageViewController, pageTotalCount: [Int], tagStartInfo: [String: Int]) {
+        for i in 0...2 {
+            let raceGradeText: String = "G\(i + 1)"
+            segRaceGrade.setTitle("\(raceGradeText) (-/\(pageTotalCount[i]))", forSegmentAt: i)
+        }
+        
         self.tagStartInfo = tagStartInfo
+        self.pageTotalCount = pageTotalCount
     }
     
     func didPageMoved(_ controller: PageViewController, currentGrade: String) {

@@ -9,27 +9,21 @@ import UIKit
 
 protocol PageViewDelegate: AnyObject {
     func didPageMoved(_ controller: PageViewController, currentGrade: String)
-    func didDataLoadCompleted(_ controller: PageViewController, pageTotalCount: [Int], tagStartInfo: [Int])
+    func didDataLoadCompleted(_ controller: PageViewController, pageTotalCount: [Int], tagStartInfo: [String: Int])
+    func didChangedFinishedRaceCount(_ controller: PageViewController, finishedRaceCount: [String: Int])
 }
 
 class PageViewController: UIPageViewController {
     
     weak var containerDelegate: PageViewDelegate?
     
-    var g1Races: [Race] = []
-    var g2Races: [Race] = []
-    var g3Races: [Race] = []
-    var raceChunks: [[Race]] = []
-    var tagRaceInfo: [String] = []
+    let raceViewModel = RaceViewModel()
+    let raceStateViewModel = RaceStateViewModel()
     
-    var sampleCurrentMusume: String = "ハルウララ"
-    var sampleMusumeAndFinishedRace: [String: [String: Bool]] = [
-        "ハルウララ": ["ホープフルステークス": true, "安田記念": true, "札幌記念": true, "武蔵野ステークス": true]
-    ]
-    var sampleFinishedRace: [String: Bool] = ["ホープフルステークス": true, "安田記念": true, "札幌記念": true, "武蔵野ステークス": true]
+    var currentMusumeName: String = "ハルウララ"
     
     lazy var vcArray: [UIViewController] = {
-        let array = (0...raceChunks.count - 1).map { index in
+        let array = (0...raceViewModel.totalTagsCount - 1).map { index in
             return self.vcInstance(tag: index)
         }
         print("vcAraray", array)
@@ -49,47 +43,9 @@ class PageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fileLocation = Bundle.main.url(forResource: "SampleData", withExtension: "json")
-        
-        do {
-            //
-            let data = try Data(contentsOf: fileLocation!)
-            let array = try JSONDecoder().decode(Array<Race>.self, from: data)
-            
-            g1Races = array.filter { ($0.grade == "G1") && $0.displayOrder > 0 }
-            g1Races.sort {
-                ($0.grade, $0.displayOrder) < ($1.grade, $1.displayOrder)
-            }
-            
-            g2Races = array.filter { ($0.grade == "G2") && $0.displayOrder > 0 }
-            g2Races.sort {
-                ($0.grade, $0.displayOrder) < ($1.grade, $1.displayOrder)
-            }
-            
-            g3Races = array.filter { ($0.grade == "G3") && $0.displayOrder > 0 }
-            g3Races.sort {
-                ($0.grade, $0.displayOrder) < ($1.grade, $1.displayOrder)
-            }
-            
-            print(g1Races.count, g2Races.count, g3Races.count)
-            
-            raceChunks = g1Races.chunked(into: 15) + g2Races.chunked(into: 15) + g3Races.chunked(into: 15)
-            let g1TagCount = ceil(Double(g1Races.count) / 15)
-            let g2TagCount = ceil(Double(g2Races.count) / 15)
-            let g3TagCount = ceil(Double(g3Races.count) / 15)
-            tagRaceInfo.append(contentsOf: repeatElement("G1", count: Int(g1TagCount)))
-            tagRaceInfo.append(contentsOf: repeatElement("G2", count: Int(g2TagCount)))
-            tagRaceInfo.append(contentsOf: repeatElement("G3", count: Int(g3TagCount)))
-            print(g1TagCount, g2TagCount, g3TagCount, tagRaceInfo)
-            
-            // 각 클리어 레이스 카운트
-            
-            
-            if(containerDelegate != nil) {
-                containerDelegate?.didDataLoadCompleted(self, pageTotalCount: [g1Races.count, g2Races.count, g3Races.count], tagStartInfo: [0, Int(g1TagCount), Int(g1TagCount + g2TagCount)])
-            }
-        } catch {
-            print(error)
+        if let containerDelegate = containerDelegate {
+            containerDelegate.didDataLoadCompleted(self, pageTotalCount: raceViewModel.gradeCountArr, tagStartInfo: raceViewModel.tagStartInfo)
+            updateFinishedRaceCount()
         }
 
         // 딜리게이트, 데이터소스 연결
@@ -102,11 +58,19 @@ class PageViewController: UIPageViewController {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
     }
+    
+    private func updateFinishedRaceCount() {
+        let finishedRaceNameList = raceStateViewModel.getFinishedRaceNamesBy(musumeName: currentMusumeName)
+        let finishedRaceCount = raceViewModel.getFinishedCountBy(raceNameList: finishedRaceNameList)
+        if let containerDelegate = containerDelegate {
+            containerDelegate.didChangedFinishedRaceCount(self, finishedRaceCount: finishedRaceCount)
+        }
+    }
 }
 
-extension PageViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
+extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        raceChunks[collectionView.tag].count
+        raceViewModel.getViewCountBy(tag: collectionView.tag)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -114,17 +78,21 @@ extension PageViewController: UICollectionViewDataSource, UICollectionViewDelega
             return UICollectionViewCell()
         }
         
-        let race = raceChunks[collectionView.tag][indexPath.row]
-        let isFinished: Bool = sampleMusumeAndFinishedRace[sampleCurrentMusume]![race.name] ?? false
-        cell.update(race: raceChunks[collectionView.tag][indexPath.row], isFinished: isFinished)
+        let race = raceViewModel.getRaceBy(tag: collectionView.tag, row: indexPath.row)
+        
+        let isFinished: Bool = raceStateViewModel.getFinishedBy(musumeName: currentMusumeName, raceName: race.name)
+        cell.update(race: race, isFinished: isFinished)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let targetRace = raceChunks[collectionView.tag][indexPath.row]
-        sampleMusumeAndFinishedRace[sampleCurrentMusume]![targetRace.name] = !(sampleFinishedRace[targetRace.name] ?? false)
+        let targetRace = raceViewModel.getRaceBy(tag: collectionView.tag, row: indexPath.row)
+        raceStateViewModel.toggleFinishResult(musumeName: currentMusumeName, raceName: targetRace.name)
+        
         collectionView.reloadItems(at: [indexPath])
+        
+        updateFinishedRaceCount()
     }
 }
 
@@ -191,10 +159,11 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         let currentVC = pageViewController.viewControllers?[0] as! UICollectionViewController
-        print("currentVC.collectionView.tag:", currentVC.collectionView.tag, tagRaceInfo[currentVC.collectionView.tag])
+        let currentCVTag = currentVC.collectionView.tag
+        print("currentVC.collectionView.tag:", currentVC.collectionView.tag, raceViewModel.getGradeBy(tag: currentCVTag))
         
         if containerDelegate != nil {
-            containerDelegate?.didPageMoved(self, currentGrade: tagRaceInfo[currentVC.collectionView.tag])
+            containerDelegate?.didPageMoved(self, currentGrade: raceViewModel.getGradeBy(tag: currentCVTag))
         }
     }
     
