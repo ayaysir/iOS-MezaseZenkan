@@ -31,9 +31,10 @@ class RaceViewModel {
     }
     
     var tagStartInfo: [String: Int] {
-        return tagRaceInfo.reduce(into: [:]) { partialResult, grade in
-            partialResult[grade, default: 0] += 1
-        }
+        
+        return ["G1": tagRaceInfo.firstIndex(of: "G1")!,
+                "G2": tagRaceInfo.firstIndex(of: "G2")!,
+                "G3": tagRaceInfo.firstIndex(of: "G3")!]
     }
     
     init() {

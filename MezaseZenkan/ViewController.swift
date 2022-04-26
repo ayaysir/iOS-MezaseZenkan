@@ -17,16 +17,17 @@ class ViewController: UIViewController {
     var currentSegIndex = 0
     var finishedRaceCount: [String: Int]? {
         didSet {
-            print("afdsfd:", finishedRaceCount)
+            
         }
     }
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var segRaceGrade: UISegmentedControl!
+    @IBOutlet weak var lblMusumeName: UILabel!
+    @IBOutlet weak var imgViewMusume: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
     }
     
@@ -44,7 +45,7 @@ class ViewController: UIViewController {
                 currentSegIndex = selectedSegIndex
                 return
             }
-            let direction:UIPageViewController.NavigationDirection = selectedSegIndex > currentSegIndex ? .forward : .reverse
+            let direction: UIPageViewController.NavigationDirection = selectedSegIndex > currentSegIndex ? .forward : .reverse
             pageVC.setViewControllers([pageVC.vcArray[targetPageIndex]], direction: direction, animated: true, completion: nil)
             
         }
@@ -62,6 +63,10 @@ class ViewController: UIViewController {
 
 extension ViewController: PageViewDelegate {
     
+    func didChangedMusumeName(_ controller: PageViewController, musumeName: String) {
+        lblMusumeName.text = musumeName
+    }
+    
     func didChangedFinishedRaceCount(_ controller: PageViewController, finishedRaceCount: [String : Int]) {
         for i in 0...2 {
             let raceGradeText: String = "G\(i + 1)"
@@ -77,6 +82,8 @@ extension ViewController: PageViewDelegate {
         
         self.tagStartInfo = tagStartInfo
         self.pageTotalCount = pageTotalCount
+        
+        print(tagStartInfo)
     }
     
     func didPageMoved(_ controller: PageViewController, currentGrade: String) {

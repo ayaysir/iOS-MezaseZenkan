@@ -11,6 +11,7 @@ protocol PageViewDelegate: AnyObject {
     func didPageMoved(_ controller: PageViewController, currentGrade: String)
     func didDataLoadCompleted(_ controller: PageViewController, pageTotalCount: [Int], tagStartInfo: [String: Int])
     func didChangedFinishedRaceCount(_ controller: PageViewController, finishedRaceCount: [String: Int])
+    func didChangedMusumeName(_ controller: PageViewController, musumeName: String)
 }
 
 class PageViewController: UIPageViewController {
@@ -45,6 +46,7 @@ class PageViewController: UIPageViewController {
         
         if let containerDelegate = containerDelegate {
             containerDelegate.didDataLoadCompleted(self, pageTotalCount: raceViewModel.gradeCountArr, tagStartInfo: raceViewModel.tagStartInfo)
+            containerDelegate.didChangedMusumeName(self, musumeName: currentMusumeName)
             updateFinishedRaceCount()
         }
 
@@ -54,7 +56,6 @@ class PageViewController: UIPageViewController {
         
         // 첫 번째 페이지를 기본 페이지로 설정
         if let firstVC = vcArray.first {
-            
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
     }
