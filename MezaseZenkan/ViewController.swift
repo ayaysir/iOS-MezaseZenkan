@@ -11,9 +11,11 @@ class ViewController: UIViewController {
     
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
-    var tagStartInfo: [String: Int] = [:]
-    var pageTotalCount: [Int] = []
-    var pageVC: PageViewController?
+    let raceViewModel = RaceViewModel()
+    let raceStateViewModel = RaceStateViewModel()
+    var currentMusumeName: String = "ハルウララ"
+    
+    var pageVC: PageViewController!
     var currentSegIndex = 0
     var finishedRaceCount: [String: Int]? {
         didSet {
@@ -25,10 +27,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var segRaceGrade: UISegmentedControl!
     @IBOutlet weak var lblMusumeName: UILabel!
     @IBOutlet weak var imgViewMusume: UIImageView!
+    @IBOutlet weak var lblFinishStatus: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imgViewMusume.layer.cornerRadius = imgViewMusume.frame.width * 0.5
+        
+        updateSegText()
+        updateFinishStatusText()
     }
     
     @IBAction func pageControlChanged(_ sender: Any) {
@@ -38,7 +46,7 @@ class ViewController: UIViewController {
     @IBAction func segRaceGradeChanged(_ sender: UISegmentedControl) {
         let selectedSegIndex = sender.selectedSegmentIndex
         let grade = selectedSegIndex == 0 ? "G1" : selectedSegIndex == 1 ? "G2" : "G3"
-        let targetPageIndex = tagStartInfo[grade] ?? 0
+        let targetPageIndex = raceViewModel.tagStartInfo[grade] ?? 0
         
         if let pageVC = pageVC {
             if selectedSegIndex == currentSegIndex {
@@ -55,9 +63,30 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "ContainerToPageVCSegue" {
+            
             pageVC = segue.destination as? PageViewController
-            pageVC?.containerDelegate = self
+            pageVC.containerDelegate = self
+            pageVC.raceViewModel = raceViewModel
+            pageVC.raceStateViewModel = raceStateViewModel
+            pageVC.currentMusumeName = "ハルウララ"
+            
         }
+    }
+    
+    private func updateSegText() {
+        
+        let finishedRaceNameList = raceStateViewModel.getFinishedRaceNamesBy(musumeName: currentMusumeName)
+        let finishedRaceCount = raceViewModel.getFinishedCountBy(raceNameList: finishedRaceNameList)
+        
+        for i in 0...2 {
+            let raceGradeText: String = "G\(i + 1)"
+            let finishedRaceCount: Any? = finishedRaceCount[raceGradeText]
+            segRaceGrade.setTitle("\(raceGradeText) (\(finishedRaceCount ?? "-")/\(raceViewModel.gradeCountArr[i]))", forSegmentAt: i)
+        }
+    }
+    
+    private func updateFinishStatusText() {
+        lblFinishStatus.text = "\(raceStateViewModel.getTotalFinishedRaceCountBy(musumeName: currentMusumeName) ?? 0) / \(raceViewModel.totalRaceCount)"
     }
 }
 
@@ -67,23 +96,9 @@ extension ViewController: PageViewDelegate {
         lblMusumeName.text = musumeName
     }
     
-    func didChangedFinishedRaceCount(_ controller: PageViewController, finishedRaceCount: [String : Int]) {
-        for i in 0...2 {
-            let raceGradeText: String = "G\(i + 1)"
-            segRaceGrade.setTitle("\(raceGradeText) (\(finishedRaceCount[raceGradeText] ?? 0)/\(pageTotalCount[i]))", forSegmentAt: i)
-        }
-    }
-    
-    func didDataLoadCompleted(_ controller: PageViewController, pageTotalCount: [Int], tagStartInfo: [String: Int]) {
-        for i in 0...2 {
-            let raceGradeText: String = "G\(i + 1)"
-            segRaceGrade.setTitle("\(raceGradeText) (-/\(pageTotalCount[i]))", forSegmentAt: i)
-        }
-        
-        self.tagStartInfo = tagStartInfo
-        self.pageTotalCount = pageTotalCount
-        
-        print(tagStartInfo)
+    func didChangedFinishedRaceCount(_ controller: PageViewController) {
+        updateSegText()
+        updateFinishStatusText()
     }
     
     func didPageMoved(_ controller: PageViewController, currentGrade: String) {

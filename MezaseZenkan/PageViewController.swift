@@ -9,8 +9,7 @@ import UIKit
 
 protocol PageViewDelegate: AnyObject {
     func didPageMoved(_ controller: PageViewController, currentGrade: String)
-    func didDataLoadCompleted(_ controller: PageViewController, pageTotalCount: [Int], tagStartInfo: [String: Int])
-    func didChangedFinishedRaceCount(_ controller: PageViewController, finishedRaceCount: [String: Int])
+    func didChangedFinishedRaceCount(_ controller: PageViewController)
     func didChangedMusumeName(_ controller: PageViewController, musumeName: String)
 }
 
@@ -18,10 +17,10 @@ class PageViewController: UIPageViewController {
     
     weak var containerDelegate: PageViewDelegate?
     
-    let raceViewModel = RaceViewModel()
-    let raceStateViewModel = RaceStateViewModel()
+    var raceViewModel: RaceViewModel!
+    var raceStateViewModel: RaceStateViewModel!
     
-    var currentMusumeName: String = "ハルウララ"
+    var currentMusumeName: String!
     
     lazy var vcArray: [UIViewController] = {
         let array = (0...raceViewModel.totalTagsCount - 1).map { index in
@@ -45,7 +44,6 @@ class PageViewController: UIPageViewController {
         super.viewDidLoad()
         
         if let containerDelegate = containerDelegate {
-            containerDelegate.didDataLoadCompleted(self, pageTotalCount: raceViewModel.gradeCountArr, tagStartInfo: raceViewModel.tagStartInfo)
             containerDelegate.didChangedMusumeName(self, musumeName: currentMusumeName)
             updateFinishedRaceCount()
         }
@@ -61,10 +59,10 @@ class PageViewController: UIPageViewController {
     }
     
     private func updateFinishedRaceCount() {
-        let finishedRaceNameList = raceStateViewModel.getFinishedRaceNamesBy(musumeName: currentMusumeName)
-        let finishedRaceCount = raceViewModel.getFinishedCountBy(raceNameList: finishedRaceNameList)
+//        let finishedRaceNameList = raceStateViewModel.getFinishedRaceNamesBy(musumeName: currentMusumeName)
+//        let finishedRaceCount = raceViewModel.getFinishedCountBy(raceNameList: finishedRaceNameList)
         if let containerDelegate = containerDelegate {
-            containerDelegate.didChangedFinishedRaceCount(self, finishedRaceCount: finishedRaceCount)
+            containerDelegate.didChangedFinishedRaceCount(self)
         }
     }
 }

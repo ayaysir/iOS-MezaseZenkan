@@ -40,6 +40,12 @@ class RaceStateViewModel {
         
     }
     
+    func getTotalFinishedRaceCountBy(musumeName: String) -> Int? {
+        return raceStateData[musumeName]?.filter { (raceName: String, finished: Bool) in
+            finished
+        }.count
+    }
+    
     func getFinishedRaceNamesBy(musumeName: String) -> [String] {
         
         let keys = raceStateData[musumeName]?.filter { (raceName: String, finished: Bool) in

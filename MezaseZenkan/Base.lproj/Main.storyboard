@@ -62,8 +62,8 @@
                                 <rect key="frame" x="47" y="897" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="176/ 180" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-k2-DnK">
-                                <rect key="frame" x="162" y="955" width="75" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="176/ 180" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-k2-DnK">
+                                <rect key="frame" x="162" y="955" width="172" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -75,6 +75,7 @@
                     </view>
                     <connections>
                         <outlet property="imgViewMusume" destination="bSU-KA-eb7" id="OpI-JR-zn3"/>
+                        <outlet property="lblFinishStatus" destination="cZ1-k2-DnK" id="9F0-Nh-Jkz"/>
                         <outlet property="lblMusumeName" destination="jOj-Wa-Rkr" id="mZ4-qI-LGy"/>
                         <outlet property="pageControl" destination="buC-wl-eHr" id="urv-Nk-zkq"/>
                         <outlet property="segRaceGrade" destination="Wra-ry-GEW" id="yFN-Zf-L0v"/>

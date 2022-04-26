@@ -22,6 +22,10 @@ class RaceViewModel {
     private var raceChunksByTag: [[Race]]!
     private var tagRaceInfo: [String] = []
     
+    var totalRaceCount: Int {
+        return g1Races.count + g2Races.count + g3Races.count
+    }
+    
     var totalTagsCount: Int {
         return raceChunksByTag.count
     }
