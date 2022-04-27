@@ -11,11 +11,24 @@ class APIService {
     
     func getRaceData(completion : @escaping ([Race]) -> ()) {
         
-        let fileLocation = Bundle.main.url(forResource: "SampleData", withExtension: "json")
+        let fileLocation = Bundle.main.url(forResource: "SampleRacesData", withExtension: "json")
         
         do {
             let data = try Data(contentsOf: fileLocation!)
             let array = try JSONDecoder().decode(Array<Race>.self, from: data)
+            completion(array)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func getMusumeData(completion : @escaping ([Musume]) -> ()) {
+        
+        let fileLocation = Bundle.main.url(forResource: "SampleMusumesData", withExtension: "json")
+        
+        do {
+            let data = try Data(contentsOf: fileLocation!)
+            let array = try JSONDecoder().decode(Array<Musume>.self, from: data)
             completion(array)
         } catch {
             print(error)

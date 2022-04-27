@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     let raceViewModel = RaceViewModel()
     let raceStateViewModel = RaceStateViewModel()
+    
     var currentMusumeName: String = "ハルウララ"
     
     var pageVC: PageViewController!
@@ -35,8 +36,9 @@ class ViewController: UIViewController {
         
         imgViewMusume.layer.cornerRadius = imgViewMusume.frame.width * 0.5
         
-        updateSegText()
-        updateFinishStatusText()
+        lblMusumeName.text = currentMusumeName
+        updateViewStatus()
+        
     }
     
     @IBAction func pageControlChanged(_ sender: Any) {
@@ -62,18 +64,22 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "ContainerToPageVCSegue" {
-            
+        switch segue.identifier {
+        case "ContainerToPageVCSegue":
             pageVC = segue.destination as? PageViewController
             pageVC.containerDelegate = self
             pageVC.raceViewModel = raceViewModel
             pageVC.raceStateViewModel = raceStateViewModel
             pageVC.currentMusumeName = "ハルウララ"
-            
+        case "SelectMusumeSegue":
+            let musumeVC = segue.destination as? MusumeCollectionViewController
+            musumeVC?.delegate = self
+        default:
+            break
         }
     }
     
-    private func updateSegText() {
+    private func updateViewStatus() {
         
         let finishedRaceNameList = raceStateViewModel.getFinishedRaceNamesBy(musumeName: currentMusumeName)
         let finishedRaceCount = raceViewModel.getFinishedCountBy(raceNameList: finishedRaceNameList)
@@ -83,22 +89,19 @@ class ViewController: UIViewController {
             let finishedRaceCount: Any? = finishedRaceCount[raceGradeText]
             segRaceGrade.setTitle("\(raceGradeText) (\(finishedRaceCount ?? "-")/\(raceViewModel.gradeCountArr[i]))", forSegmentAt: i)
         }
-    }
-    
-    private func updateFinishStatusText() {
+        
         lblFinishStatus.text = "\(raceStateViewModel.getTotalFinishedRaceCountBy(musumeName: currentMusumeName) ?? 0) / \(raceViewModel.totalRaceCount)"
     }
 }
 
 extension ViewController: PageViewDelegate {
     
-    func didChangedMusumeName(_ controller: PageViewController, musumeName: String) {
-        lblMusumeName.text = musumeName
-    }
+//    func didChangedMusumeName(_ controller: PageViewController, musumeName: String) {
+//        lblMusumeName.text = musumeName
+//    }
     
     func didChangedFinishedRaceCount(_ controller: PageViewController) {
-        updateSegText()
-        updateFinishStatusText()
+        updateViewStatus()
     }
     
     func didPageMoved(_ controller: PageViewController, currentGrade: String) {
@@ -117,4 +120,17 @@ extension ViewController: PageViewDelegate {
             return
         }
     }
+}
+
+extension ViewController: MusumeCollectionVCDelegate {
+    
+    func didChangedMusume(_ controller: MusumeCollectionViewController, musumeName: String) {
+        self.currentMusumeName = musumeName
+        pageVC.currentMusumeName = musumeName
+        pageVC.reload()
+        lblMusumeName.text = musumeName
+        updateViewStatus()
+    }
+    
+    
 }

@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		3CA48A56F7CA7CDB765FD08B /* Pods_MezaseZenkan_MezaseZenkanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEA7A2005E07B93ACA1FAA0 /* Pods_MezaseZenkan_MezaseZenkanUITests.framework */; };
 		440D7312281065B10092BD7A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 440D7311281065B10092BD7A /* GoogleService-Info.plist */; };
-		440D73142810672A0092BD7A /* SampleData.json in Sources */ = {isa = PBXBuildFile; fileRef = 440D73132810672A0092BD7A /* SampleData.json */; };
+		440D73142810672A0092BD7A /* SampleRacesData.json in Sources */ = {isa = PBXBuildFile; fileRef = 440D73132810672A0092BD7A /* SampleRacesData.json */; };
 		440D7316281067A80092BD7A /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D7315281067A80092BD7A /* Race.swift */; };
-		440D731728106B720092BD7A /* SampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = 440D73132810672A0092BD7A /* SampleData.json */; };
+		440D731728106B720092BD7A /* SampleRacesData.json in Resources */ = {isa = PBXBuildFile; fileRef = 440D73132810672A0092BD7A /* SampleRacesData.json */; };
 		440D7890281079240092BD7A /* images in Resources */ = {isa = PBXBuildFile; fileRef = 440D788F281079240092BD7A /* images */; };
 		440D789428117F0B0092BD7A /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D789328117F0B0092BD7A /* PageViewController.swift */; };
 		440D78992811875C0092BD7A /* RaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440D78982811875C0092BD7A /* RaceCell.xib */; };
@@ -23,6 +23,10 @@
 		440D78AB2815ACF10092BD7A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78AA2815ACF10092BD7A /* APIService.swift */; };
 		440D78AD2816FA6E0092BD7A /* RaceStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78AC2816FA6E0092BD7A /* RaceStateViewModel.swift */; };
 		440D78AF2816FB1D0092BD7A /* RaceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78AE2816FB1D0092BD7A /* RaceState.swift */; };
+		440D78B2281844EE0092BD7A /* SampleMusumesData.json in Resources */ = {isa = PBXBuildFile; fileRef = 440D78B1281844EE0092BD7A /* SampleMusumesData.json */; };
+		440D78B42818457A0092BD7A /* Musume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78B32818457A0092BD7A /* Musume.swift */; };
+		440D78B6281845EB0092BD7A /* MusumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78B5281845EB0092BD7A /* MusumeViewModel.swift */; };
+		440D78B928185D2D0092BD7A /* MusumeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */; };
 		4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F69E281045C4001EAC58 /* AppDelegate.swift */; };
 		4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A0281045C4001EAC58 /* SceneDelegate.swift */; };
 		4471F6A3281045C4001EAC58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A2281045C4001EAC58 /* ViewController.swift */; };
@@ -57,7 +61,7 @@
 /* Begin PBXFileReference section */
 		20314C079A130ED9CB5518DB /* Pods-MezaseZenkan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan.release.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan.release.xcconfig"; sourceTree = "<group>"; };
 		440D7311281065B10092BD7A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		440D73132810672A0092BD7A /* SampleData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleData.json; sourceTree = "<group>"; };
+		440D73132810672A0092BD7A /* SampleRacesData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleRacesData.json; sourceTree = "<group>"; };
 		440D7315281067A80092BD7A /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
 		440D788F281079240092BD7A /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		440D789328117F0B0092BD7A /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +74,10 @@
 		440D78AA2815ACF10092BD7A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		440D78AC2816FA6E0092BD7A /* RaceStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceStateViewModel.swift; sourceTree = "<group>"; };
 		440D78AE2816FB1D0092BD7A /* RaceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceState.swift; sourceTree = "<group>"; };
+		440D78B1281844EE0092BD7A /* SampleMusumesData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleMusumesData.json; sourceTree = "<group>"; };
+		440D78B32818457A0092BD7A /* Musume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Musume.swift; sourceTree = "<group>"; };
+		440D78B5281845EB0092BD7A /* MusumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusumeViewModel.swift; sourceTree = "<group>"; };
+		440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusumeCollectionViewController.swift; sourceTree = "<group>"; };
 		4471F69B281045C4001EAC58 /* MezaseZenkan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MezaseZenkan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4471F69E281045C4001EAC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4471F6A0281045C4001EAC58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +163,7 @@
 			children = (
 				440D7315281067A80092BD7A /* Race.swift */,
 				440D78AE2816FB1D0092BD7A /* RaceState.swift */,
+				440D78B32818457A0092BD7A /* Musume.swift */,
 			);
 			path = "Value Object";
 			sourceTree = "<group>";
@@ -164,6 +173,7 @@
 			children = (
 				440D78A72815AC230092BD7A /* RaceViewModel.swift */,
 				440D78AC2816FA6E0092BD7A /* RaceStateViewModel.swift */,
+				440D78B5281845EB0092BD7A /* MusumeViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -174,6 +184,25 @@
 				440D78AA2815ACF10092BD7A /* APIService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		440D78B0281844D70092BD7A /* samples */ = {
+			isa = PBXGroup;
+			children = (
+				440D73132810672A0092BD7A /* SampleRacesData.json */,
+				440D78B1281844EE0092BD7A /* SampleMusumesData.json */,
+			);
+			path = samples;
+			sourceTree = "<group>";
+		};
+		440D78B728185D030092BD7A /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4471F6A2281045C4001EAC58 /* ViewController.swift */,
+				440D789328117F0B0092BD7A /* PageViewController.swift */,
+				440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */,
+			);
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 		4471F692281045C4001EAC58 = {
@@ -201,6 +230,8 @@
 		4471F69D281045C4001EAC58 /* MezaseZenkan */ = {
 			isa = PBXGroup;
 			children = (
+				440D78B728185D030092BD7A /* View Controller */,
+				440D78B0281844D70092BD7A /* samples */,
 				440D78A92815ACE70092BD7A /* Service */,
 				440D78A62815AB3A0092BD7A /* View Model */,
 				440D78A52815AAB30092BD7A /* Value Object */,
@@ -208,16 +239,13 @@
 				440D7895281187050092BD7A /* Custom View */,
 				4471F69E281045C4001EAC58 /* AppDelegate.swift */,
 				4471F6A0281045C4001EAC58 /* SceneDelegate.swift */,
-				4471F6A2281045C4001EAC58 /* ViewController.swift */,
 				4471F6A4281045C4001EAC58 /* Main.storyboard */,
-				440D789328117F0B0092BD7A /* PageViewController.swift */,
 				440D788F281079240092BD7A /* images */,
 				4471F6AA281045C6001EAC58 /* Assets.xcassets */,
 				4471F6AC281045C6001EAC58 /* LaunchScreen.storyboard */,
 				4471F6AF281045C6001EAC58 /* Info.plist */,
 				4471F6A7281045C4001EAC58 /* MezaseZenkan.xcdatamodeld */,
 				440D7311281065B10092BD7A /* GoogleService-Info.plist */,
-				440D73132810672A0092BD7A /* SampleData.json */,
 				440D78A32812F85B0092BD7A /* GrayscaleViewController.swift */,
 			);
 			path = MezaseZenkan;
@@ -363,9 +391,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				440D7890281079240092BD7A /* images in Resources */,
-				440D731728106B720092BD7A /* SampleData.json in Resources */,
+				440D731728106B720092BD7A /* SampleRacesData.json in Resources */,
 				4471F6AE281045C6001EAC58 /* LaunchScreen.storyboard in Resources */,
 				440D7312281065B10092BD7A /* GoogleService-Info.plist in Resources */,
+				440D78B2281844EE0092BD7A /* SampleMusumesData.json in Resources */,
 				4471F6AB281045C6001EAC58 /* Assets.xcassets in Resources */,
 				4471F6A6281045C4001EAC58 /* Main.storyboard in Resources */,
 				440D78992811875C0092BD7A /* RaceCell.xib in Resources */,
@@ -499,18 +528,21 @@
 				4471F6A3281045C4001EAC58 /* ViewController.swift in Sources */,
 				440D789428117F0B0092BD7A /* PageViewController.swift in Sources */,
 				4471F6A9281045C4001EAC58 /* MezaseZenkan.xcdatamodeld in Sources */,
+				440D78B42818457A0092BD7A /* Musume.swift in Sources */,
 				440D78AD2816FA6E0092BD7A /* RaceStateViewModel.swift in Sources */,
 				4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */,
 				440D78A02812EC9C0092BD7A /* Array+.swift in Sources */,
 				440D78A82815AC230092BD7A /* RaceViewModel.swift in Sources */,
 				440D78A42812F85B0092BD7A /* GrayscaleViewController.swift in Sources */,
 				440D789B281187990092BD7A /* RaceCell.swift in Sources */,
-				440D73142810672A0092BD7A /* SampleData.json in Sources */,
+				440D73142810672A0092BD7A /* SampleRacesData.json in Sources */,
 				440D78AB2815ACF10092BD7A /* APIService.swift in Sources */,
+				440D78B928185D2D0092BD7A /* MusumeCollectionViewController.swift in Sources */,
 				440D78AF2816FB1D0092BD7A /* RaceState.swift in Sources */,
 				440D7316281067A80092BD7A /* Race.swift in Sources */,
 				4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */,
 				440D78A22812F74F0092BD7A /* ImageUtil.swift in Sources */,
+				440D78B6281845EB0092BD7A /* MusumeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

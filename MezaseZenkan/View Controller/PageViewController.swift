@@ -10,7 +10,7 @@ import UIKit
 protocol PageViewDelegate: AnyObject {
     func didPageMoved(_ controller: PageViewController, currentGrade: String)
     func didChangedFinishedRaceCount(_ controller: PageViewController)
-    func didChangedMusumeName(_ controller: PageViewController, musumeName: String)
+//    func didChangedMusumeName(_ controller: PageViewController, musumeName: String)
 }
 
 class PageViewController: UIPageViewController {
@@ -43,10 +43,7 @@ class PageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let containerDelegate = containerDelegate {
-            containerDelegate.didChangedMusumeName(self, musumeName: currentMusumeName)
-            updateFinishedRaceCount()
-        }
+        updateFinishedRaceCount()
 
         // 딜리게이트, 데이터소스 연결
         self.dataSource = self
@@ -59,15 +56,21 @@ class PageViewController: UIPageViewController {
     }
     
     private func updateFinishedRaceCount() {
-//        let finishedRaceNameList = raceStateViewModel.getFinishedRaceNamesBy(musumeName: currentMusumeName)
-//        let finishedRaceCount = raceViewModel.getFinishedCountBy(raceNameList: finishedRaceNameList)
         if let containerDelegate = containerDelegate {
             containerDelegate.didChangedFinishedRaceCount(self)
         }
     }
+    
+    func reload() {
+        vcArray.forEach({ vc in
+            (vc as! UICollectionViewController).collectionView.reloadData()
+        })
+    }
+    
 }
 
 extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         raceViewModel.getViewCountBy(tag: collectionView.tag)
     }
