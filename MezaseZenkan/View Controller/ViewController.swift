@@ -74,6 +74,7 @@ class ViewController: UIViewController {
         case "SelectMusumeSegue":
             let musumeVC = segue.destination as? MusumeCollectionViewController
             musumeVC?.delegate = self
+            musumeVC?.raceStateViewModel = raceStateViewModel
         default:
             break
         }

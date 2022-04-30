@@ -98,24 +98,24 @@ extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
-extension PageViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width
-        let height = collectionView.frame.height
-        let itemsPerRow: CGFloat = 3
-        let widthPadding = 10 * (itemsPerRow + 1)
-        let itemsPerColumn: CGFloat = 5
-        let heightPadding = 10 * (itemsPerColumn + 1)
-        let cellWidth = (width - widthPadding) / itemsPerRow
-        let cellHeight = (height - heightPadding) / itemsPerColumn
+    extension PageViewController: UICollectionViewDelegateFlowLayout {
         
-        return CGSize(width: cellWidth, height: cellHeight)    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let width = collectionView.frame.width
+            let height = collectionView.frame.height
+            let itemsPerRow: CGFloat = 3
+            let widthPadding = 10 * (itemsPerRow + 1)
+            let itemsPerColumn: CGFloat = 5
+            let heightPadding = 10 * (itemsPerColumn + 1)
+            let cellWidth = (width - widthPadding) / itemsPerRow
+            let cellHeight = (height - heightPadding) / itemsPerColumn
+            
+            return CGSize(width: cellWidth, height: cellHeight)    }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        }
     }
-}
 
 extension PageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     

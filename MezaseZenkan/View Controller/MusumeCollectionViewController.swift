@@ -18,6 +18,7 @@ class MusumeCollectionViewController: UICollectionViewController {
     weak var delegate: MusumeCollectionVCDelegate?
     
     var musumeViewModel: MusumeViewModel = MusumeViewModel()
+    var raceStateViewModel: RaceStateViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,9 @@ class MusumeCollectionViewController: UICollectionViewController {
         }
     
         // Configure the cell
-        cell.update(musume: musumeViewModel.getMusumeBy(index: indexPath.row))
+        let character = musumeViewModel.getMusumeBy(index: indexPath.row)
+        let finishedRaceCount = raceStateViewModel?.getFinishedRaceNamesBy(musumeName: character.name).count ?? 0
+        cell.update(musume: character, finishedRaceCount: finishedRaceCount)
         return cell
     }
     
@@ -65,16 +68,23 @@ extension MusumeCollectionViewController: UICollectionViewDelegateFlowLayout {
         let widthPadding = 10 * (itemsPerRow + 1)
         let cellWidth = (width - widthPadding) / itemsPerRow
         
-        return CGSize(width: cellWidth, height: cellWidth)
+        print(#function, cellWidth)
+        return CGSize(width: cellWidth, height: cellWidth * 1.15)
     }
 }
 
 class MusumeCell: UICollectionViewCell {
     
     @IBOutlet weak var imgViewProfile: UIImageView!
+    @IBOutlet weak var lblCharacterName: UILabel!
+    @IBOutlet weak var lblRaceStatus: UILabel!
     
-    func update(musume: Musume) {
-        print(musume.imgProfile)
+    func update(musume: Musume, finishedRaceCount: Int) {
+        
+        imgViewProfile.layer.cornerRadius = imgViewProfile.frame.width * 0.22
         imgViewProfile.image = UIImage(named: "images/\(musume.imgProfile)")
+        
+        lblCharacterName.text = musume.name
+        lblRaceStatus.text = "\(finishedRaceCount)"
     }
 }
