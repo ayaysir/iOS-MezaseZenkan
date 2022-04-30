@@ -20,7 +20,7 @@ class PageViewController: UIPageViewController {
     var raceViewModel: RaceViewModel!
     var raceStateViewModel: RaceStateViewModel!
     
-    var currentMusumeName: String!
+    var currentMusume: Musume!
     
     lazy var vcArray: [UIViewController] = {
         let array = (0...raceViewModel.totalTagsCount - 1).map { index in
@@ -82,7 +82,7 @@ extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let race = raceViewModel.getRaceBy(tag: collectionView.tag, row: indexPath.row)
         
-        let isFinished: Bool = raceStateViewModel.getFinishedBy(musumeName: currentMusumeName, raceName: race.name)
+        let isFinished: Bool = raceStateViewModel.getFinishedBy(musumeName: currentMusume.name, raceName: race.name)
         cell.update(race: race, isFinished: isFinished)
         
         return cell
@@ -90,7 +90,7 @@ extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let targetRace = raceViewModel.getRaceBy(tag: collectionView.tag, row: indexPath.row)
-        raceStateViewModel.toggleFinishResult(musumeName: currentMusumeName, raceName: targetRace.name)
+        raceStateViewModel.toggleFinishResult(musumeName: currentMusume.name, raceName: targetRace.name)
         
         collectionView.reloadItems(at: [indexPath])
         

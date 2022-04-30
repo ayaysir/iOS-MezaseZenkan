@@ -48,7 +48,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ハリボテエレジー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOj-Wa-Rkr">
                                 <rect key="frame" x="162" y="903" width="401" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -133,7 +133,7 @@
                                 <size key="customSize" width="106" height="122"/>
                                 <connections>
                                     <outlet property="imgViewProfile" destination="rOA-zM-uMU" id="uXF-sM-SLT"/>
-                                    <outlet property="lblCharacterName" destination="G5b-ce-TdY" id="CnQ-QR-FZP"/>
+                                    <outlet property="lblMusumeName" destination="G5b-ce-TdY" id="CnQ-QR-FZP"/>
                                     <outlet property="lblRaceStatus" destination="QE3-kt-LYa" id="TF1-Ly-Oqs"/>
                                 </connections>
                             </collectionViewCell>
@@ -221,6 +221,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Lo7-oq-a0S"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>

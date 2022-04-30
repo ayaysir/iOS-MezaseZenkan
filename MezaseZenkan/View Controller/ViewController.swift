@@ -13,8 +13,9 @@ class ViewController: UIViewController {
     
     let raceViewModel = RaceViewModel()
     let raceStateViewModel = RaceStateViewModel()
+    let musumeViewModel = MusumeViewModel()
     
-    var currentMusumeName: String = "ハルウララ"
+//    var currentMusume: Musume!
     
     var pageVC: PageViewController!
     var currentSegIndex = 0
@@ -36,7 +37,7 @@ class ViewController: UIViewController {
         
         imgViewMusume.layer.cornerRadius = imgViewMusume.frame.width * 0.5
         
-        lblMusumeName.text = currentMusumeName
+        
         updateViewStatus()
         
     }
@@ -70,11 +71,12 @@ class ViewController: UIViewController {
             pageVC.containerDelegate = self
             pageVC.raceViewModel = raceViewModel
             pageVC.raceStateViewModel = raceStateViewModel
-            pageVC.currentMusumeName = "ハルウララ"
+            pageVC.currentMusume = musumeViewModel.currentMusume
         case "SelectMusumeSegue":
             let musumeVC = segue.destination as? MusumeCollectionViewController
             musumeVC?.delegate = self
             musumeVC?.raceStateViewModel = raceStateViewModel
+            musumeVC?.musumeViewModel = musumeViewModel
         default:
             break
         }
@@ -82,16 +84,22 @@ class ViewController: UIViewController {
     
     private func updateViewStatus() {
         
-        let finishedRaceNameList = raceStateViewModel.getFinishedRaceNamesBy(musumeName: currentMusumeName)
-        let finishedRaceCount = raceViewModel.getFinishedCountBy(raceNameList: finishedRaceNameList)
-        
-        for i in 0...2 {
-            let raceGradeText: String = "G\(i + 1)"
-            let finishedRaceCount: Any? = finishedRaceCount[raceGradeText]
-            segRaceGrade.setTitle("\(raceGradeText) (\(finishedRaceCount ?? "-")/\(raceViewModel.gradeCountArr[i]))", forSegmentAt: i)
+        if let currentMusume = musumeViewModel.currentMusume {
+            
+            lblMusumeName.text = currentMusume.name
+            imgViewMusume.image = UIImage(named: "images/\(currentMusume.imgProfile)")
+            
+            let finishedRaceNameList = raceStateViewModel.getFinishedRaceNamesBy(musumeName: currentMusume.name)
+            let finishedRaceCount = raceViewModel.getFinishedCountBy(raceNameList: finishedRaceNameList)
+            
+            for i in 0...2 {
+                let raceGradeText: String = "G\(i + 1)"
+                let finishedRaceCount: Any? = finishedRaceCount[raceGradeText]
+                segRaceGrade.setTitle("\(raceGradeText) (\(finishedRaceCount ?? "-")/\(raceViewModel.gradeCountArr[i]))", forSegmentAt: i)
+            }
+            
+            lblFinishStatus.text = "\(raceStateViewModel.getTotalFinishedRaceCountBy(musumeName: musumeViewModel.currentMusume.name) ?? 0) / \(raceViewModel.totalRaceCount)"
         }
-        
-        lblFinishStatus.text = "\(raceStateViewModel.getTotalFinishedRaceCountBy(musumeName: currentMusumeName) ?? 0) / \(raceViewModel.totalRaceCount)"
     }
 }
 
@@ -125,13 +133,10 @@ extension ViewController: PageViewDelegate {
 
 extension ViewController: MusumeCollectionVCDelegate {
     
-    func didChangedMusume(_ controller: MusumeCollectionViewController, musumeName: String) {
-        self.currentMusumeName = musumeName
-        pageVC.currentMusumeName = musumeName
+    func didChangedMusume(_ controller: MusumeCollectionViewController, musume: Musume) {
+        musumeViewModel.currentMusume = musume
+        pageVC.currentMusume = musume
         pageVC.reload()
-        lblMusumeName.text = musumeName
         updateViewStatus()
     }
-    
-    
 }

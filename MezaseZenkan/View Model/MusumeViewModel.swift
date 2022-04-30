@@ -16,14 +16,30 @@ class MusumeViewModel {
         }
     }
     
+    var currentMusume: Musume! {
+        didSet {
+            apiService.saveCurrentMusumeName(musume: currentMusume)
+        }
+    }
+    
     init() {
         self.apiService =  APIService()
         getMusumeDataFromServer()
+        
+        // Select a musume
+        apiService.loadCurrentMusumeName { [self] musumeName in
+            if let musumeName = musumeName {
+                currentMusume = getMusumeBy(name: musumeName) ?? getMusumeBy(index: 0)
+            } else {
+                currentMusume = getMusumeBy(index: 0)
+            }
+        }
     }
     
     var totalCount: Int {
         return totalMusumeData.count
     }
+    
     
     private func getMusumeDataFromServer() {
         apiService.getMusumeData { musumes in
@@ -37,5 +53,9 @@ class MusumeViewModel {
     
     func getMusumeBy(index: Int) -> Musume {
         return totalMusumeData[index]
+    }
+    
+    func getMusumeBy(name: String) -> Musume? {
+        return totalMusumeData.first { $0.name == name }
     }
 }

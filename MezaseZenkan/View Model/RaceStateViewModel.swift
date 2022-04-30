@@ -21,7 +21,7 @@ class RaceStateViewModel {
     private var apiService: APIService!
     private var raceStateData: RaceStates! {
         didSet {
-            apiService.setAllStatesData(states: raceStateData)
+            apiService.saveAllStatesData(states: raceStateData)
         }
     }
     
@@ -31,7 +31,7 @@ class RaceStateViewModel {
     }
     
     private func getStateDataFromServer() {
-        apiService.getStateData { states in
+        apiService.loadStateData { states in
             self.raceStateData = states
         }
     }

@@ -35,7 +35,7 @@ class APIService {
         }
     }
     
-    func getStateData(completion : @escaping (RaceStates) -> ()) {
+    func loadStateData(completion : @escaping (RaceStates) -> ()) {
         
         do {
             let sampleStates: RaceStates = [
@@ -56,7 +56,17 @@ class APIService {
         }
     }
     
-    func setAllStatesData(states: RaceStates) {
+    func saveAllStatesData(states: RaceStates) {
         UserDefaults.standard.set(states, forKey: "RACE_STATES")
     }
+    
+    func loadCurrentMusumeName(completion : @escaping (String?) -> ()) {
+        let musumeName = UserDefaults.standard.object(forKey: "CURRENT_MUSUME_NAME") as? String
+        completion(musumeName)
+    }
+    
+    func saveCurrentMusumeName(musume: Musume) {
+        UserDefaults.standard.set(musume.name, forKey: "CURRENT_MUSUME_NAME")
+    }
 }
+
