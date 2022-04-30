@@ -84,6 +84,7 @@ extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let isFinished: Bool = raceStateViewModel.getFinishedBy(musumeName: currentMusume.name, raceName: race.name)
         cell.update(race: race, isFinished: isFinished)
+        cell.contentView.alpha = 0.3
         
         return cell
     }
@@ -189,8 +190,14 @@ class RaceCell: UICollectionViewCell {
             }
         }
 
+        
         let infoText = "\(race.period) / \(race.month)月\(race.half) / \(race.grade)\n\(race.terrain) / \(race.length)m(\(race.lengthType)) / \(race.direction)"
-        lblInfo.text = infoText
+        
+        let highlights: RaceElementHighlights = [
+            .period: [.foregroundColor: UIColor.red]
+        ]
+        
+        lblInfo.attributedText = attributedStringMaker(from: race, highlights: highlights)
         lblTitle.text = race.name
     }
 }

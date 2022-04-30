@@ -14,22 +14,20 @@ class ViewController: UIViewController {
     let raceViewModel = RaceViewModel()
     let raceStateViewModel = RaceStateViewModel()
     let musumeViewModel = MusumeViewModel()
-    
-//    var currentMusume: Musume!
+    let filterViewModel = FilterViewModel()
     
     var pageVC: PageViewController!
     var currentSegIndex = 0
-    var finishedRaceCount: [String: Int]? {
-        didSet {
-            
-        }
-    }
+    
+ 
+    var filterConditions: Set<FilterCondition> = []
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var segRaceGrade: UISegmentedControl!
     @IBOutlet weak var lblMusumeName: UILabel!
     @IBOutlet weak var imgViewMusume: UIImageView!
     @IBOutlet weak var lblFinishStatus: UILabel!
+    @IBOutlet weak var colViewFilter: UICollectionView!
     
     
     override func viewDidLoad() {
@@ -37,6 +35,8 @@ class ViewController: UIViewController {
         
         imgViewMusume.layer.cornerRadius = imgViewMusume.frame.width * 0.5
         
+        colViewFilter.delegate = self
+        colViewFilter.dataSource = self
         
         updateViewStatus()
         
@@ -138,5 +138,84 @@ extension ViewController: MusumeCollectionVCDelegate {
         pageVC.currentMusume = musume
         pageVC.reload()
         updateViewStatus()
+    }
+}
+
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        filterViewModel.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCell", for: indexPath) as? FilterCell else {
+            return UICollectionViewCell()
+        }
+        
+        if indexPath.row < filterViewModel.count {
+            cell.update(name: filterViewModel.getFilterBy(row: indexPath.row).displayName)
+        }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let condition = filterViewModel.getFilterBy(row: indexPath.row).filterCondition
+        
+        if filterConditions.contains(condition) {
+            filterConditions.remove(condition)
+        } else {
+            filterConditions.insert(condition)
+        }
+        print(filterConditions)
+    }
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+//        let width = collectionView.frame.width
+//        let height = collectionView.frame.height
+//        let itemsPerRow: CGFloat = 3
+//        let widthPadding = 10 * (itemsPerRow + 1)
+//        let itemsPerColumn: CGFloat = 5
+//        let heightPadding = 10 * (itemsPerColumn + 1)
+//        let cellWidth = (width - widthPadding) / itemsPerRow
+//        let cellHeight = (height - heightPadding) / itemsPerColumn
+        print(collectionView.frame.width)
+        let colViewWidth: CGFloat = collectionView.frame.width
+        
+        let itemsPerRow = filterViewModel.getSectionCountOf(index: indexPath.row)
+        let leftInset: CGFloat = {
+            switch itemsPerRow {
+            case 1:
+                return 0
+            case 2:
+                return 3
+            default:
+                return 5
+            }
+        }()
+        let widthPadding: CGFloat = leftInset * CGFloat(itemsPerRow + 1)
+        let cellWidth: CGFloat = (colViewWidth - widthPadding) / CGFloat(itemsPerRow)
+        
+        let height: CGFloat = 35
+        return CGSize(width: cellWidth, height: height)
+    }
+}
+
+class FilterCell: UICollectionViewCell {
+    
+    @IBOutlet weak var lblMenuName: UILabel!
+    
+    func update(name: String) {
+        lblMenuName.text = name
     }
 }
