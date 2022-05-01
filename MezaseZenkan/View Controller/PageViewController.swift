@@ -19,6 +19,7 @@ class PageViewController: UIPageViewController {
     
     var raceViewModel: RaceViewModel!
     var raceStateViewModel: RaceStateViewModel!
+    var filterViewModel: FilterViewModel!
     
     var currentMusume: Musume!
     
@@ -83,8 +84,8 @@ extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let race = raceViewModel.getRaceBy(tag: collectionView.tag, row: indexPath.row)
         
         let isFinished: Bool = raceStateViewModel.getFinishedBy(musumeName: currentMusume.name, raceName: race.name)
-        cell.update(race: race, isFinished: isFinished)
-        cell.contentView.alpha = 0.3
+        let refinedConditions = filterViewModel.getRefinedConditionsBy(race: race)
+        cell.update(race: race, isFinished: isFinished, filterConditions: refinedConditions)
         
         return cell
     }
@@ -178,7 +179,8 @@ class RaceCell: UICollectionViewCell {
     @IBOutlet weak var lblInfo: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     
-    func update(race: Race, isFinished: Bool) {
+    func update(race: Race, isFinished: Bool, filterConditions: Set<FilterCondition>) {
+        
         let image = UIImage(named: "images/\(race.bannerURL).png")
         if let image = image {
             if isFinished {
@@ -190,14 +192,13 @@ class RaceCell: UICollectionViewCell {
             }
         }
 
-        
         let infoText = "\(race.period) / \(race.month)月\(race.half) / \(race.grade)\n\(race.terrain) / \(race.length)m(\(race.lengthType)) / \(race.direction)"
+
+        lblInfo.attributedText = attributedRaceStringMaker(from: race, filterConditions: filterConditions)
         
-        let highlights: RaceElementHighlights = [
-            .period: [.foregroundColor: UIColor.red]
-        ]
+        // ==== section: style ====
         
-        lblInfo.attributedText = attributedStringMaker(from: race, highlights: highlights)
+//        lblInfo.text = infoText
         lblTitle.text = race.name
     }
 }

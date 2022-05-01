@@ -19,8 +19,7 @@ class ViewController: UIViewController {
     var pageVC: PageViewController!
     var currentSegIndex = 0
     
- 
-    var filterConditions: Set<FilterCondition> = []
+    var filterConditions: Set<String> = ["G1"]
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var segRaceGrade: UISegmentedControl!
@@ -71,6 +70,7 @@ class ViewController: UIViewController {
             pageVC.containerDelegate = self
             pageVC.raceViewModel = raceViewModel
             pageVC.raceStateViewModel = raceStateViewModel
+            pageVC.filterViewModel = filterViewModel
             pageVC.currentMusume = musumeViewModel.currentMusume
         case "SelectMusumeSegue":
             let musumeVC = segue.destination as? MusumeCollectionViewController
@@ -141,9 +141,11 @@ extension ViewController: MusumeCollectionVCDelegate {
     }
 }
 
+// MARK: - Filter
+
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        filterViewModel.count
+        FilterHelper.displayMenuCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -151,8 +153,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        if indexPath.row < filterViewModel.count {
-            cell.update(name: filterViewModel.getFilterBy(row: indexPath.row).displayName)
+        if indexPath.row < FilterHelper.displayMenuCount {
+            cell.update(filterMenu: FilterHelper.getFilterMenuBy(row: indexPath.row)!)
         }
         
         return cell
@@ -160,14 +162,17 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let condition = filterViewModel.getFilterBy(row: indexPath.row).filterCondition
+        let menu = FilterHelper.getFilterMenuBy(row: indexPath.row)!
         
-        if filterConditions.contains(condition) {
-            filterConditions.remove(condition)
-        } else {
-            filterConditions.insert(condition)
+        if menu.filterCondition == .reset {
+            filterViewModel.reset()
+            pageVC.reload()
+            return
         }
-        print(filterConditions)
+        
+        filterViewModel.toggleCurrentCondition(condition: menu.filterCondition)
+        pageVC.reload()
+        print("currentFilterS:", filterViewModel.currentFilterConditions)
     }
 }
 
@@ -176,8 +181,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -192,7 +195,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         print(collectionView.frame.width)
         let colViewWidth: CGFloat = collectionView.frame.width
         
-        let itemsPerRow = filterViewModel.getSectionCountOf(index: indexPath.row)
+        let itemsPerRow = FilterHelper.getSectionCountOfIndex(row: indexPath.row) ?? 4
         let leftInset: CGFloat = {
             switch itemsPerRow {
             case 1:
@@ -203,6 +206,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
                 return 5
             }
         }()
+        
         let widthPadding: CGFloat = leftInset * CGFloat(itemsPerRow + 1)
         let cellWidth: CGFloat = (colViewWidth - widthPadding) / CGFloat(itemsPerRow)
         
@@ -215,7 +219,11 @@ class FilterCell: UICollectionViewCell {
     
     @IBOutlet weak var lblMenuName: UILabel!
     
-    func update(name: String) {
-        lblMenuName.text = name
+    var filterMenu: FilterMenu!
+    
+    func update(filterMenu: FilterMenu) {
+        
+        self.filterMenu = filterMenu
+        lblMenuName.text = filterMenu.searchName
     }
 }

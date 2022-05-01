@@ -7,12 +7,13 @@
 
 import UIKit
 
-enum RaceElement: Int {
-    case period = 0, month = 2, grade = 4, terrain = 6, length = 8, lengthType = 10, direction = 13
-}
+//enum RaceElement: Int {
+//    case period = 0, month = 2, grade = 4, terrain = 6, length = 8, lengthType = 10, direction = 13
+//}
 
-typealias RaceElementHighlights = [RaceElement: [NSAttributedString.Key : Any]]
-func attributedStringMaker(from race: Race, highlights: RaceElementHighlights = [:]) -> NSMutableAttributedString {
+//typealias RaceElementHighlights = [RaceElement: [NSAttributedString.Key : Any]]
+
+func attributedRaceStringMaker(from race: Race, filterConditions: Set<FilterCondition>) -> NSMutableAttributedString {
     
     /*
      classicsenior | 9月後半 | G1
@@ -20,7 +21,8 @@ func attributedStringMaker(from race: Race, highlights: RaceElementHighlights = 
      */
     
     let period = race.period
-    let monthAndHalf = "\(race.month)月\(race.half)"
+    let month = "\(race.month)月"
+    let half = race.half
     let grade = race.grade
     let terrain = race.terrain
     let length = "\(race.length)m"
@@ -30,32 +32,72 @@ func attributedStringMaker(from race: Race, highlights: RaceElementHighlights = 
     let BS = " | "
     let CR = "\n"
     
-    let raceStringElements: [Int: String] = [
-        0: period,
-        1: BS,
-        2: monthAndHalf,
-        3: BS,
-        4: grade,
-        5: CR,
-        6: terrain,
-        7: BS,
-        8: length,
-        9: "(",
-        10: lengthType,
-        11: ")",
-        12: BS,
-        13: direction
+    /*
+     0: period,
+     1: BS,
+     2: month,
+     3: half,
+     4: BS,
+     5: grade,
+     6: CR,
+     7: terrain,
+     8: BS,
+     9: length,
+     10: "(",
+     11: lengthType,
+     12: ")",
+     13: BS,
+     14: direction
+     */
+    let raceStringElements: [String] = [
+        period,
+        BS,
+        month,
+        half,
+        BS,
+        grade,
+        CR,
+        terrain,
+        BS,
+        length,
+        "(",
+        lengthType,
+        ")",
+        BS,
+        direction,
     ]
-    let raceString = (0..<raceStringElements.count).reduce("", { $0 + raceStringElements[$1]! })
-    let attributedString = NSMutableAttributedString(string: raceString)
-    print(raceString, highlights)
     
-    for highlight in highlights {
-        let attribute: [NSAttributedString.Key: Any] = highlight.value
-        let start = 0
-        print(raceStringElements[highlight.key.rawValue]!)
-        let length = raceStringElements[highlight.key.rawValue]!.count
-        let range: NSRange = NSRange(location: start, length: length)
+    let sectionStartIndex: [FilterSection: Int] = [
+        .period: 0,
+        .monthLower: 2,
+        .monthUpper: 2,
+        .half: 3,
+        .grade: 5,
+        .terrain: 7,
+        .lengthType: 11,
+        .direction: 14,
+        
+    ]
+    
+    let raceString = raceStringElements.reduce("", { $0 + $1 })
+    let attributedString = NSMutableAttributedString(string: raceString)
+    
+    for condition in filterConditions {
+        
+        let attribute: [NSAttributedString.Key: Any] = FilterHelper.getConditionStyle(condition: condition).style
+        let sectionIndex = sectionStartIndex[FilterHelper.getSection(of: condition)]!
+        
+        let startPosition: Int = {
+            
+            if sectionIndex == 0 {
+                return 0
+            }
+            
+            return (0...(sectionIndex - 1)).reduce(0, { $0 + raceStringElements[$1].count })
+        }()
+        
+        let length = raceStringElements[sectionIndex].count
+        let range: NSRange = NSRange(location: startPosition, length: length)
         attributedString.addAttributes(attribute, range: range)
     }
     

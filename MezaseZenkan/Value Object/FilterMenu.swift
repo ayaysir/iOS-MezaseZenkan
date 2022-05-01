@@ -8,7 +8,9 @@
 import Foundation
 
 struct FilterMenu {
-    let displayName: String
+    
+    let searchName: String
     let filterCondition: FilterCondition
-    let section: Int
+    let section: FilterSection
+    let displayOrder: Int
 }
