@@ -13,7 +13,7 @@ protocol PageViewDelegate: AnyObject {
 //    func didChangedMusumeName(_ controller: PageViewController, musumeName: String)
 }
 
-class PageViewController: UIPageViewController {
+class PageViewController: UIPageViewController, UIGestureRecognizerDelegate {
     
     weak var containerDelegate: PageViewDelegate?
     
@@ -38,7 +38,40 @@ class PageViewController: UIPageViewController {
         collectionVC.collectionView.register(UINib(nibName: "RaceCell", bundle: nil), forCellWithReuseIdentifier: "SubRaceCell")
         collectionVC.collectionView.delegate = self
         collectionVC.collectionView.dataSource = self
+        
+        setupLongGestureRecognizerOnCollection(collectionVC: collectionVC)
         return collectionVC
+    }
+    
+    private func setupLongGestureRecognizerOnCollection(collectionVC: UICollectionViewController) {
+        
+        let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+        longPressedGesture.minimumPressDuration = 0.8
+        longPressedGesture.delegate = self
+        longPressedGesture.delaysTouchesBegan = true
+        collectionVC.collectionView.addGestureRecognizer(longPressedGesture)
+    }
+
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        if gestureRecognizer.state != .began {
+            return
+        }
+
+        let location = gestureRecognizer.location(in: gestureRecognizer.view)
+
+        let collectionView = gestureRecognizer.view as! UICollectionView
+        if let indexPath = collectionView.indexPathForItem(at: location) {
+            print("Long press at item: \(indexPath.row)")
+            
+            let cell = collectionView.cellForItem(at: indexPath) as? RaceCell
+            
+            let racePostID = cell?.currentRace.gamewithPostid
+            
+            if let racePostID = racePostID,
+               let url = URL(string: "https://gamewith.jp/uma-musume/article/show/\(racePostID)") {
+                UIApplication.shared.open(url, options: [:])
+            }
+        }
     }
 
     override func viewDidLoad() {
@@ -54,6 +87,9 @@ class PageViewController: UIPageViewController {
         if let firstVC = vcArray.first {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
+        
+        // long press gessture
+        
     }
     
     private func updateFinishedRaceCount() {
@@ -179,7 +215,11 @@ class RaceCell: UICollectionViewCell {
     @IBOutlet weak var lblInfo: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     
+    var currentRace: Race!
+    
     func update(race: Race, isFinished: Bool, filterConditions: Set<FilterCondition>) {
+        
+        currentRace = race
         
         let image = UIImage(named: "images/\(race.bannerURL).png")
         if let image = image {
