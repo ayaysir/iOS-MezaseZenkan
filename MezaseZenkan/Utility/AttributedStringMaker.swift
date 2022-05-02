@@ -23,6 +23,7 @@ func attributedRaceStringMaker(from race: Race, filterConditions: Set<FilterCond
     let period = race.period
     let month = "\(race.month)月"
     let half = race.half
+    let place = race.place
     let grade = race.grade
     let terrain = race.terrain
     let length = "\(race.length)m"
@@ -38,7 +39,7 @@ func attributedRaceStringMaker(from race: Race, filterConditions: Set<FilterCond
      2: month,
      3: half,
      4: BS,
-     5: grade,
+     5: place,
      6: CR,
      7: terrain,
      8: BS,
@@ -55,7 +56,7 @@ func attributedRaceStringMaker(from race: Race, filterConditions: Set<FilterCond
         month,
         half,
         BS,
-        grade,
+        place,
         CR,
         terrain,
         BS,
@@ -72,7 +73,7 @@ func attributedRaceStringMaker(from race: Race, filterConditions: Set<FilterCond
         .monthLower: 2,
         .monthUpper: 2,
         .half: 3,
-        .grade: 5,
+        .place: 5,
         .terrain: 7,
         .lengthType: 11,
         .direction: 14,
@@ -82,6 +83,32 @@ func attributedRaceStringMaker(from race: Race, filterConditions: Set<FilterCond
     let raceString = raceStringElements.reduce("", { $0 + $1 })
     let attributedString = NSMutableAttributedString(string: raceString)
     
+    // 1차 공통 속성
+    let commonAttribute: [NSAttributedString.Key: Any] = [
+        .font: UIFont(name: "HelveticaNeue", size: 14)!
+    ]
+    attributedString.addAttributes(commonAttribute, range: NSRange(location: 0, length: raceString.count))
+    if let csRange = raceString.range(of: "classicsenior") {
+        let startIndex = raceString.distance(from: raceString.startIndex, to: csRange.lowerBound)
+        attributedString.addAttributes([
+            .font: UIFont(name: "HelveticaNeue", size: 13)!,
+            .kern: -0.8
+        ], range: NSRange(location: startIndex, length: "classicsenior".count))
+    }
+    
+    // 2차 속성 - 막대기에 회색
+    let bsAttribute: [NSAttributedString.Key: Any] = [
+        .foregroundColor: RGB255(red: 125, green: 125, blue: 125).uiColor
+    ]
+    raceString.enumerated().forEach { (index, element) in
+        if String(element) == "|" {
+            let range = NSRange(location: index, length: 1)
+            attributedString.addAttributes(bsAttribute, range: range)
+        }
+        
+    }
+    
+    // 3차 속성 - 컨디션별 고유 속성
     for condition in filterConditions {
         
         let attribute: [NSAttributedString.Key: Any] = FilterHelper.getConditionStyle(condition: condition).style

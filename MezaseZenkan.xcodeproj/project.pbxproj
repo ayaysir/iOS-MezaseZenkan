@@ -40,6 +40,7 @@
 		4471F6C5281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6C4281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift */; };
 		44ABDC48281DA1D900306504 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABDC47281DA1D900306504 /* FilterViewModel.swift */; };
 		44ABDC4A281DA1EC00306504 /* FilterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABDC49281DA1EC00306504 /* FilterMenu.swift */; };
+		44ABDC4C28202CBE00306504 /* ColorUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABDC4B28202CBE00306504 /* ColorUtility.swift */; };
 		53F43677C57FC7480384E89D /* Pods_MezaseZenkanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74BE9A44492FB5E4D9DA32F /* Pods_MezaseZenkanTests.framework */; };
 		E1A24D47CA7A3FDC7568A8E2 /* Pods_MezaseZenkan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D62A78F831CFF4DA519385CA /* Pods_MezaseZenkan.framework */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,7 @@
 		4471F6C4281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MezaseZenkanUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		44ABDC47281DA1D900306504 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		44ABDC49281DA1EC00306504 /* FilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMenu.swift; sourceTree = "<group>"; };
+		44ABDC4B28202CBE00306504 /* ColorUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtility.swift; sourceTree = "<group>"; };
 		50068F5BB17842F27C1B1C63 /* Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5A4D1CFAA6A5013FC8531FBE /* Pods-MezaseZenkanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkanTests.debug.xcconfig"; path = "Target Support Files/Pods-MezaseZenkanTests/Pods-MezaseZenkanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6DEA7A2005E07B93ACA1FAA0 /* Pods_MezaseZenkan_MezaseZenkanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MezaseZenkan_MezaseZenkanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,11 +163,12 @@
 				440D789F2812EC9C0092BD7A /* Array+.swift */,
 				440D78A12812F74F0092BD7A /* ImageUtil.swift */,
 				440D78BA281D6AF30092BD7A /* AttributedStringMaker.swift */,
+				44ABDC4B28202CBE00306504 /* ColorUtility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		440D78A52815AAB30092BD7A /* Value Object */ = {
+		440D78A52815AAB30092BD7A /* ValueObject */ = {
 			isa = PBXGroup;
 			children = (
 				440D7315281067A80092BD7A /* Race.swift */,
@@ -173,10 +176,10 @@
 				440D78B32818457A0092BD7A /* Musume.swift */,
 				44ABDC49281DA1EC00306504 /* FilterMenu.swift */,
 			);
-			path = "Value Object";
+			path = ValueObject;
 			sourceTree = "<group>";
 		};
-		440D78A62815AB3A0092BD7A /* View Model */ = {
+		440D78A62815AB3A0092BD7A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				440D78A72815AC230092BD7A /* RaceViewModel.swift */,
@@ -184,7 +187,7 @@
 				440D78B5281845EB0092BD7A /* MusumeViewModel.swift */,
 				44ABDC47281DA1D900306504 /* FilterViewModel.swift */,
 			);
-			path = "View Model";
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		440D78A92815ACE70092BD7A /* Service */ = {
@@ -204,14 +207,14 @@
 			path = samples;
 			sourceTree = "<group>";
 		};
-		440D78B728185D030092BD7A /* View Controller */ = {
+		440D78B728185D030092BD7A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				4471F6A2281045C4001EAC58 /* ViewController.swift */,
 				440D789328117F0B0092BD7A /* PageViewController.swift */,
 				440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */,
 			);
-			path = "View Controller";
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		4471F692281045C4001EAC58 = {
@@ -239,11 +242,11 @@
 		4471F69D281045C4001EAC58 /* MezaseZenkan */ = {
 			isa = PBXGroup;
 			children = (
-				440D78B728185D030092BD7A /* View Controller */,
+				440D78B728185D030092BD7A /* ViewController */,
 				440D78B0281844D70092BD7A /* samples */,
 				440D78A92815ACE70092BD7A /* Service */,
-				440D78A62815AB3A0092BD7A /* View Model */,
-				440D78A52815AAB30092BD7A /* Value Object */,
+				440D78A62815AB3A0092BD7A /* ViewModel */,
+				440D78A52815AAB30092BD7A /* ValueObject */,
 				440D789E2812EC8C0092BD7A /* Utility */,
 				440D7895281187050092BD7A /* Custom View */,
 				4471F69E281045C4001EAC58 /* AppDelegate.swift */,
@@ -534,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44ABDC4C28202CBE00306504 /* ColorUtility.swift in Sources */,
 				440D78BB281D6AF40092BD7A /* AttributedStringMaker.swift in Sources */,
 				44ABDC4A281DA1EC00306504 /* FilterMenu.swift in Sources */,
 				4471F6A3281045C4001EAC58 /* ViewController.swift in Sources */,
