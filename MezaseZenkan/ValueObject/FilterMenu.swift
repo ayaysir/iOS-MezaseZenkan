@@ -12,5 +12,5 @@ struct FilterMenu {
     let searchName: String
     let filterCondition: FilterCondition
     let section: FilterSection
-    let displayOrder: Int
+    var displayOrder: Int
 }

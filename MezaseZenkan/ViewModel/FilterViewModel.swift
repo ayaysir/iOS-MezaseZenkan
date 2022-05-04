@@ -8,20 +8,37 @@
 import UIKit
 
 enum FilterCondition: String {
-    case junior, classic, senior, g1, g2, g3, grass, dirt, short, mile, intermediate, long, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, left, right, firstHalf, secondHalf, reset, classicsenior
+    
+    case junior, classic, senior, g1, g2, g3, grass, dirt, short, mile, intermediate, long, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, left, right, firstHalf, secondHalf, reset, classicsenior,
+    tokyo,
+    nakayama,
+    sapporo,
+    oi,
+    hanshin,
+    kokura,
+    kyoto,
+    hakodate,
+    fukushima,
+    niigata,
+    chukyou,
+    emptyPlace
+    
 }
 
 enum FilterSection: Int {
-    case period = 0
-    case place = 1
-    case terrain = 2
-    case lengthType = 3
-    case monthUpper = 4
-    case monthLower = 5
-    case direction = 6
-    case half = 7
-    case grade = 8
-    case reset = 9
+    case period
+//    case place
+    case terrain
+    case lengthType
+    case monthUpper
+    case monthLower
+    case direction
+    case half
+    case grade
+    case place1
+    case place2
+    case place3
+    case reset
 }
 
 struct FilterStyle {
@@ -31,49 +48,76 @@ struct FilterStyle {
 
 struct FilterHelper {
     
-    static let filterMenus: [FilterCondition: FilterMenu] = [
-        .junior: FilterMenu(searchName: "junior", filterCondition: .junior, section: .period, displayOrder: 0),
-        .classic: FilterMenu(searchName: "classic", filterCondition: .classic, section: .period, displayOrder: 1),
-        .senior: FilterMenu(searchName: "senior", filterCondition: .senior, section: .period, displayOrder: 2),
-        .classicsenior: FilterMenu(searchName: "classicsenior", filterCondition: .classicsenior, section: .period, displayOrder: -1),
+    private static let filterMenuArray: [FilterMenu] = [
+        FilterMenu(searchName: "junior", filterCondition: .junior, section: .period, displayOrder: 0),
+        FilterMenu(searchName: "classic", filterCondition: .classic, section: .period, displayOrder: 1),
+        FilterMenu(searchName: "senior", filterCondition: .senior, section: .period, displayOrder: 2),
+        FilterMenu(searchName: "classicsenior", filterCondition: .classicsenior, section: .period, displayOrder: -1),
         
-            .grass: FilterMenu(searchName: "芝", filterCondition: .grass, section: .terrain, displayOrder: 3),
-        .dirt: FilterMenu(searchName: "ダート", filterCondition: .dirt, section: .terrain, displayOrder: 4),
+        FilterMenu(searchName: "芝", filterCondition: .grass, section: .terrain, displayOrder: 3),
+        FilterMenu(searchName: "ダート", filterCondition: .dirt, section: .terrain, displayOrder: 4),
         
-            .short: FilterMenu(searchName: "短距離", filterCondition: .short, section: .lengthType, displayOrder: 5),
-        .mile: FilterMenu(searchName: "マイル", filterCondition: .mile, section: .lengthType, displayOrder: 6),
-        .intermediate: FilterMenu(searchName: "中距離", filterCondition: .intermediate, section: .lengthType, displayOrder: 7),
-        .long: FilterMenu(searchName: "長距離", filterCondition: .long, section: .lengthType, displayOrder: 8),
+        FilterMenu(searchName: "短距離", filterCondition: .short, section: .lengthType, displayOrder: 5),
+        FilterMenu(searchName: "マイル", filterCondition: .mile, section: .lengthType, displayOrder: 6),
+        FilterMenu(searchName: "中距離", filterCondition: .intermediate, section: .lengthType, displayOrder: 7),
+        FilterMenu(searchName: "長距離", filterCondition: .long, section: .lengthType, displayOrder: 8),
         
-            .left: FilterMenu(searchName: "左", filterCondition: .left, section: .direction, displayOrder: 9),
-        .right: FilterMenu(searchName: "右", filterCondition: .right, section: .direction, displayOrder: 10),
+        FilterMenu(searchName: "左", filterCondition: .left, section: .direction, displayOrder: 9),
+        FilterMenu(searchName: "右", filterCondition: .right, section: .direction, displayOrder: 10),
         
-            .m1: FilterMenu(searchName: "1月", filterCondition: .m1, section: .monthUpper, displayOrder: 11),
-        .m2: FilterMenu(searchName: "2月", filterCondition: .m2, section: .monthUpper, displayOrder: 12),
-        .m3: FilterMenu(searchName: "3月", filterCondition: .m3, section: .monthUpper, displayOrder: 13),
-        .m4: FilterMenu(searchName: "4月", filterCondition: .m4, section: .monthUpper, displayOrder: 14),
-        .m5: FilterMenu(searchName: "5月", filterCondition: .m5, section: .monthUpper, displayOrder: 15),
-        .m6: FilterMenu(searchName: "6月", filterCondition: .m6, section: .monthUpper, displayOrder: 16),
-        .m7: FilterMenu(searchName: "7月", filterCondition: .m7, section: .monthLower, displayOrder: 17),
-        .m8: FilterMenu(searchName: "8月", filterCondition: .m8, section: .monthLower, displayOrder: 18),
-        .m9: FilterMenu(searchName: "9月", filterCondition: .m9, section: .monthLower, displayOrder: 19),
-        .m10: FilterMenu(searchName: "10月", filterCondition: .m10, section: .monthLower, displayOrder: 20),
-        .m11: FilterMenu(searchName: "11月", filterCondition: .m11, section: .monthLower, displayOrder: 21),
-        .m12: FilterMenu(searchName: "12月", filterCondition: .m12, section: .monthLower, displayOrder: 22),
+        /*
+         東京    中山    札幌    大井
+         阪神    小倉    京都    函館
+         福島    新潟    中京
+         */
+        FilterMenu(searchName: "東京", filterCondition: .tokyo, section: .place1, displayOrder: 11),
+        FilterMenu(searchName: "中山", filterCondition: .nakayama, section: .place1, displayOrder: 12),
+        FilterMenu(searchName: "阪神", filterCondition: .hanshin, section: .place1, displayOrder: 15),
+        FilterMenu(searchName: "京都", filterCondition: .kyoto, section: .place1, displayOrder: 17),
+        FilterMenu(searchName: "大井", filterCondition: .oi, section: .place2, displayOrder: 14),
+        FilterMenu(searchName: "中京", filterCondition: .chukyou, section: .place2, displayOrder: 21),
+        FilterMenu(searchName: "札幌", filterCondition: .sapporo, section: .place2, displayOrder: 13),
+        FilterMenu(searchName: "小倉", filterCondition: .kokura, section: .place2, displayOrder: 16),
+        FilterMenu(searchName: "函館", filterCondition: .hakodate, section: .place3, displayOrder: 18),
+        FilterMenu(searchName: "福島", filterCondition: .fukushima, section: .place3, displayOrder: 19),
+        FilterMenu(searchName: "新潟", filterCondition: .niigata, section: .place3, displayOrder: 20),
+        FilterMenu(searchName: "", filterCondition: .emptyPlace, section: .place3, displayOrder: 21),
         
-            .firstHalf: FilterMenu(searchName: "前半", filterCondition: .firstHalf, section: .half, displayOrder: 23),
-        .secondHalf: FilterMenu(searchName: "後半", filterCondition: .secondHalf, section: .half, displayOrder: 24),
+        FilterMenu(searchName: "1月", filterCondition: .m1, section: .monthUpper, displayOrder: 22),
+        FilterMenu(searchName: "2月", filterCondition: .m2, section: .monthUpper, displayOrder: 23),
+        FilterMenu(searchName: "3月", filterCondition: .m3, section: .monthUpper, displayOrder: 24),
+        FilterMenu(searchName: "4月", filterCondition: .m4, section: .monthUpper, displayOrder: 25),
+        FilterMenu(searchName: "5月", filterCondition: .m5, section: .monthUpper, displayOrder: 26),
+        FilterMenu(searchName: "6月", filterCondition: .m6, section: .monthUpper, displayOrder: 27),
+        FilterMenu(searchName: "7月", filterCondition: .m7, section: .monthLower, displayOrder: 28),
+        FilterMenu(searchName: "8月", filterCondition: .m8, section: .monthLower, displayOrder: 29),
+        FilterMenu(searchName: "9月", filterCondition: .m9, section: .monthLower, displayOrder: 30),
+        FilterMenu(searchName: "10月", filterCondition: .m10, section: .monthLower, displayOrder: 31),
+        FilterMenu(searchName: "11月", filterCondition: .m11, section: .monthLower, displayOrder: 32),
+        FilterMenu(searchName: "12月", filterCondition: .m12, section: .monthLower, displayOrder: 33),
+        
+        FilterMenu(searchName: "前半", filterCondition: .firstHalf, section: .half, displayOrder: 34),
+        FilterMenu(searchName: "後半", filterCondition: .secondHalf, section: .half, displayOrder: 35),
         
         //        .g1: FilterMenu(searchName: "G1", filterCondition: .g1, section: .grade, displayOrder: 25),
         //        .g2: FilterMenu(searchName: "G2", filterCondition: .g2, section: .grade, displayOrder: 26),
         //        .g3: FilterMenu(searchName: "G3", filterCondition: .g3, section: .grade, displayOrder: 27),
         
-            .reset: FilterMenu(searchName: "reset", filterCondition: .reset, section: .reset, displayOrder: 25),
+         FilterMenu(searchName: "reset", filterCondition: .reset, section: .reset, displayOrder: 36),
     ]
+    
+    static var filterMenus: [FilterCondition: FilterMenu] = {
+        return filterMenuArray.enumerated().reduce(into: [FilterCondition: FilterMenu]()) { partialResult, enumObj in
+            var menu = enumObj.element
+            menu.displayOrder = enumObj.offset
+            partialResult[menu.filterCondition] = menu
+        }
+    }()
     
     static func getConditionStyle(condition: FilterCondition) -> FilterStyle {
         
         let boldFont = UIFont(name: "HelveticaNeue-Bold", size: 14)!
+        let commonHighlight = RGB255(red: 255, green: 255, blue: 118).uiColor
         
         let conditionStyleMapper: [FilterCondition: [NSAttributedString.Key: Any]] = [
             .junior: [
@@ -118,12 +162,11 @@ struct FilterHelper {
                 .foregroundColor: UIColor.white,
                 .font: boldFont,
             ],
-            
-                .dirt: [
-                    .backgroundColor: RGB255(red: 203, green: 16, blue: 20).uiColor,
-                    .foregroundColor: UIColor.white,
-                    .font: boldFont,
-                ],
+            .dirt: [
+                .backgroundColor: RGB255(red: 203, green: 16, blue: 20).uiColor,
+                .foregroundColor: UIColor.white,
+                .font: boldFont,
+            ],
             .short: [
                 .backgroundColor: RGB255(red: 252, green: 85, blue: 160).uiColor,
                 .foregroundColor: UIColor.white,
@@ -136,7 +179,7 @@ struct FilterHelper {
             ],
             .intermediate: [
                 .backgroundColor: RGB255(red: 252, green: 172, blue: 10).uiColor,
-                .foregroundColor: UIColor.black,
+                .foregroundColor: RGB255(red: 50, green: 50, blue: 50).uiColor,
                 .font: boldFont,
             ],
             .long: [
@@ -198,6 +241,50 @@ struct FilterHelper {
                 .foregroundColor: UIColor.black,
             ],
             .reset: [:],
+            .chukyou: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
+            .niigata: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
+            .fukushima: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
+            .hakodate: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
+            .kyoto: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
+            .hanshin: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
+            .oi: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
+            .kokura: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
+            .sapporo: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
+            .tokyo: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
+            .nakayama: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
         ]
         return FilterStyle(targetSection: filterMenus[condition]!.section, style: conditionStyleMapper[condition]!)
     }
@@ -269,9 +356,7 @@ class FilterViewModel {
                 return menu.searchName == race.terrain
             case .lengthType:
                 return menu.searchName == race.lengthType
-            case .monthUpper:
-                return Int(menu.searchName.replacingOccurrences(of: "月", with: "")) == race.month
-            case .monthLower:
+            case .monthUpper, .monthLower:
                 return Int(menu.searchName.replacingOccurrences(of: "月", with: "")) == race.month
             case .direction:
                 if menu.searchName == "右" {
@@ -280,10 +365,10 @@ class FilterViewModel {
                 return menu.searchName == race.direction
             case .half:
                 return menu.searchName == race.half
-            case .place:
-                return menu.searchName == race.place
             case .reset:
                 return false
+            case .place1, .place2, .place3:
+                return menu.searchName == race.place
             }
         }
         
