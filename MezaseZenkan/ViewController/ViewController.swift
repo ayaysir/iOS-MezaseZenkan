@@ -28,7 +28,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblFinishStatus: UILabel!
     @IBOutlet weak var colViewFilter: UICollectionView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +37,18 @@ class ViewController: UIViewController {
         colViewFilter.dataSource = self
         
         updateViewStatus()
+        initImageTouch()
+    }
+    
+    private func initImageTouch() {
         
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(handleImageTouch(gesture:)))
+        imgViewMusume.isUserInteractionEnabled = true
+        imgViewMusume.addGestureRecognizer(gesture)
+    }
+    
+    @objc func handleImageTouch(gesture: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "SelectMusumeSegue", sender: nil)
     }
     
     @IBAction func pageControlChanged(_ sender: Any) {

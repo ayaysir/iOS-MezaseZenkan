@@ -48,7 +48,7 @@ class PageViewController: UIPageViewController, UIGestureRecognizerDelegate {
     private func setupLongGestureRecognizerOnCollection(collectionVC: UICollectionViewController) {
         
         let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
-        longPressedGesture.minimumPressDuration = 0.25
+        longPressedGesture.minimumPressDuration = 0.35
         longPressedGesture.delegate = self
         longPressedGesture.delaysTouchesBegan = true
         collectionVC.collectionView.addGestureRecognizer(longPressedGesture)

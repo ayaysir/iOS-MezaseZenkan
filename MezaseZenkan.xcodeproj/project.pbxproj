@@ -28,6 +28,7 @@
 		440D78B6281845EB0092BD7A /* MusumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78B5281845EB0092BD7A /* MusumeViewModel.swift */; };
 		440D78B928185D2D0092BD7A /* MusumeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */; };
 		440D78BB281D6AF40092BD7A /* AttributedStringMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78BA281D6AF30092BD7A /* AttributedStringMaker.swift */; };
+		4470896F2822DD63008177C0 /* RotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4470896E2822DD63008177C0 /* RotationViewController.swift */; };
 		4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F69E281045C4001EAC58 /* AppDelegate.swift */; };
 		4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A0281045C4001EAC58 /* SceneDelegate.swift */; };
 		4471F6A3281045C4001EAC58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A2281045C4001EAC58 /* ViewController.swift */; };
@@ -83,6 +84,7 @@
 		440D78B5281845EB0092BD7A /* MusumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusumeViewModel.swift; sourceTree = "<group>"; };
 		440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusumeCollectionViewController.swift; sourceTree = "<group>"; };
 		440D78BA281D6AF30092BD7A /* AttributedStringMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedStringMaker.swift; sourceTree = "<group>"; };
+		4470896E2822DD63008177C0 /* RotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationViewController.swift; sourceTree = "<group>"; };
 		4471F69B281045C4001EAC58 /* MezaseZenkan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MezaseZenkan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4471F69E281045C4001EAC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4471F6A0281045C4001EAC58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				4471F6A2281045C4001EAC58 /* ViewController.swift */,
 				440D789328117F0B0092BD7A /* PageViewController.swift */,
 				440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */,
+				4470896E2822DD63008177C0 /* RotationViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				440D78AB2815ACF10092BD7A /* APIService.swift in Sources */,
 				440D78B928185D2D0092BD7A /* MusumeCollectionViewController.swift in Sources */,
 				440D78AF2816FB1D0092BD7A /* RaceState.swift in Sources */,
+				4470896F2822DD63008177C0 /* RotationViewController.swift in Sources */,
 				440D7316281067A80092BD7A /* Race.swift in Sources */,
 				4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */,
 				440D78A22812F74F0092BD7A /* ImageUtil.swift in Sources */,
