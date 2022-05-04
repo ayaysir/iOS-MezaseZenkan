@@ -10,7 +10,6 @@ import UIKit
 protocol PageViewDelegate: AnyObject {
     func didPageMoved(_ controller: PageViewController, currentGrade: String)
     func didChangedFinishedRaceCount(_ controller: PageViewController)
-//    func didChangedMusumeName(_ controller: PageViewController, musumeName: String)
 }
 
 class PageViewController: UIPageViewController, UIGestureRecognizerDelegate {
@@ -22,6 +21,8 @@ class PageViewController: UIPageViewController, UIGestureRecognizerDelegate {
     var filterViewModel: FilterViewModel!
     
     var currentMusume: Musume!
+    
+    var currentLongPressedCell: RaceCell?
     
     lazy var vcArray: [UIViewController] = {
         let array = (0...raceViewModel.totalTagsCount - 1).map { index in
@@ -43,34 +44,72 @@ class PageViewController: UIPageViewController, UIGestureRecognizerDelegate {
         return collectionVC
     }
     
+    // long press 이벤트 부여
     private func setupLongGestureRecognizerOnCollection(collectionVC: UICollectionViewController) {
         
         let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
-        longPressedGesture.minimumPressDuration = 0.8
+        longPressedGesture.minimumPressDuration = 0.25
         longPressedGesture.delegate = self
         longPressedGesture.delaysTouchesBegan = true
         collectionVC.collectionView.addGestureRecognizer(longPressedGesture)
     }
 
+    // long press 이벤트 액션
     @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
-        if gestureRecognizer.state != .began {
-            return
-        }
-
+        
+//        switch gestureRecognizer.state {
+//
+//        case .possible:
+//            print("possible")
+//        case .began:
+//            print("began")
+//        case .changed:
+//            print("changed")
+//        case .ended:
+//            print("ended")
+//        case .cancelled:
+//            print("canceled")
+//        case .failed:
+//            print("faield")
+//        @unknown default:
+//            print("unknown")
+//        }
+        
         let location = gestureRecognizer.location(in: gestureRecognizer.view)
-
         let collectionView = gestureRecognizer.view as! UICollectionView
-        if let indexPath = collectionView.indexPathForItem(at: location) {
-            print("Long press at item: \(indexPath.row)")
+        
+        if gestureRecognizer.state == .began {
             
-            let cell = collectionView.cellForItem(at: indexPath) as? RaceCell
-            
-            let racePostID = cell?.currentRace.gamewithPostid
-            
-            if let racePostID = racePostID,
-               let url = URL(string: "https://gamewith.jp/uma-musume/article/show/\(racePostID)") {
-                UIApplication.shared.open(url, options: [:])
+            if let indexPath = collectionView.indexPathForItem(at: location) {
+                print("Long press at item began: \(indexPath.row)")
+                
+                // animation
+                UIView.animate(withDuration: 0.2) {
+                    if let cell = collectionView.cellForItem(at: indexPath) as? RaceCell {
+                        self.currentLongPressedCell = cell
+                        cell.transform = .init(scaleX: 0.95, y: 0.95)
+                    }
+                }
             }
+        } else if gestureRecognizer.state == .ended {
+            print("lt ended")
+            if let indexPath = collectionView.indexPathForItem(at: location) {
+                print("Long press at item end: \(indexPath.row)")
+                
+                // animation
+                UIView.animate(withDuration: 0.2) {
+                    if let cell = self.currentLongPressedCell  {
+                        cell.transform = .init(scaleX: 1, y: 1)
+                        
+                        if cell == collectionView.cellForItem(at: indexPath) as? RaceCell,
+                           let url = URL(string: "https://gamewith.jp/uma-musume/article/show/\(cell.currentRace.gamewithPostid)") {
+                            UIApplication.shared.open(url, options: [:])
+                        }
+                    }
+                }
+            }
+        } else {
+            return
         }
     }
 
@@ -134,6 +173,12 @@ extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         updateFinishedRaceCount()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+    }
 }
 
     extension PageViewController: UICollectionViewDelegateFlowLayout {
@@ -148,7 +193,9 @@ extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let cellWidth = (width - widthPadding) / itemsPerRow
             let cellHeight = (height - heightPadding) / itemsPerColumn
             
-            return CGSize(width: cellWidth, height: cellHeight)    }
+            return CGSize(width: cellWidth, height: cellHeight)
+            
+        }
         
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
             return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
@@ -232,13 +279,11 @@ class RaceCell: UICollectionViewCell {
             }
         }
 
-        let infoText = "\(race.period) / \(race.month)月\(race.half) / \(race.grade)\n\(race.terrain) / \(race.length)m(\(race.lengthType)) / \(race.direction)"
-
-        lblInfo.attributedText = attributedRaceStringMaker(from: race, filterConditions: filterConditions)
+//        let infoText = "\(race.period) / \(race.month)月\(race.half) / \(race.grade)\n\(race.terrain) / \(race.length)m(\(race.lengthType)) / \(race.direction)"
         
         // ==== section: style ====
         
-//        lblInfo.text = infoText
+        lblInfo.attributedText = attributedRaceStringMaker(from: race, filterConditions: filterConditions)
         lblTitle.text = race.name
     }
 }
