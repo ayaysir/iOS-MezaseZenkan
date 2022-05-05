@@ -87,6 +87,10 @@ class ViewController: UIViewController {
             musumeVC?.delegate = self
             musumeVC?.raceStateViewModel = raceStateViewModel
             musumeVC?.musumeViewModel = musumeViewModel
+        case "RotationSegue":
+            let rotationVC = segue.destination as? RotationViewController
+            rotationVC?.raceViewModel = raceViewModel
+            rotationVC?.raceStateViewModel = raceStateViewModel
         default:
             break
         }

@@ -103,4 +103,36 @@ class RaceViewModel {
         tagRaceInfo.append(contentsOf: repeatElement("G2", count: Int(g2TagCount)))
         tagRaceInfo.append(contentsOf: repeatElement("G3", count: Int(g3TagCount)))
     }
+    
+    func getRacesByPeriod(_ period: Period, isIncludeOP: Bool) -> [Race] {
+        return getRacesByPeriod(year: period.year, month: period.month, isIncludeOP: isIncludeOP)
+    }
+    
+    func getRacesByPeriod(year: Int, month: Float, isIncludeOP: Bool = false) -> [Race] {
+        
+        return totalRaceData.filter { race in
+            let whole = Int(modf(month).0)
+            let fraction = modf(month).1
+            
+            var yearCondition: Bool!
+            var monthCondition: Bool!
+            let gradeCondition: Bool = isIncludeOP ? true : (race.grade == "G1" || race.grade == "G2" || race.grade == "G3")
+            
+            switch year {
+            case 1:
+                yearCondition = race.period.contains("junior")
+            case 2:
+                yearCondition = race.period.contains("classic")
+            case 3:
+                yearCondition = race.period.contains("senior")
+            default:
+                break
+            }
+            
+            let targetHalf = fraction == 0 ? "前半" : "後半"
+            monthCondition = (race.month == whole && race.half == targetHalf)
+            
+            return yearCondition && monthCondition && gradeCondition
+        }
+    }
 }

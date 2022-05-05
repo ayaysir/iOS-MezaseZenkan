@@ -29,6 +29,7 @@
 		440D78B928185D2D0092BD7A /* MusumeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */; };
 		440D78BB281D6AF40092BD7A /* AttributedStringMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78BA281D6AF30092BD7A /* AttributedStringMaker.swift */; };
 		4470896F2822DD63008177C0 /* RotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4470896E2822DD63008177C0 /* RotationViewController.swift */; };
+		447089712822F10E008177C0 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447089702822F10E008177C0 /* Period.swift */; };
 		4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F69E281045C4001EAC58 /* AppDelegate.swift */; };
 		4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A0281045C4001EAC58 /* SceneDelegate.swift */; };
 		4471F6A3281045C4001EAC58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6A2281045C4001EAC58 /* ViewController.swift */; };
@@ -85,6 +86,7 @@
 		440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusumeCollectionViewController.swift; sourceTree = "<group>"; };
 		440D78BA281D6AF30092BD7A /* AttributedStringMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedStringMaker.swift; sourceTree = "<group>"; };
 		4470896E2822DD63008177C0 /* RotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationViewController.swift; sourceTree = "<group>"; };
+		447089702822F10E008177C0 /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		4471F69B281045C4001EAC58 /* MezaseZenkan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MezaseZenkan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4471F69E281045C4001EAC58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4471F6A0281045C4001EAC58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				440D78AC2816FA6E0092BD7A /* RaceStateViewModel.swift */,
 				440D78B5281845EB0092BD7A /* MusumeViewModel.swift */,
 				44ABDC47281DA1D900306504 /* FilterViewModel.swift */,
+				447089702822F10E008177C0 /* Period.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				440D78B42818457A0092BD7A /* Musume.swift in Sources */,
 				440D78AD2816FA6E0092BD7A /* RaceStateViewModel.swift in Sources */,
 				4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */,
+				447089712822F10E008177C0 /* Period.swift in Sources */,
 				440D78A02812EC9C0092BD7A /* Array+.swift in Sources */,
 				440D78A82815AC230092BD7A /* RaceViewModel.swift in Sources */,
 				440D78A42812F85B0092BD7A /* GrayscaleViewController.swift in Sources */,
@@ -748,7 +752,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -760,7 +764,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -778,7 +782,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -790,7 +794,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
