@@ -110,12 +110,24 @@ struct FilterHelper {
     ]
     
     static var filterMenus: [FilterCondition: FilterMenu] = {
-        return filterMenuArray.enumerated().reduce(into: [FilterCondition: FilterMenu]()) { partialResult, enumObj in
-            var menu = enumObj.element
-            menu.displayOrder = enumObj.offset
-            partialResult[menu.filterCondition] = menu
+        
+        return filterMenuArray.filter({ $0.displayOrder >= 0 })
+            .enumerated().reduce(into: [FilterCondition: FilterMenu]()) { partialResult, enumObj in
+                var menu = enumObj.element
+                if menu.displayOrder > 0 {
+                    menu.displayOrder = enumObj.offset
+                }
+                partialResult[menu.filterCondition] = menu
+            }
+    }()
+    
+    private static let conditionToSection: [FilterCondition: FilterSection] = {
+        
+        return filterMenuArray.reduce(into: [FilterCondition: FilterSection]()) { partialResult, menu in
+            partialResult[menu.filterCondition] = menu.section
         }
     }()
+    
     
     static func getConditionStyle(condition: FilterCondition) -> FilterStyle {
         
@@ -289,7 +301,8 @@ struct FilterHelper {
                 .font: boldFont,
             ],
         ]
-        return FilterStyle(targetSection: filterMenus[condition]!.section, style: conditionStyleMapper[condition]!)
+        
+        return FilterStyle(targetSection: getSection(of: condition), style: conditionStyleMapper[condition]!)
     }
     
     static var displayMenuCount: Int {
@@ -305,7 +318,7 @@ struct FilterHelper {
     }
     
     static func getSection(of condition: FilterCondition) -> FilterSection {
-        return filterMenus[condition]!.section
+        return conditionToSection[condition]!
     }
     
     static func getSectionCount(section: FilterSection) -> Int {

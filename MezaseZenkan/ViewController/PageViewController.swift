@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PageViewDelegate: AnyObject {
-    func didPageMoved(_ controller: PageViewController, currentGrade: String)
+    func didPageMoved(_ controller: PageViewController, currentGrade: String, currentTag: Int)
     func didChangedFinishedRaceCount(_ controller: PageViewController)
 }
 
@@ -244,13 +244,14 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
     }
     
     
+    // 페이지 이동 시
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         let currentVC = pageViewController.viewControllers?[0] as! UICollectionViewController
         let currentCVTag = currentVC.collectionView.tag
         print("currentVC.collectionView.tag:", currentVC.collectionView.tag, raceViewModel.getGradeBy(tag: currentCVTag))
         
         if containerDelegate != nil {
-            containerDelegate?.didPageMoved(self, currentGrade: raceViewModel.getGradeBy(tag: currentCVTag))
+            containerDelegate?.didPageMoved(self, currentGrade: raceViewModel.getGradeBy(tag: currentCVTag), currentTag: currentCVTag)
         }
     }
     

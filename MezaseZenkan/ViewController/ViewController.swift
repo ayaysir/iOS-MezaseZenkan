@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     
     var pageVC: PageViewController!
     var currentSegIndex = 0
+    var preservedPageIndex = 0
     
     var filterConditions: Set<String> = ["G1"]
     
@@ -27,17 +28,27 @@ class ViewController: UIViewController {
     @IBOutlet weak var imgViewMusume: UIImageView!
     @IBOutlet weak var lblFinishStatus: UILabel!
     @IBOutlet weak var colViewFilter: UICollectionView!
+    @IBOutlet weak var btnRotationView: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imgViewMusume.layer.cornerRadius = imgViewMusume.frame.width * 0.5
+        btnRotationView.layer.cornerRadius = 10
         
         colViewFilter.delegate = self
         colViewFilter.dataSource = self
         
         updateViewStatus()
         initImageTouch()
+        
+        renderPageControl()
+    }
+    
+    private func renderPageControl(currentPage: Int = 0) {
+        pageControl.numberOfPages = raceViewModel.totalTagsCount
+        pageControl.currentPage = currentPage
+        preservedPageIndex = currentPage
     }
     
     private func initImageTouch() {
@@ -51,8 +62,22 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "SelectMusumeSegue", sender: nil)
     }
     
-    @IBAction func pageControlChanged(_ sender: Any) {
+    @IBAction func pageControlChanged(_ sender: UIPageControl) {
+        print(#function, sender.currentPage)
         
+        let targetPageIndex = sender.currentPage
+        
+        if let pageVC = pageVC {
+            if preservedPageIndex == targetPageIndex {
+                return
+            }
+            
+            let direction: UIPageViewController.NavigationDirection = preservedPageIndex < targetPageIndex ? .forward : .reverse
+            pageVC.setViewControllers([pageVC.vcArray[targetPageIndex]], direction: direction, animated: true, completion: nil)
+            
+            moveSegment(currentGrade: raceViewModel.getGradeBy(tag: targetPageIndex))
+        }
+        preservedPageIndex = targetPageIndex
     }
     
     @IBAction func segRaceGradeChanged(_ sender: UISegmentedControl) {
@@ -65,7 +90,7 @@ class ViewController: UIViewController {
                 currentSegIndex = selectedSegIndex
                 return
             }
-            let direction: UIPageViewController.NavigationDirection = selectedSegIndex > currentSegIndex ? .forward : .reverse
+            let direction: UIPageViewController.NavigationDirection = currentSegIndex < selectedSegIndex ? .forward : .reverse
             pageVC.setViewControllers([pageVC.vcArray[targetPageIndex]], direction: direction, animated: true, completion: nil)
             
         }
@@ -91,6 +116,7 @@ class ViewController: UIViewController {
             let rotationVC = segue.destination as? RotationViewController
             rotationVC?.raceViewModel = raceViewModel
             rotationVC?.raceStateViewModel = raceStateViewModel
+            rotationVC?.musumeViewModel = musumeViewModel
         default:
             break
         }
@@ -119,16 +145,20 @@ class ViewController: UIViewController {
 
 extension ViewController: PageViewDelegate {
     
-//    func didChangedMusumeName(_ controller: PageViewController, musumeName: String) {
-//        lblMusumeName.text = musumeName
-//    }
-    
     func didChangedFinishedRaceCount(_ controller: PageViewController) {
         updateViewStatus()
     }
     
-    func didPageMoved(_ controller: PageViewController, currentGrade: String) {
-        print("!!!!", currentGrade)
+    func didPageMoved(_ controller: PageViewController, currentGrade: String, currentTag: Int) {
+        
+        moveSegment(currentGrade: currentGrade)
+        
+        // 페이지컨트롤 조작
+        renderPageControl(currentPage: currentTag)
+    }
+    
+    func moveSegment(currentGrade: String) {
+        
         switch currentGrade {
         case "G1":
             segRaceGrade.selectedSegmentIndex = 0
@@ -142,6 +172,7 @@ extension ViewController: PageViewDelegate {
         default:
             return
         }
+        
     }
 }
 
@@ -168,8 +199,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         if indexPath.row < FilterHelper.displayMenuCount {
-            cell.update(filterMenu: FilterHelper.getFilterMenuBy(row: indexPath.row)!)
+            
+            let menu = FilterHelper.getFilterMenuBy(row: indexPath.row)!
+            
+            cell.update(filterMenu: menu)
         }
+        
         
         return cell
     }
@@ -187,7 +222,24 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         filterViewModel.toggleCurrentCondition(condition: menu.filterCondition)
         pageVC.reload()
         print("currentFilterS:", filterViewModel.currentFilterConditions)
+        
+        if let cell = collectionView.cellForItem(at: indexPath) as? FilterCell {
+            
+            if cell.backgroundColor == .clear {
+                return
+            }
+            
+            cell.isOn = !cell.isOn
+        }
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+//        print("highlight")
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+//        print("unhighlight")
+//    }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
@@ -198,15 +250,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-//        let width = collectionView.frame.width
-//        let height = collectionView.frame.height
-//        let itemsPerRow: CGFloat = 3
-//        let widthPadding = 10 * (itemsPerRow + 1)
-//        let itemsPerColumn: CGFloat = 5
-//        let heightPadding = 10 * (itemsPerColumn + 1)
-//        let cellWidth = (width - widthPadding) / itemsPerRow
-//        let cellHeight = (height - heightPadding) / itemsPerColumn
-        print(collectionView.frame.width)
         let colViewWidth: CGFloat = collectionView.frame.width
         
         let itemsPerRow = FilterHelper.getSectionCountOfIndex(row: indexPath.row) ?? 4
@@ -224,7 +267,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         let widthPadding: CGFloat = leftInset * CGFloat(itemsPerRow + 1)
         let cellWidth: CGFloat = (colViewWidth - widthPadding) / CGFloat(itemsPerRow)
         
-        let height: CGFloat = 35
+        let height: CGFloat = 30
         return CGSize(width: cellWidth, height: height)
     }
 }
@@ -233,11 +276,27 @@ class FilterCell: UICollectionViewCell {
     
     @IBOutlet weak var lblMenuName: UILabel!
     
+    var deactivatedColor = RGB255(red: 230, green: 230, blue: 230, alpha: 0.7).uiColor
+    
     var filterMenu: FilterMenu!
+    var isOn: Bool = false {
+        didSet {
+            self.backgroundColor = isOn ? RGB255(red: 240, green: 212, blue: 103).uiColor : deactivatedColor
+        }
+    }
     
     func update(filterMenu: FilterMenu) {
         
         self.filterMenu = filterMenu
         lblMenuName.text = filterMenu.searchName
+        lblMenuName.frame.size = CGSize(width: self.frame.width, height: self.frame.height)
+        self.layer.cornerRadius = 8
+        
+        if filterMenu.searchName == "" {
+            self.backgroundColor = .clear
+        } else {
+            self.backgroundColor = deactivatedColor
+        }
     }
+    
 }
