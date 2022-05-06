@@ -29,12 +29,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblFinishStatus: UILabel!
     @IBOutlet weak var colViewFilter: UICollectionView!
     @IBOutlet weak var btnRotationView: UIButton!
+    @IBOutlet weak var imgViewLogo: UIImageView!
+    @IBOutlet weak var btnHelp: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imgViewMusume.layer.cornerRadius = imgViewMusume.frame.width * 0.5
         btnRotationView.layer.cornerRadius = 10
+        imgViewLogo.layer.cornerRadius = imgViewLogo.frame.width * 0.5
         
         colViewFilter.delegate = self
         colViewFilter.dataSource = self

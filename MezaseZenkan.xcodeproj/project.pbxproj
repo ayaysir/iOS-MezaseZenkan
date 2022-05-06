@@ -40,6 +40,8 @@
 		4471F6B9281045C6001EAC58 /* MezaseZenkanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6B8281045C6001EAC58 /* MezaseZenkanTests.swift */; };
 		4471F6C3281045C6001EAC58 /* MezaseZenkanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6C2281045C6001EAC58 /* MezaseZenkanUITests.swift */; };
 		4471F6C5281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6C4281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift */; };
+		44A5B77028256CA300FF2A14 /* MezaseZenkan Manual in Resources */ = {isa = PBXBuildFile; fileRef = 44A5B76F28256CA300FF2A14 /* MezaseZenkan Manual */; };
+		44A5B77228256CCE00FF2A14 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A5B77128256CCE00FF2A14 /* WebViewController.swift */; };
 		44ABDC48281DA1D900306504 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABDC47281DA1D900306504 /* FilterViewModel.swift */; };
 		44ABDC4A281DA1EC00306504 /* FilterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABDC49281DA1EC00306504 /* FilterMenu.swift */; };
 		44ABDC4C28202CBE00306504 /* ColorUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABDC4B28202CBE00306504 /* ColorUtility.swift */; };
@@ -101,6 +103,8 @@
 		4471F6BE281045C6001EAC58 /* MezaseZenkanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MezaseZenkanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4471F6C2281045C6001EAC58 /* MezaseZenkanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MezaseZenkanUITests.swift; sourceTree = "<group>"; };
 		4471F6C4281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MezaseZenkanUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		44A5B76F28256CA300FF2A14 /* MezaseZenkan Manual */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "MezaseZenkan Manual"; sourceTree = "<group>"; };
+		44A5B77128256CCE00FF2A14 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		44ABDC47281DA1D900306504 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		44ABDC49281DA1EC00306504 /* FilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMenu.swift; sourceTree = "<group>"; };
 		44ABDC4B28202CBE00306504 /* ColorUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtility.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				440D789328117F0B0092BD7A /* PageViewController.swift */,
 				440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */,
 				4470896E2822DD63008177C0 /* RotationViewController.swift */,
+				44A5B77128256CCE00FF2A14 /* WebViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 		4471F69D281045C4001EAC58 /* MezaseZenkan */ = {
 			isa = PBXGroup;
 			children = (
+				44A5B76F28256CA300FF2A14 /* MezaseZenkan Manual */,
 				440D78B728185D030092BD7A /* ViewController */,
 				440D78B0281844D70092BD7A /* samples */,
 				440D78A92815ACE70092BD7A /* Service */,
@@ -415,6 +421,7 @@
 				440D78B2281844EE0092BD7A /* SampleMusumesData.json in Resources */,
 				4471F6AB281045C6001EAC58 /* Assets.xcassets in Resources */,
 				4471F6A6281045C4001EAC58 /* Main.storyboard in Resources */,
+				44A5B77028256CA300FF2A14 /* MezaseZenkan Manual in Resources */,
 				440D78992811875C0092BD7A /* RaceCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +563,7 @@
 				447089712822F10E008177C0 /* Period.swift in Sources */,
 				440D78A02812EC9C0092BD7A /* Array+.swift in Sources */,
 				440D78A82815AC230092BD7A /* RaceViewModel.swift in Sources */,
+				44A5B77228256CCE00FF2A14 /* WebViewController.swift in Sources */,
 				440D78A42812F85B0092BD7A /* GrayscaleViewController.swift in Sources */,
 				440D789B281187990092BD7A /* RaceCell.swift in Sources */,
 				440D73142810672A0092BD7A /* SampleRacesData.json in Sources */,

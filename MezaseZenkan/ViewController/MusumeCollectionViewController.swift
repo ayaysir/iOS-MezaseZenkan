@@ -81,7 +81,7 @@ class MusumeCell: UICollectionViewCell {
     
     func update(musume: Musume, finishedRaceCount: Int) {
         
-        imgViewProfile.layer.cornerRadius = imgViewProfile.frame.width * 0.22
+        imgViewProfile.layer.cornerRadius = imgViewProfile.frame.width * 0
         imgViewProfile.image = UIImage(named: "images/\(musume.imgProfile)")
         
         lblMusumeName.text = musume.name

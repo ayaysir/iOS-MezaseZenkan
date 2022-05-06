@@ -193,8 +193,9 @@ extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let cellWidth = (width - widthPadding) / itemsPerRow
             let cellHeight = (height - heightPadding) / itemsPerColumn
             
-            return CGSize(width: cellWidth, height: cellHeight)
+            print(CGSize(width: cellWidth, height: cellHeight))
             
+            return CGSize(width: cellWidth, height: cellHeight)
         }
         
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -263,6 +264,10 @@ class RaceCell: UICollectionViewCell {
     @IBOutlet weak var lblInfo: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     
+    @IBOutlet weak var cnstSubviewWidth: NSLayoutConstraint!
+    @IBOutlet weak var cnstSubviewHeight: NSLayoutConstraint!
+    
+    
     var currentRace: Race!
     
     func update(race: Race, isFinished: Bool, filterConditions: Set<FilterCondition>) {
@@ -286,6 +291,23 @@ class RaceCell: UICollectionViewCell {
         
         lblInfo.attributedText = attributedRaceStringMaker(from: race, filterConditions: filterConditions)
         lblTitle.text = race.name
+        
+        cnstSubviewWidth.constant = self.frame.width
+        cnstSubviewHeight.constant = self.frame.height
+        let newSubviewHeight = cnstSubviewHeight.constant
+        
+        // original height: 132
+        if newSubviewHeight > 132.9 {
+            let fontScale = (newSubviewHeight / 132)
+            lblTitle.font = UIFont.systemFont(ofSize: fontScale * 17, weight: .bold)
+            lblTitle.minimumScaleFactor = 0.7
+            lblInfo.font = UIFont.systemFont(ofSize: fontScale * 0.85 * 14)
+            
+        }
+    }
+    
+    private func setComponentsPosition() {
+        
     }
 }
 
