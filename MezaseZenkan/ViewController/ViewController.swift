@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import GoogleMobileAds
+import AppTrackingTransparency
 
 class ViewController: UIViewController {
+    
+    private var bannerView: GADBannerView!
     
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
@@ -31,6 +35,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnRotationView: UIButton!
     @IBOutlet weak var imgViewLogo: UIImageView!
     @IBOutlet weak var btnHelp: UIButton!
+    @IBOutlet weak var viewBannerAds: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +43,11 @@ class ViewController: UIViewController {
         imgViewMusume.layer.cornerRadius = imgViewMusume.frame.width * 0.5
         btnRotationView.layer.cornerRadius = 10
         imgViewLogo.layer.cornerRadius = imgViewLogo.frame.width * 0.5
+        
+        // 광고 - 이 페이지밖에 없음
+        bannerView = setupBannerAds(adUnitID: "ca-app-pub-6364767349592629/8352770145")
+        bannerView.delegate = self
+        TrackingTransparencyPermissionRequest()
         
         colViewFilter.delegate = self
         colViewFilter.dataSource = self
@@ -143,6 +153,14 @@ class ViewController: UIViewController {
             
             lblFinishStatus.text = "\(raceStateViewModel.getTotalFinishedRaceCountBy(musumeName: musumeViewModel.currentMusume.name) ?? 0) / \(raceViewModel.totalRaceCount)"
         }
+    }
+    
+    private func TrackingTransparencyPermissionRequest() {
+        
+        ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+            print("requestTrackingAuthorization status:", status)
+        })
+        
     }
 }
 
@@ -302,4 +320,28 @@ class FilterCell: UICollectionViewCell {
         }
     }
     
+}
+
+extension ViewController: GADBannerViewDelegate {
+    
+    private func setupBannerAds(adUnitID: String = "ca-app-pub-3940256099942544/2934735716") -> GADBannerView {
+        
+        viewBannerAds.layoutIfNeeded()
+        let bannerWidth = viewBannerAds.frame.width
+        print("bw:", bannerWidth)
+        let adSize = GADAdSizeFromCGSize(CGSize(width: bannerWidth, height: viewBannerAds.frame.height))
+        let bannerView = GADBannerView(adSize: adSize)
+        
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        viewBannerAds.addSubview(bannerView)
+//        viewController.view.addConstraints( [NSLayoutConstraint(item: bannerView, attribute: .bottom, relatedBy: .equal, toItem: viewController.view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0), NSLayoutConstraint(item: bannerView, attribute: .centerX, relatedBy: .equal, toItem: viewController.view, attribute: .centerX, multiplier: 1, constant: 0) ])
+        
+        bannerView.adUnitID = adUnitID
+        bannerView.rootViewController = self
+        
+        let request = GADRequest()
+        bannerView.load(request)
+        
+        return bannerView
+    }
 }

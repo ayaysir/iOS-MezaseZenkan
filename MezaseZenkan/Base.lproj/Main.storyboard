@@ -207,6 +207,7 @@
                         <outlet property="lblMusumeName" destination="jOj-Wa-Rkr" id="mZ4-qI-LGy"/>
                         <outlet property="pageControl" destination="buC-wl-eHr" id="urv-Nk-zkq"/>
                         <outlet property="segRaceGrade" destination="Wra-ry-GEW" id="yFN-Zf-L0v"/>
+                        <outlet property="viewBannerAds" destination="ypS-g8-fd3" id="IYA-u6-aVQ"/>
                         <segue destination="MOP-82-xuw" kind="show" identifier="SelectMusumeSegue" id="ZNU-PD-JL9"/>
                     </connections>
                 </viewController>
