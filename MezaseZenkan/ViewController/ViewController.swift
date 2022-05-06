@@ -7,7 +7,6 @@
 
 import UIKit
 import GoogleMobileAds
-import AppTrackingTransparency
 
 class ViewController: UIViewController {
     
@@ -44,10 +43,11 @@ class ViewController: UIViewController {
         btnRotationView.layer.cornerRadius = 10
         imgViewLogo.layer.cornerRadius = imgViewLogo.frame.width * 0.5
         
-        // 광고 - 이 페이지밖에 없음
-        bannerView = setupBannerAds(adUnitID: "ca-app-pub-6364767349592629/8352770145")
-        bannerView.delegate = self
         TrackingTransparencyPermissionRequest()
+        
+        // 광고 - 이 페이지밖에 없음
+        bannerView = setupBannerAds(adUnitID: AD_UNIT_ID)
+        bannerView.delegate = self
         
         colViewFilter.delegate = self
         colViewFilter.dataSource = self
@@ -153,14 +153,6 @@ class ViewController: UIViewController {
             
             lblFinishStatus.text = "\(raceStateViewModel.getTotalFinishedRaceCountBy(musumeName: musumeViewModel.currentMusume.name) ?? 0) / \(raceViewModel.totalRaceCount)"
         }
-    }
-    
-    private func TrackingTransparencyPermissionRequest() {
-        
-        ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-            print("requestTrackingAuthorization status:", status)
-        })
-        
     }
 }
 

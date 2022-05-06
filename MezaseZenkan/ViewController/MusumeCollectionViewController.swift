@@ -24,6 +24,8 @@ class MusumeCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         // Register cell classes
 //        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        TrackingTransparencyPermissionRequest()
 
     }
 

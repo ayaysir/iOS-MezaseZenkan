@@ -29,6 +29,7 @@
 		440D78B928185D2D0092BD7A /* MusumeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */; };
 		440D78BB281D6AF40092BD7A /* AttributedStringMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78BA281D6AF30092BD7A /* AttributedStringMaker.swift */; };
 		4433A15B28257C3C001FDF41 /* AdInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433A15A28257C3C001FDF41 /* AdInfo.swift */; };
+		4433A15D28257D2A001FDF41 /* TrackingTransparencyPermissionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433A15C28257D2A001FDF41 /* TrackingTransparencyPermissionRequest.swift */; };
 		4470896F2822DD63008177C0 /* RotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4470896E2822DD63008177C0 /* RotationViewController.swift */; };
 		447089712822F10E008177C0 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447089702822F10E008177C0 /* Period.swift */; };
 		4471F69F281045C4001EAC58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F69E281045C4001EAC58 /* AppDelegate.swift */; };
@@ -89,6 +90,7 @@
 		440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusumeCollectionViewController.swift; sourceTree = "<group>"; };
 		440D78BA281D6AF30092BD7A /* AttributedStringMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedStringMaker.swift; sourceTree = "<group>"; };
 		4433A15A28257C3C001FDF41 /* AdInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdInfo.swift; sourceTree = "<group>"; };
+		4433A15C28257D2A001FDF41 /* TrackingTransparencyPermissionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingTransparencyPermissionRequest.swift; sourceTree = "<group>"; };
 		4470896E2822DD63008177C0 /* RotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationViewController.swift; sourceTree = "<group>"; };
 		447089702822F10E008177C0 /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		4471F69B281045C4001EAC58 /* MezaseZenkan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MezaseZenkan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				4433A15A28257C3C001FDF41 /* AdInfo.swift */,
+				4433A15C28257D2A001FDF41 /* TrackingTransparencyPermissionRequest.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				440D78AB2815ACF10092BD7A /* APIService.swift in Sources */,
 				4433A15B28257C3C001FDF41 /* AdInfo.swift in Sources */,
 				440D78B928185D2D0092BD7A /* MusumeCollectionViewController.swift in Sources */,
+				4433A15D28257D2A001FDF41 /* TrackingTransparencyPermissionRequest.swift in Sources */,
 				440D78AF2816FB1D0092BD7A /* RaceState.swift in Sources */,
 				4470896F2822DD63008177C0 /* RotationViewController.swift in Sources */,
 				440D7316281067A80092BD7A /* Race.swift in Sources */,

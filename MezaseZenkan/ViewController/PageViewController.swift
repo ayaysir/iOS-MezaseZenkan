@@ -127,7 +127,7 @@ class PageViewController: UIPageViewController, UIGestureRecognizerDelegate {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
         
-        // long press gessture
+        TrackingTransparencyPermissionRequest()
         
     }
     
