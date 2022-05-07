@@ -1,0 +1,19 @@
+[
+  {
+    "name": "フユウララ",
+    "name_en": "-",
+    "cv": "-",
+    "birthday": "2月27日",
+    "height": 0,
+    "weight": "-",
+    "B": 0,
+    "W": 0,
+    "H": 0,
+    "comment": "-",
+    "catchphrase": "-",
+    "img_profile": "fuyuurara.png",
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
+  }
+]

@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import MessageUI
 
 class WebViewController: UIViewController {
     
@@ -19,7 +20,6 @@ class WebViewController: UIViewController {
         
         loadHelpPage()
     }
-    
 }
 
 extension WebViewController: WKUIDelegate, WKNavigationDelegate {
@@ -47,4 +47,42 @@ extension WebViewController: WKUIDelegate, WKNavigationDelegate {
         decisionHandler(.cancel)
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
    }
+}
+
+extension WebViewController: MFMailComposeViewControllerDelegate {
+    
+    @IBAction func launchEmail(sender: UIButton) {
+  // 1
+        guard MFMailComposeViewController.canSendMail() else {
+            // 사용자의 메일 계정이 설정되어 있지 않아 메일을 보낼 수 없다는 경고 메시지 추가
+            simpleAlert(self, message: "ユーザーのメールアカウントが設定されていないため、メールを送信できません。")
+            return
+        }
+        
+  // 2
+        let emailTitle = "Feedback of MezaseZenkan" // 메일 제목
+        let messageBody =
+        """
+        OS Version: \(UIDevice.current.systemVersion)
+        
+        
+        """
+        
+  // 3
+        let toRecipents = ["yoonbumtae@gmail.com"]
+        let mc: MFMailComposeViewController = MFMailComposeViewController()
+        mc.mailComposeDelegate = self
+        mc.setSubject(emailTitle)
+        mc.setMessageBody(messageBody, isHTML: false)
+        mc.setToRecipients(toRecipents)
+        
+        self.present(mc, animated: true, completion: nil)
+    }
+    
+    // 4
+    @objc(mailComposeController:didFinishWithResult:error:)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult,error: Error?) {
+            controller.dismiss(animated: true)
+    }
+    
 }

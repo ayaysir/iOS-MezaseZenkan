@@ -12,7 +12,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_30.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "サトノダイヤモンド",
@@ -27,7 +29,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_77.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "トーセンジョーダン",
@@ -42,7 +46,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_25.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ビコーペガサス",
@@ -57,7 +63,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_38.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "グラスワンダー",
@@ -72,7 +80,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_8.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "サクラチヨノオー",
@@ -87,7 +97,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_67.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "エアシャカール",
@@ -102,7 +114,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_33.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ヒシアケボノ",
@@ -117,7 +131,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_39.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ハルウララ",
@@ -132,7 +148,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_26.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ライスシャワー",
@@ -147,7 +165,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_51.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "マンハッタンカフェ",
@@ -162,7 +182,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_24.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ゴールドシップ",
@@ -177,7 +199,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_9.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "キタサンブラック",
@@ -192,7 +216,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_78.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ユキノビジン",
@@ -207,7 +233,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_20.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "ビワハヤヒデ",
@@ -222,7 +250,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_45.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "アドマイヤベガ",
@@ -237,7 +267,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_52.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "テイエムオペラオー",
@@ -252,7 +284,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_13.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "シンボリルドルフ",
@@ -267,7 +301,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_10.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "エルコンドルパサー",
@@ -282,7 +318,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_6.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "メジロパーマー",
@@ -297,7 +335,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_63.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ウイニングチケット",
@@ -312,7 +352,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_21.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "タイキシャトル",
@@ -327,7 +369,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_11.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "マヤノトップガン",
@@ -342,7 +386,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_57.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "メイショウドトウ",
@@ -357,7 +403,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_50.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ヒシアマゾン",
@@ -372,7 +420,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_15.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "シリウスシンボリ",
@@ -387,7 +437,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_68.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "オグリキャップ",
@@ -402,7 +454,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_7.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ゼンノロブロイ",
@@ -417,7 +471,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_49.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "エイシンフラッシュ",
@@ -432,7 +488,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_55.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "メジロアルダン",
@@ -447,7 +505,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_66.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "カレンチャン",
@@ -462,7 +522,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_53.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "メジロマックイーン",
@@ -477,7 +539,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_18.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ウオッカ",
@@ -492,7 +556,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_4.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "スマートファルコン",
@@ -507,7 +573,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_31.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ナリタトップロード",
@@ -522,7 +590,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_83.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "ナカヤマフェスタ",
@@ -537,7 +607,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_56.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "エアグルーヴ",
@@ -552,7 +624,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_5.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ミスターシービー",
@@ -567,7 +641,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_70.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "アイネスフウジン",
@@ -582,7 +658,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_44.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "ダイタクヘリオス",
@@ -597,7 +675,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_64.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "ヤエノムテキ",
@@ -612,7 +692,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_69.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "メジロライアン",
@@ -627,7 +709,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_28.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ツインターボ",
@@ -642,7 +726,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_65.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "アグネスタキオン",
@@ -657,7 +743,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_48.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "サクラバクシンオー",
@@ -672,7 +760,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_46.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "シンコウウインディ",
@@ -687,7 +777,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_47.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "フジキセキ",
@@ -702,7 +794,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_16.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ナイスネイチャ",
@@ -717,7 +811,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_59.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "イクノディクタス",
@@ -732,7 +828,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_62.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "シーキングザパール",
@@ -747,7 +845,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_23.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "ゴールドシチー",
@@ -762,7 +862,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_34.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "メジロブライト",
@@ -777,7 +879,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_82.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ニシノフラワー",
@@ -792,7 +896,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_37.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "トウカイテイオー",
@@ -807,7 +913,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_3.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ミホノブルボン",
@@ -822,7 +930,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_42.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "セイウンスカイ",
@@ -837,7 +947,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_19.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "キングヘイロー",
@@ -852,7 +964,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_60.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "サイレンススズカ",
@@ -867,7 +981,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_2.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "スペシャルウィーク",
@@ -882,7 +998,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_1.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ナリタブライアン",
@@ -897,7 +1015,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_14.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "メジロドーベル",
@@ -912,7 +1032,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_58.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "イナリワン",
@@ -927,7 +1049,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_36.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "マチカネタンホイザ",
@@ -942,7 +1066,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_61.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "サクラローレル",
@@ -957,7 +1083,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_84.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "スイープトウショウ",
@@ -972,7 +1100,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_43.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "ダイワスカーレット",
@@ -987,7 +1117,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_12.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "バンブーメモリー",
@@ -1002,7 +1134,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_40.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "アグネスデジタル",
@@ -1017,7 +1151,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_54.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "マルゼンスキー",
@@ -1032,7 +1168,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_17.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "マチカネフクキタル",
@@ -1047,7 +1185,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_29.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "タマモクロス",
@@ -1062,7 +1202,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_22.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "スーパークリーク",
@@ -1077,7 +1219,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_35.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ヤマニンゼファー",
@@ -1092,7 +1236,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_85.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "マーベラスサンデー",
@@ -1107,7 +1253,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_41.png",
-    "is_available": "FALSE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": false,
+    "display_order": 0
   },
   {
     "name": "カワカミプリンセス",
@@ -1122,7 +1270,9 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_27.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   },
   {
     "name": "ナリタタイシン",
@@ -1137,6 +1287,8 @@
     "comment": "-",
     "catchphrase": "-",
     "img_profile": "character_icon_32.png",
-    "is_available": "TRUE"
+    "img_directory": "APP_RESOURCE",
+    "is_available": true,
+    "display_order": 0
   }
 ]

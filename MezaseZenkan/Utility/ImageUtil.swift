@@ -8,9 +8,23 @@
 import UIKit
 
 extension UIImage {
+    
     func withAlpha(_ a: CGFloat) -> UIImage {
         return UIGraphicsImageRenderer(size: size, format: imageRendererFormat).image { (_) in
             draw(in: CGRect(origin: .zero, size: size), blendMode: .normal, alpha: a)
+        }
+    }
+    
+    // https://stackoverflow.com/questions/32836862
+    func saveToDocuments(filename: String) {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL = documentsDirectory.appendingPathComponent(filename)
+        if let data = self.pngData() {
+            do {
+                try data.write(to: fileURL)
+            } catch {
+                print("error saving file to documents:", error)
+            }
         }
     }
 }

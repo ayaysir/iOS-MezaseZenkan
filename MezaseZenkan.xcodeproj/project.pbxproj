@@ -29,6 +29,11 @@
 		440D78B928185D2D0092BD7A /* MusumeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */; };
 		440D78BB281D6AF40092BD7A /* AttributedStringMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78BA281D6AF30092BD7A /* AttributedStringMaker.swift */; };
 		44169EAD282651A80029ADCA /* ProductImages in Resources */ = {isa = PBXBuildFile; fileRef = 44169EAC282651A80029ADCA /* ProductImages */; };
+		44169EAF282669FC0029ADCA /* Product-MusumeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 44169EAE282669FC0029ADCA /* Product-MusumeData.json */; };
+		44169EB12826756D0029ADCA /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44169EB02826756D0029ADCA /* UserDefaults+.swift */; };
+		44169EB328268AF80029ADCA /* CreateMusumeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44169EB228268AF80029ADCA /* CreateMusumeTableViewController.swift */; };
+		44169EB528268DE70029ADCA /* MusumeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44169EB428268DE70029ADCA /* MusumeHelper.swift */; };
+		44169EB7282693EF0029ADCA /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44169EB6282693EF0029ADCA /* SimpleAlert.swift */; };
 		4433A15B28257C3C001FDF41 /* AdInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433A15A28257C3C001FDF41 /* AdInfo.swift */; };
 		4433A15D28257D2A001FDF41 /* TrackingTransparencyPermissionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433A15C28257D2A001FDF41 /* TrackingTransparencyPermissionRequest.swift */; };
 		4470896F2822DD63008177C0 /* RotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4470896E2822DD63008177C0 /* RotationViewController.swift */; };
@@ -43,6 +48,8 @@
 		4471F6B9281045C6001EAC58 /* MezaseZenkanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6B8281045C6001EAC58 /* MezaseZenkanTests.swift */; };
 		4471F6C3281045C6001EAC58 /* MezaseZenkanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6C2281045C6001EAC58 /* MezaseZenkanUITests.swift */; };
 		4471F6C5281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6C4281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift */; };
+		44876F5028269A7B0072EFE2 /* PhotoAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44876F4F28269A7B0072EFE2 /* PhotoAuth.swift */; };
+		44876F522826AEF40072EFE2 /* 초기설정(필독).swift in Sources */ = {isa = PBXBuildFile; fileRef = 44876F512826AEF40072EFE2 /* 초기설정(필독).swift */; };
 		44A5B77028256CA300FF2A14 /* MezaseZenkan Manual in Resources */ = {isa = PBXBuildFile; fileRef = 44A5B76F28256CA300FF2A14 /* MezaseZenkan Manual */; };
 		44A5B77228256CCE00FF2A14 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A5B77128256CCE00FF2A14 /* WebViewController.swift */; };
 		44ABDC48281DA1D900306504 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABDC47281DA1D900306504 /* FilterViewModel.swift */; };
@@ -91,6 +98,11 @@
 		440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusumeCollectionViewController.swift; sourceTree = "<group>"; };
 		440D78BA281D6AF30092BD7A /* AttributedStringMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedStringMaker.swift; sourceTree = "<group>"; };
 		44169EAC282651A80029ADCA /* ProductImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ProductImages; sourceTree = "<group>"; };
+		44169EAE282669FC0029ADCA /* Product-MusumeData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Product-MusumeData.json"; sourceTree = "<group>"; };
+		44169EB02826756D0029ADCA /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
+		44169EB228268AF80029ADCA /* CreateMusumeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMusumeTableViewController.swift; sourceTree = "<group>"; };
+		44169EB428268DE70029ADCA /* MusumeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusumeHelper.swift; sourceTree = "<group>"; };
+		44169EB6282693EF0029ADCA /* SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAlert.swift; sourceTree = "<group>"; };
 		4433A15A28257C3C001FDF41 /* AdInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdInfo.swift; sourceTree = "<group>"; };
 		4433A15C28257D2A001FDF41 /* TrackingTransparencyPermissionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingTransparencyPermissionRequest.swift; sourceTree = "<group>"; };
 		4470896E2822DD63008177C0 /* RotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +121,8 @@
 		4471F6BE281045C6001EAC58 /* MezaseZenkanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MezaseZenkanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4471F6C2281045C6001EAC58 /* MezaseZenkanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MezaseZenkanUITests.swift; sourceTree = "<group>"; };
 		4471F6C4281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MezaseZenkanUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		44876F4F28269A7B0072EFE2 /* PhotoAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAuth.swift; sourceTree = "<group>"; };
+		44876F512826AEF40072EFE2 /* 초기설정(필독).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "초기설정(필독).swift"; sourceTree = "<group>"; };
 		44A5B76F28256CA300FF2A14 /* MezaseZenkan Manual */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "MezaseZenkan Manual"; sourceTree = "<group>"; };
 		44A5B77128256CCE00FF2A14 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		44ABDC47281DA1D900306504 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
@@ -178,6 +192,9 @@
 				440D78A12812F74F0092BD7A /* ImageUtil.swift */,
 				440D78BA281D6AF30092BD7A /* AttributedStringMaker.swift */,
 				44ABDC4B28202CBE00306504 /* ColorUtility.swift */,
+				44169EB02826756D0029ADCA /* UserDefaults+.swift */,
+				44169EB6282693EF0029ADCA /* SimpleAlert.swift */,
+				44876F4F28269A7B0072EFE2 /* PhotoAuth.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -201,6 +218,7 @@
 				440D78B5281845EB0092BD7A /* MusumeViewModel.swift */,
 				44ABDC47281DA1D900306504 /* FilterViewModel.swift */,
 				447089702822F10E008177C0 /* Period.swift */,
+				44169EB428268DE70029ADCA /* MusumeHelper.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -218,6 +236,7 @@
 			children = (
 				440D73132810672A0092BD7A /* SampleRacesData.json */,
 				440D78B1281844EE0092BD7A /* SampleMusumesData.json */,
+				44169EAE282669FC0029ADCA /* Product-MusumeData.json */,
 			);
 			path = samples;
 			sourceTree = "<group>";
@@ -230,6 +249,7 @@
 				440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */,
 				4470896E2822DD63008177C0 /* RotationViewController.swift */,
 				44A5B77128256CCE00FF2A14 /* WebViewController.swift */,
+				44169EB228268AF80029ADCA /* CreateMusumeTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -288,6 +308,7 @@
 				4471F6A7281045C4001EAC58 /* MezaseZenkan.xcdatamodeld */,
 				440D7311281065B10092BD7A /* GoogleService-Info.plist */,
 				440D78A32812F85B0092BD7A /* GrayscaleViewController.swift */,
+				44876F512826AEF40072EFE2 /* 초기설정(필독).swift */,
 			);
 			path = MezaseZenkan;
 			sourceTree = "<group>";
@@ -437,6 +458,7 @@
 				440D7312281065B10092BD7A /* GoogleService-Info.plist in Resources */,
 				440D78B2281844EE0092BD7A /* SampleMusumesData.json in Resources */,
 				4471F6AB281045C6001EAC58 /* Assets.xcassets in Resources */,
+				44169EAF282669FC0029ADCA /* Product-MusumeData.json in Resources */,
 				4471F6A6281045C4001EAC58 /* Main.storyboard in Resources */,
 				44A5B77028256CA300FF2A14 /* MezaseZenkan Manual in Resources */,
 				44169EAD282651A80029ADCA /* ProductImages in Resources */,
@@ -569,9 +591,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				44ABDC4C28202CBE00306504 /* ColorUtility.swift in Sources */,
+				44169EB7282693EF0029ADCA /* SimpleAlert.swift in Sources */,
 				440D78BB281D6AF40092BD7A /* AttributedStringMaker.swift in Sources */,
 				44ABDC4A281DA1EC00306504 /* FilterMenu.swift in Sources */,
+				44169EB528268DE70029ADCA /* MusumeHelper.swift in Sources */,
 				4471F6A3281045C4001EAC58 /* ViewController.swift in Sources */,
+				44876F5028269A7B0072EFE2 /* PhotoAuth.swift in Sources */,
 				44ABDC48281DA1D900306504 /* FilterViewModel.swift in Sources */,
 				440D789428117F0B0092BD7A /* PageViewController.swift in Sources */,
 				4471F6A9281045C4001EAC58 /* MezaseZenkan.xcdatamodeld in Sources */,
@@ -584,6 +609,7 @@
 				44A5B77228256CCE00FF2A14 /* WebViewController.swift in Sources */,
 				440D78A42812F85B0092BD7A /* GrayscaleViewController.swift in Sources */,
 				440D789B281187990092BD7A /* RaceCell.swift in Sources */,
+				44169EB12826756D0029ADCA /* UserDefaults+.swift in Sources */,
 				440D73142810672A0092BD7A /* SampleRacesData.json in Sources */,
 				440D78AB2815ACF10092BD7A /* APIService.swift in Sources */,
 				4433A15B28257C3C001FDF41 /* AdInfo.swift in Sources */,
@@ -592,9 +618,11 @@
 				440D78AF2816FB1D0092BD7A /* RaceState.swift in Sources */,
 				4470896F2822DD63008177C0 /* RotationViewController.swift in Sources */,
 				440D7316281067A80092BD7A /* Race.swift in Sources */,
+				44169EB328268AF80029ADCA /* CreateMusumeTableViewController.swift in Sources */,
 				4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */,
 				440D78A22812F74F0092BD7A /* ImageUtil.swift in Sources */,
 				440D78B6281845EB0092BD7A /* MusumeViewModel.swift in Sources */,
+				44876F522826AEF40072EFE2 /* 초기설정(필독).swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

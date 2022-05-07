@@ -18,7 +18,8 @@ struct Musume: Codable {
     let height: Int
     let weight: String
     let b, w, h: Int
-    let comment, catchphrase, imgProfile, isAvailable: String
+    let comment, catchphrase, imgProfile, imgDirectory: String
+    let isAvailable: Bool
 
     enum CodingKeys: String, CodingKey {
         case name
@@ -30,5 +31,6 @@ struct Musume: Codable {
         case comment, catchphrase
         case imgProfile = "img_profile"
         case isAvailable = "is_available"
+        case imgDirectory = "img_directory"
     }
 }

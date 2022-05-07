@@ -22,11 +22,8 @@ class MusumeCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Register cell classes
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         TrackingTransparencyPermissionRequest()
-
     }
 
 
@@ -36,6 +33,7 @@ class MusumeCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? MusumeCell else {
             return UICollectionViewCell()
         }
@@ -54,7 +52,29 @@ class MusumeCollectionViewController: UICollectionViewController {
             self.dismiss(animated: true, completion: nil)
         }
     }
-
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PlusHeader", for: indexPath)
+            return headerView
+            
+        default:
+            return UICollectionReusableView()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "CreateMusume":
+            let vc = segue.destination as! CreateMusumeTableViewController
+            vc.delegate = self
+            vc.musumeViewModel = musumeViewModel
+        default:
+            break
+        }
+    }
 }
 
 extension MusumeCollectionViewController: UICollectionViewDelegateFlowLayout {
@@ -70,9 +90,16 @@ extension MusumeCollectionViewController: UICollectionViewDelegateFlowLayout {
         let widthPadding = 10 * (itemsPerRow + 1)
         let cellWidth = (width - widthPadding) / itemsPerRow
         
-        print(#function, cellWidth)
+        // print(#function, cellWidth)
         return CGSize(width: cellWidth, height: cellWidth * 1.15)
     }
+}
+
+extension MusumeCollectionViewController: CreateMusumeTVCDelegate {
+    func didAddedMusume(_ controller: CreateMusumeTableViewController, addedMusume: Musume) {
+        collectionView.reloadData()
+    }
+    
 }
 
 class MusumeCell: UICollectionViewCell {
@@ -84,7 +111,7 @@ class MusumeCell: UICollectionViewCell {
     func update(musume: Musume, finishedRaceCount: Int) {
         
         imgViewProfile.layer.cornerRadius = imgViewProfile.frame.width * 0
-        imgViewProfile.image = UIImage(named: "images/\(musume.imgProfile)")
+        imgViewProfile.image = MusumeHelper.getImage(of: musume)
         
         lblMusumeName.text = musume.name
         lblRaceStatus.text = "\(finishedRaceCount)"

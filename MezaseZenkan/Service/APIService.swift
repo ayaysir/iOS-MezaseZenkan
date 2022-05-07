@@ -22,9 +22,10 @@ class APIService {
         }
     }
     
-    func getMusumeData(completion : @escaping ([Musume]) -> ()) {
+    func getInitMusumeData(completion: @escaping ([Musume]) -> ()) {
         
-        let fileLocation = Bundle.main.url(forResource: "SampleMusumesData", withExtension: "json")
+        let fileName = PRODUCT_MODE ? "Product-MusumeData" : "SampleMusumesData"
+        let fileLocation = Bundle.main.url(forResource: fileName, withExtension: "json")
         
         do {
             let data = try Data(contentsOf: fileLocation!)
@@ -35,24 +36,40 @@ class APIService {
         }
     }
     
+    func loadMusumeData(completion: @escaping ([Musume]) -> ()) {
+        do {
+            let result = try UserDefaults.standard.getObject(forKey: "CURRENT_MUSUME_LIST", castTo: [Musume].self)
+            completion(result)
+        } catch let error as ObjectSavableError {
+            if error == .noValue {
+                getInitMusumeData(completion: completion)
+            } else {
+                print(#function, error.localizedDescription)
+            }
+        } catch {
+            print(#function, error.localizedDescription)
+        }
+    }
+    
+    func saveMusumeData(musumes: [Musume]) {
+        do {
+            try UserDefaults.standard.setObject(musumes, forKey: "CURRENT_MUSUME_LIST")
+        } catch {
+            print(#function, error.localizedDescription)
+        }
+    }
+    
     func loadStateData(completion : @escaping (RaceStates) -> ()) {
         
-        do {
-            let sampleStates: RaceStates = [
-                "ハルウララ": [:],
-                "ナイスネイチャ": [:],
-                "ニシノフラワー": [:],
-             ]
-            
-            let receivedStates = UserDefaults.standard.object(forKey: "RACE_STATES") as? RaceStates
-            if let states = receivedStates {
-                completion(states)
-            } else {
-                completion(sampleStates)
-            }
-            
-        } catch {
-            print(error)
+        let sampleStates: RaceStates = [
+            "フユウララ": [:],
+         ]
+        
+        let receivedStates = UserDefaults.standard.object(forKey: "RACE_STATES") as? RaceStates
+        if let states = receivedStates {
+            completion(states)
+        } else {
+            completion(sampleStates)
         }
     }
     

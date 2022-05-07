@@ -12,7 +12,7 @@ class MusumeViewModel {
     private var apiService: APIService!
     private var totalMusumeData: [Musume]! {
         didSet {
-            
+            apiService.saveMusumeData(musumes: totalMusumeData)
         }
     }
     
@@ -40,9 +40,10 @@ class MusumeViewModel {
         return totalMusumeData.count
     }
     
-    
     private func getMusumeDataFromServer() {
-        apiService.getMusumeData { musumes in
+
+        apiService.loadMusumeData { musumes in
+            print(musumes)
             self.totalMusumeData = musumes
         }
     }
@@ -57,5 +58,15 @@ class MusumeViewModel {
     
     func getMusumeBy(name: String) -> Musume? {
         return totalMusumeData.first { $0.name == name }
+    }
+    
+    func isNameDuplicated(name: String) -> Bool {
+        return totalMusumeData.contains { musume in
+            musume.name == name
+        }
+    }
+    
+    func addMusume(_ musume: Musume) {
+        totalMusumeData.append(musume)
     }
 }

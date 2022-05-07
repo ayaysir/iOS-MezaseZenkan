@@ -42,12 +42,17 @@ class ViewController: UIViewController {
         imgViewMusume.layer.cornerRadius = imgViewMusume.frame.width * 0.5
         btnRotationView.layer.cornerRadius = 10
         imgViewLogo.layer.cornerRadius = imgViewLogo.frame.width * 0.5
+        btnHelp.layer.cornerRadius = 10
+        btnHelp.layer.borderWidth = 1
+        btnHelp.layer.borderColor = UIColor.systemGray3.cgColor
         
         TrackingTransparencyPermissionRequest()
         
         // 광고 - 이 페이지밖에 없음
-        bannerView = setupBannerAds(adUnitID: AD_UNIT_ID)
-        bannerView.delegate = self
+        if PRODUCT_MODE {
+            bannerView = setupBannerAds(adUnitID: AD_UNIT_ID)
+            bannerView.delegate = self
+        }
         
         colViewFilter.delegate = self
         colViewFilter.dataSource = self
@@ -76,7 +81,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pageControlChanged(_ sender: UIPageControl) {
-        print(#function, sender.currentPage)
+        // print(#function, sender.currentPage)
         
         let targetPageIndex = sender.currentPage
         
@@ -105,7 +110,7 @@ class ViewController: UIViewController {
             }
             let direction: UIPageViewController.NavigationDirection = currentSegIndex < selectedSegIndex ? .forward : .reverse
             pageVC.setViewControllers([pageVC.vcArray[targetPageIndex]], direction: direction, animated: true, completion: nil)
-            
+            pageControl.currentPage = targetPageIndex
         }
         currentSegIndex = selectedSegIndex
     }
@@ -140,7 +145,7 @@ class ViewController: UIViewController {
         if let currentMusume = musumeViewModel.currentMusume {
             
             lblMusumeName.text = currentMusume.name
-            imgViewMusume.image = UIImage(named: "images/\(currentMusume.imgProfile)")
+            imgViewMusume.image = MusumeHelper.getImage(of: currentMusume)
             
             let finishedRaceNameList = raceStateViewModel.getFinishedRaceNamesBy(musumeName: currentMusume.name)
             let finishedRaceCount = raceViewModel.getFinishedCountBy(raceNameList: finishedRaceNameList)
@@ -207,6 +212,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
         guard let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCell", for: indexPath) as? FilterCell else {
             return UICollectionViewCell()
         }
@@ -215,7 +221,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             
             let menu = FilterHelper.getFilterMenuBy(row: indexPath.row)!
             
-            cell.update(filterMenu: menu)
+            cell.update(filterMenu: menu, conditions: filterViewModel.currentFilterConditions)
         }
         
         
@@ -242,17 +248,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
                 return
             }
             
-            cell.isOn = !cell.isOn
+            collectionView.reloadItems(at: [indexPath])
         }
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-//        print("highlight")
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-//        print("unhighlight")
-//    }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
@@ -292,13 +291,12 @@ class FilterCell: UICollectionViewCell {
     var deactivatedColor = RGB255(red: 230, green: 230, blue: 230, alpha: 0.7).uiColor
     
     var filterMenu: FilterMenu!
-    var isOn: Bool = false {
-        didSet {
-            self.backgroundColor = isOn ? RGB255(red: 240, green: 212, blue: 103).uiColor : deactivatedColor
-        }
+    
+    override func prepareForReuse() {
+        print("adfasfd")
     }
     
-    func update(filterMenu: FilterMenu) {
+    func update(filterMenu: FilterMenu, conditions: Set<FilterCondition>) {
         
         self.filterMenu = filterMenu
         lblMenuName.text = filterMenu.searchName
@@ -310,8 +308,14 @@ class FilterCell: UICollectionViewCell {
         } else {
             self.backgroundColor = deactivatedColor
         }
+        
+        self.backgroundColor = conditions.contains(filterMenu.filterCondition) ? RGB255(red: 240, green: 212, blue: 103).uiColor : deactivatedColor
+        
     }
     
+    private func highlightCell(isOn: Bool) {
+        
+    }
 }
 
 extension ViewController: GADBannerViewDelegate {
