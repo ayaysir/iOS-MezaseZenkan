@@ -28,7 +28,7 @@ class PageViewController: UIPageViewController, UIGestureRecognizerDelegate {
         let array = (0...raceViewModel.totalTagsCount - 1).map { index in
             return self.vcInstance(tag: index)
         }
-        print("vcAraray", array)
+//        print("vcAraray", array)
         return array
     }()
     
@@ -193,7 +193,7 @@ extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let cellWidth = (width - widthPadding) / itemsPerRow
             let cellHeight = (height - heightPadding) / itemsPerColumn
             
-            print(CGSize(width: cellWidth, height: cellHeight))
+//            print(CGSize(width: cellWidth, height: cellHeight))
             
             return CGSize(width: cellWidth, height: cellHeight)
         }
@@ -274,18 +274,21 @@ class RaceCell: UICollectionViewCell {
         
         currentRace = race
         
-        let image = UIImage(named: "images/\(race.bannerURL).png")
-        if let image = image {
-            if isFinished {
-                imgBanner.image = image
-                imgBanner.alpha = 1
-            } else {
-                imgBanner.image = convertToGrayScale(image: image)
-                imgBanner.alpha = 0.5
+        let image: UIImage = {
+            if PRODUCT_MODE {
+                return raceToBanner(race: race)
             }
+            
+            return UIImage(named: "images/\(race.bannerURL).png")!
+        }()
+        
+        if isFinished {
+            imgBanner.image = image
+            imgBanner.alpha = 1
+        } else {
+            imgBanner.image = convertToGrayScale(image: image)
+            imgBanner.alpha = 0.5
         }
-
-//        let infoText = "\(race.period) / \(race.month)月\(race.half) / \(race.grade)\n\(race.terrain) / \(race.length)m(\(race.lengthType)) / \(race.direction)"
         
         // ==== section: style ====
         

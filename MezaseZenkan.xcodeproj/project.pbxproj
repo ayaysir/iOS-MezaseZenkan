@@ -28,6 +28,7 @@
 		440D78B6281845EB0092BD7A /* MusumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78B5281845EB0092BD7A /* MusumeViewModel.swift */; };
 		440D78B928185D2D0092BD7A /* MusumeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */; };
 		440D78BB281D6AF40092BD7A /* AttributedStringMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D78BA281D6AF30092BD7A /* AttributedStringMaker.swift */; };
+		44169EAD282651A80029ADCA /* ProductImages in Resources */ = {isa = PBXBuildFile; fileRef = 44169EAC282651A80029ADCA /* ProductImages */; };
 		4433A15B28257C3C001FDF41 /* AdInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433A15A28257C3C001FDF41 /* AdInfo.swift */; };
 		4433A15D28257D2A001FDF41 /* TrackingTransparencyPermissionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4433A15C28257D2A001FDF41 /* TrackingTransparencyPermissionRequest.swift */; };
 		4470896F2822DD63008177C0 /* RotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4470896E2822DD63008177C0 /* RotationViewController.swift */; };
@@ -89,6 +90,7 @@
 		440D78B5281845EB0092BD7A /* MusumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusumeViewModel.swift; sourceTree = "<group>"; };
 		440D78B828185D2D0092BD7A /* MusumeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusumeCollectionViewController.swift; sourceTree = "<group>"; };
 		440D78BA281D6AF30092BD7A /* AttributedStringMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedStringMaker.swift; sourceTree = "<group>"; };
+		44169EAC282651A80029ADCA /* ProductImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ProductImages; sourceTree = "<group>"; };
 		4433A15A28257C3C001FDF41 /* AdInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdInfo.swift; sourceTree = "<group>"; };
 		4433A15C28257D2A001FDF41 /* TrackingTransparencyPermissionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingTransparencyPermissionRequest.swift; sourceTree = "<group>"; };
 		4470896E2822DD63008177C0 /* RotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationViewController.swift; sourceTree = "<group>"; };
@@ -160,13 +162,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		440D7895281187050092BD7A /* Custom View */ = {
+		440D7895281187050092BD7A /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
 				440D78982811875C0092BD7A /* RaceCell.xib */,
 				440D789A281187990092BD7A /* RaceCell.swift */,
 			);
-			path = "Custom View";
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		440D789E2812EC8C0092BD7A /* Utility */ = {
@@ -266,6 +268,7 @@
 		4471F69D281045C4001EAC58 /* MezaseZenkan */ = {
 			isa = PBXGroup;
 			children = (
+				44169EAC282651A80029ADCA /* ProductImages */,
 				4433A15928257C1B001FDF41 /* Firebase */,
 				44A5B76F28256CA300FF2A14 /* MezaseZenkan Manual */,
 				440D78B728185D030092BD7A /* ViewController */,
@@ -274,7 +277,7 @@
 				440D78A62815AB3A0092BD7A /* ViewModel */,
 				440D78A52815AAB30092BD7A /* ValueObject */,
 				440D789E2812EC8C0092BD7A /* Utility */,
-				440D7895281187050092BD7A /* Custom View */,
+				440D7895281187050092BD7A /* CustomView */,
 				4471F69E281045C4001EAC58 /* AppDelegate.swift */,
 				4471F6A0281045C4001EAC58 /* SceneDelegate.swift */,
 				4471F6A4281045C4001EAC58 /* Main.storyboard */,
@@ -436,6 +439,7 @@
 				4471F6AB281045C6001EAC58 /* Assets.xcassets in Resources */,
 				4471F6A6281045C4001EAC58 /* Main.storyboard in Resources */,
 				44A5B77028256CA300FF2A14 /* MezaseZenkan Manual in Resources */,
+				44169EAD282651A80029ADCA /* ProductImages in Resources */,
 				440D78992811875C0092BD7A /* RaceCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -769,13 +773,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 6S2SA26VAN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MezaseZenkan/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "同意すると、ユーザー情報に一致するカスタムバナー広告が表示されます。 同意しなくてもカスタマイズされていない一般広告が表示されます。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -799,13 +805,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 6S2SA26VAN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MezaseZenkan/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "同意すると、ユーザー情報に一致するカスタムバナー広告が表示されます。 同意しなくてもカスタマイズされていない一般広告が表示されます。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

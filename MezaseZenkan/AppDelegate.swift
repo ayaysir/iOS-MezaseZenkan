@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreData
-import Firebase
+//import Firebase
 import GoogleMobileAds
 
 @main
@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Use Firebase library to configure APIs.
-        FirebaseApp.configure()
+//        FirebaseApp.configure()
         
         // Initialize the Google Mobile Ads SDK.
         GADMobileAds.sharedInstance().start(completionHandler: nil)
