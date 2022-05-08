@@ -13,3 +13,4 @@ import Foundation
  - 개발용은 설치 전에 false 로 설정, images 폴더 포함한 상태로 설치
  */
 let PRODUCT_MODE = true
+let SHOW_AD = true

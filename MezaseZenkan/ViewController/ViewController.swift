@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         TrackingTransparencyPermissionRequest()
         
         // 광고 - 이 페이지밖에 없음
-        if PRODUCT_MODE {
+        if PRODUCT_MODE && SHOW_AD {
             bannerView = setupBannerAds(adUnitID: AD_UNIT_ID)
             bannerView.delegate = self
         }

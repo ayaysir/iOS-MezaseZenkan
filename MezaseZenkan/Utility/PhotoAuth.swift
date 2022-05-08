@@ -67,26 +67,35 @@ private func openSettings(action: UIAlertAction) -> Void {
     }
 }
 
-func authPhotoLibrary(_ viewController: UIViewController, completion: @escaping () -> ()) {
+// MARK: - photoAuth 함수를 main 스레드에서 실행 (UI 관련 문제 방지)
+private func photoAuthInMainAsync(isCamera: Bool, viewController: UIViewController, completion: @escaping () -> ()) {
     
-    PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
-        DispatchQueue.main.async {
-            photoAuth(isCamera: false, viewController: viewController, completion: completion)
-        }
+    DispatchQueue.main.async {
+        photoAuth(isCamera: isCamera, viewController: viewController, completion: completion)
     }
 }
 
+// MARK: - 사진 라이브러리의 권한을 묻고, 이후 () -> () 클로저를 실행하는 함수
+func authPhotoLibrary(_ viewController: UIViewController, completion: @escaping () -> ()) {
+    
+    PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+        photoAuthInMainAsync(isCamera: false, viewController: viewController, completion: completion)
+    }
+}
+
+// MARK: - 카메라의 권한을 묻고, 이후 () -> () 클로저를 실행하는 함수
 func authDeviceCamera(_ viewController: UIViewController, completion: @escaping () -> ()) {
+    
+    let notAvailableMsg = "カメラの使用はできません。"
     
     if UIImagePickerController.isSourceTypeAvailable(.camera) {
         AVCaptureDevice.requestAccess(for: .video) { status in
-            DispatchQueue.main.async {
-                photoAuth(isCamera: true, viewController: viewController, completion: completion)
-            }
+            photoAuthInMainAsync(isCamera: true, viewController: viewController, completion: completion)
         }
     } else {
+        // 시뮬레이터 등에서 카메라를 사용할 수 없는 경우
         DispatchQueue.main.async {
-            simpleAlert(viewController, message: "カメラの使用はできません。")
+            simpleAlert(viewController, message: notAvailableMsg)
         }
     }
 }
