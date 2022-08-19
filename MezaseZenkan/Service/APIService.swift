@@ -11,7 +11,8 @@ class APIService {
     
     func getRaceData(completion : @escaping ([Race]) -> ()) {
         
-        let fileLocation = Bundle.main.url(forResource: "SampleRacesData", withExtension: "json")
+        // let fileLocation = Bundle.main.url(forResource: "SampleRacesData", withExtension: "json")
+        let fileLocation = Bundle.main.url(forResource: "RaceData_20220819", withExtension: "json")
         
         do {
             let data = try Data(contentsOf: fileLocation!)

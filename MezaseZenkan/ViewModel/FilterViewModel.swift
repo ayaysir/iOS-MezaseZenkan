@@ -24,9 +24,14 @@ enum FilterCondition: String {
     fukushima,
     niigata,
     chukyou,
+    kawasaki,
+    funabashi,
+    morioka,
     emptyPlace
-    
 }
+
+
+ // 川崎    船橋    盛岡
 
 enum FilterSection: Int {
     case period
@@ -41,6 +46,7 @@ enum FilterSection: Int {
     case place1
     case place2
     case place3
+    case place4
     case reset
 }
 
@@ -72,35 +78,41 @@ struct FilterHelper {
          東京    中山    札幌    大井
          阪神    小倉    京都    函館
          福島    新潟    中京
+         川崎    船橋    盛岡
          */
         FilterMenu(searchName: "東京", filterCondition: .tokyo, section: .place1, displayOrder: 11),
         FilterMenu(searchName: "中山", filterCondition: .nakayama, section: .place1, displayOrder: 12),
         FilterMenu(searchName: "阪神", filterCondition: .hanshin, section: .place1, displayOrder: 15),
         FilterMenu(searchName: "京都", filterCondition: .kyoto, section: .place1, displayOrder: 17),
         FilterMenu(searchName: "大井", filterCondition: .oi, section: .place2, displayOrder: 14),
-        FilterMenu(searchName: "中京", filterCondition: .chukyou, section: .place2, displayOrder: 21),
         FilterMenu(searchName: "札幌", filterCondition: .sapporo, section: .place2, displayOrder: 13),
         FilterMenu(searchName: "小倉", filterCondition: .kokura, section: .place2, displayOrder: 16),
         FilterMenu(searchName: "函館", filterCondition: .hakodate, section: .place3, displayOrder: 18),
         FilterMenu(searchName: "福島", filterCondition: .fukushima, section: .place3, displayOrder: 19),
         FilterMenu(searchName: "新潟", filterCondition: .niigata, section: .place3, displayOrder: 20),
-        FilterMenu(searchName: "", filterCondition: .emptyPlace, section: .place3, displayOrder: 21),
+        FilterMenu(searchName: "中京", filterCondition: .chukyou, section: .place2, displayOrder: 21),
+        FilterMenu(searchName: "", filterCondition: .emptyPlace, section: .place3, displayOrder: 22),
         
-        FilterMenu(searchName: "1月", filterCondition: .m1, section: .monthUpper, displayOrder: 22),
-        FilterMenu(searchName: "2月", filterCondition: .m2, section: .monthUpper, displayOrder: 23),
-        FilterMenu(searchName: "3月", filterCondition: .m3, section: .monthUpper, displayOrder: 24),
-        FilterMenu(searchName: "4月", filterCondition: .m4, section: .monthUpper, displayOrder: 25),
-        FilterMenu(searchName: "5月", filterCondition: .m5, section: .monthUpper, displayOrder: 26),
-        FilterMenu(searchName: "6月", filterCondition: .m6, section: .monthUpper, displayOrder: 27),
-        FilterMenu(searchName: "7月", filterCondition: .m7, section: .monthLower, displayOrder: 28),
-        FilterMenu(searchName: "8月", filterCondition: .m8, section: .monthLower, displayOrder: 29),
-        FilterMenu(searchName: "9月", filterCondition: .m9, section: .monthLower, displayOrder: 30),
-        FilterMenu(searchName: "10月", filterCondition: .m10, section: .monthLower, displayOrder: 31),
-        FilterMenu(searchName: "11月", filterCondition: .m11, section: .monthLower, displayOrder: 32),
-        FilterMenu(searchName: "12月", filterCondition: .m12, section: .monthLower, displayOrder: 33),
+        // FilterMenu(searchName: "川崎", filterCondition: .kawasaki, section: .place4, displayOrder: 23),
+        // FilterMenu(searchName: "船橋", filterCondition: .funabashi, section: .place4, displayOrder: 24),
+        // FilterMenu(searchName: "盛岡", filterCondition: .morioka, section: .place4, displayOrder: 25),
+        // FilterMenu(searchName: "", filterCondition: .emptyPlace, section: .place4, displayOrder: 26),
         
-        FilterMenu(searchName: "前半", filterCondition: .firstHalf, section: .half, displayOrder: 34),
-        FilterMenu(searchName: "後半", filterCondition: .secondHalf, section: .half, displayOrder: 35),
+        FilterMenu(searchName: "1月", filterCondition: .m1, section: .monthUpper, displayOrder: 27),
+        FilterMenu(searchName: "2月", filterCondition: .m2, section: .monthUpper, displayOrder: 28),
+        FilterMenu(searchName: "3月", filterCondition: .m3, section: .monthUpper, displayOrder: 29),
+        FilterMenu(searchName: "4月", filterCondition: .m4, section: .monthUpper, displayOrder: 30),
+        FilterMenu(searchName: "5月", filterCondition: .m5, section: .monthUpper, displayOrder: 31),
+        FilterMenu(searchName: "6月", filterCondition: .m6, section: .monthUpper, displayOrder: 32),
+        FilterMenu(searchName: "7月", filterCondition: .m7, section: .monthLower, displayOrder: 33),
+        FilterMenu(searchName: "8月", filterCondition: .m8, section: .monthLower, displayOrder: 34),
+        FilterMenu(searchName: "9月", filterCondition: .m9, section: .monthLower, displayOrder: 35),
+        FilterMenu(searchName: "10月", filterCondition: .m10, section: .monthLower, displayOrder: 36),
+        FilterMenu(searchName: "11月", filterCondition: .m11, section: .monthLower, displayOrder: 37),
+        FilterMenu(searchName: "12月", filterCondition: .m12, section: .monthLower, displayOrder: 38),
+        
+        FilterMenu(searchName: "前半", filterCondition: .firstHalf, section: .half, displayOrder: 39),
+        FilterMenu(searchName: "後半", filterCondition: .secondHalf, section: .half, displayOrder: 40),
         
         //        .g1: FilterMenu(searchName: "G1", filterCondition: .g1, section: .grade, displayOrder: 25),
         //        .g2: FilterMenu(searchName: "G2", filterCondition: .g2, section: .grade, displayOrder: 26),
@@ -383,7 +395,7 @@ class FilterViewModel {
                 return menu.searchName == race.half
             case .reset:
                 return false
-            case .place1, .place2, .place3:
+            case .place1, .place2, .place3, .place4:
                 return menu.searchName == race.place
             }
         }

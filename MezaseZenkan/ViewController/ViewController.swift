@@ -218,12 +218,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         if indexPath.row < FilterHelper.displayMenuCount {
-            
             let menu = FilterHelper.getFilterMenuBy(row: indexPath.row)!
-            
             cell.update(filterMenu: menu, conditions: filterViewModel.currentFilterConditions)
         }
-        
         
         return cell
     }
@@ -293,7 +290,6 @@ class FilterCell: UICollectionViewCell {
     var filterMenu: FilterMenu!
     
     override func prepareForReuse() {
-        print("adfasfd")
     }
     
     func update(filterMenu: FilterMenu, conditions: Set<FilterCondition>) {
