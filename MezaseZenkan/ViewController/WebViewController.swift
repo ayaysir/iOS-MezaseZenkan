@@ -9,9 +9,35 @@ import UIKit
 import WebKit
 import MessageUI
 
+protocol WebVCDelegate: AnyObject {
+    func didChangedBannerRes(_ controller: WebViewController)
+}
+
 class WebViewController: UIViewController {
     
+    weak var delegate: WebVCDelegate?
+    let toggleHighResButtonText = [
+        "レースバナーを高画質に交換",
+        "レースバナーを基本画像に交換",
+    ]
+    
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var btnToggleRaceBannerRes: UIButton!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setToggleResButtonText()
+    }
+    
+    private func setToggleResButtonText() {
+        if UserDefaults.standard.bool(forKey: .cfgShowHighResBanner) {
+            btnToggleRaceBannerRes.tintColor = nil
+            btnToggleRaceBannerRes.setTitle(toggleHighResButtonText[1], for: .normal)
+        } else {
+            btnToggleRaceBannerRes.tintColor = .systemPink
+            btnToggleRaceBannerRes.setTitle(toggleHighResButtonText[0], for: .normal)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +45,24 @@ class WebViewController: UIViewController {
         TrackingTransparencyPermissionRequest()
         
         loadHelpPage()
+    }
+    
+    private func closeViewAndReload() {
+        delegate?.didChangedBannerRes(self)
+        dismiss(animated: true)
+    }
+    
+    @IBAction func btnActChangeHighResBannerImage(_ sender: UIButton) {
+        if !UserDefaults.standard.bool(forKey: .cfgShowHighResBanner) {
+            simpleDestructiveYesAndNo(self, message: "レースのバナー画像を高精細画像に置き換えますか？", title: "レースのバナー画像を交換") { _ in
+                UserDefaults.standard.set(true, forKey: .cfgShowHighResBanner)
+                self.closeViewAndReload()
+            }
+        } else {
+            UserDefaults.standard.set(false, forKey: .cfgShowHighResBanner)
+            closeViewAndReload()
+        }
+        
     }
 }
 

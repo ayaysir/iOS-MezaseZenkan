@@ -49,7 +49,7 @@
 		4471F6C3281045C6001EAC58 /* MezaseZenkanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6C2281045C6001EAC58 /* MezaseZenkanUITests.swift */; };
 		4471F6C5281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471F6C4281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift */; };
 		44876F5028269A7B0072EFE2 /* PhotoAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44876F4F28269A7B0072EFE2 /* PhotoAuth.swift */; };
-		44876F522826AEF40072EFE2 /* 초기설정(필독).swift in Sources */ = {isa = PBXBuildFile; fileRef = 44876F512826AEF40072EFE2 /* 초기설정(필독).swift */; };
+		44876F522826AEF40072EFE2 /* InitialSetting(MustRead).swift in Sources */ = {isa = PBXBuildFile; fileRef = 44876F512826AEF40072EFE2 /* InitialSetting(MustRead).swift */; };
 		44A5B77028256CA300FF2A14 /* MezaseZenkan Manual in Resources */ = {isa = PBXBuildFile; fileRef = 44A5B76F28256CA300FF2A14 /* MezaseZenkan Manual */; };
 		44A5B77228256CCE00FF2A14 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A5B77128256CCE00FF2A14 /* WebViewController.swift */; };
 		44ABDC48281DA1D900306504 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABDC47281DA1D900306504 /* FilterViewModel.swift */; };
@@ -123,7 +123,7 @@
 		4471F6C2281045C6001EAC58 /* MezaseZenkanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MezaseZenkanUITests.swift; sourceTree = "<group>"; };
 		4471F6C4281045C6001EAC58 /* MezaseZenkanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MezaseZenkanUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		44876F4F28269A7B0072EFE2 /* PhotoAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAuth.swift; sourceTree = "<group>"; };
-		44876F512826AEF40072EFE2 /* 초기설정(필독).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "초기설정(필독).swift"; sourceTree = "<group>"; };
+		44876F512826AEF40072EFE2 /* InitialSetting(MustRead).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InitialSetting(MustRead).swift"; sourceTree = "<group>"; };
 		44A5B76F28256CA300FF2A14 /* MezaseZenkan Manual */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "MezaseZenkan Manual"; sourceTree = "<group>"; };
 		44A5B77128256CCE00FF2A14 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		44ABDC47281DA1D900306504 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
@@ -311,7 +311,7 @@
 				4471F6A7281045C4001EAC58 /* MezaseZenkan.xcdatamodeld */,
 				440D7311281065B10092BD7A /* GoogleService-Info.plist */,
 				440D78A32812F85B0092BD7A /* GrayscaleViewController.swift */,
-				44876F512826AEF40072EFE2 /* 초기설정(필독).swift */,
+				44876F512826AEF40072EFE2 /* InitialSetting(MustRead).swift */,
 			);
 			path = MezaseZenkan;
 			sourceTree = "<group>";
@@ -626,7 +626,7 @@
 				4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */,
 				440D78A22812F74F0092BD7A /* ImageUtil.swift in Sources */,
 				440D78B6281845EB0092BD7A /* MusumeViewModel.swift in Sources */,
-				44876F522826AEF40072EFE2 /* 초기설정(필독).swift in Sources */,
+				44876F522826AEF40072EFE2 /* InitialSetting(MustRead).swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

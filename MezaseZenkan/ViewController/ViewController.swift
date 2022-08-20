@@ -49,7 +49,8 @@ class ViewController: UIViewController {
         TrackingTransparencyPermissionRequest()
         
         // 광고 - 이 페이지밖에 없음
-        if PRODUCT_MODE && SHOW_AD {
+        // if PRODUCT_MODE && SHOW_AD
+        if SHOW_AD {
             bannerView = setupBannerAds(adUnitID: AD_UNIT_ID)
             bannerView.delegate = self
         }
@@ -135,6 +136,9 @@ class ViewController: UIViewController {
             rotationVC?.raceViewModel = raceViewModel
             rotationVC?.raceStateViewModel = raceStateViewModel
             rotationVC?.musumeViewModel = musumeViewModel
+        case "WebPageSegue":
+            let webVC = segue.destination as? WebViewController
+            webVC?.delegate = self
         default:
             break
         }
@@ -204,6 +208,13 @@ extension ViewController: MusumeCollectionVCDelegate {
     }
 }
 
+extension ViewController: WebVCDelegate {
+    
+    func didChangedBannerRes(_ controller: WebViewController) {
+        pageVC.reload()
+    }
+}
+
 // MARK: - Filter
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -218,7 +229,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         if indexPath.row < FilterHelper.displayMenuCount {
-            let menu = FilterHelper.getFilterMenuBy(row: indexPath.row)!
+            guard let menu = FilterHelper.getFilterMenuBy(row: indexPath.row) else {
+                fatalError("AddDirtRace: filterMenus: \(FilterHelper.filterMenus.sorted { $0.value.displayOrder < $1.value.displayOrder })")
+            }
             cell.update(filterMenu: menu, conditions: filterViewModel.currentFilterConditions)
         }
         

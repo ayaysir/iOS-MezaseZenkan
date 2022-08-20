@@ -25,7 +25,7 @@ class APIService {
     
     func getInitMusumeData(completion: @escaping ([Musume]) -> ()) {
         
-        let fileName = PRODUCT_MODE ? "Product-MusumeData" : "SampleMusumesData"
+        let fileName = SET_REAL_MUSUME_DATA ? "SampleMusumesData" : "Product-MusumeData"
         let fileLocation = Bundle.main.url(forResource: fileName, withExtension: "json")
         
         do {

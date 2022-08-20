@@ -249,7 +249,7 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         let currentVC = pageViewController.viewControllers?[0] as! UICollectionViewController
         let currentCVTag = currentVC.collectionView.tag
-        print("currentVC.collectionView.tag:", currentVC.collectionView.tag, raceViewModel.getGradeBy(tag: currentCVTag))
+        // print("currentVC.collectionView.tag:", currentVC.collectionView.tag, raceViewModel.getGradeBy(tag: currentCVTag))
         
         if containerDelegate != nil {
             containerDelegate?.didPageMoved(self, currentGrade: raceViewModel.getGradeBy(tag: currentCVTag), currentTag: currentCVTag)
@@ -275,7 +275,7 @@ class RaceCell: UICollectionViewCell {
         currentRace = race
         
         let image: UIImage = {
-            if PRODUCT_MODE {
+            if !UserDefaults.standard.bool(forKey: .cfgShowHighResBanner) {
                 return raceToBanner(race: race)
             }
             

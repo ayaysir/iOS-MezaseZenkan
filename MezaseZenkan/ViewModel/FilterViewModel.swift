@@ -27,7 +27,8 @@ enum FilterCondition: String {
     kawasaki,
     funabashi,
     morioka,
-    emptyPlace
+    emptyPlace,
+    emptyPlace2
 }
 
 
@@ -87,16 +88,16 @@ struct FilterHelper {
         FilterMenu(searchName: "大井", filterCondition: .oi, section: .place2, displayOrder: 14),
         FilterMenu(searchName: "札幌", filterCondition: .sapporo, section: .place2, displayOrder: 13),
         FilterMenu(searchName: "小倉", filterCondition: .kokura, section: .place2, displayOrder: 16),
-        FilterMenu(searchName: "函館", filterCondition: .hakodate, section: .place3, displayOrder: 18),
+        FilterMenu(searchName: "函館", filterCondition: .hakodate, section: .place2, displayOrder: 18),
         FilterMenu(searchName: "福島", filterCondition: .fukushima, section: .place3, displayOrder: 19),
         FilterMenu(searchName: "新潟", filterCondition: .niigata, section: .place3, displayOrder: 20),
-        FilterMenu(searchName: "中京", filterCondition: .chukyou, section: .place2, displayOrder: 21),
+        FilterMenu(searchName: "中京", filterCondition: .chukyou, section: .place3, displayOrder: 21),
         FilterMenu(searchName: "", filterCondition: .emptyPlace, section: .place3, displayOrder: 22),
         
-        // FilterMenu(searchName: "川崎", filterCondition: .kawasaki, section: .place4, displayOrder: 23),
-        // FilterMenu(searchName: "船橋", filterCondition: .funabashi, section: .place4, displayOrder: 24),
-        // FilterMenu(searchName: "盛岡", filterCondition: .morioka, section: .place4, displayOrder: 25),
-        // FilterMenu(searchName: "", filterCondition: .emptyPlace, section: .place4, displayOrder: 26),
+        FilterMenu(searchName: "川崎", filterCondition: .kawasaki, section: .place4, displayOrder: 23),
+        FilterMenu(searchName: "船橋", filterCondition: .funabashi, section: .place4, displayOrder: 24),
+        FilterMenu(searchName: "盛岡", filterCondition: .morioka, section: .place4, displayOrder: 25),
+        FilterMenu(searchName: "", filterCondition: .emptyPlace2, section: .place4, displayOrder: 26),
         
         FilterMenu(searchName: "1月", filterCondition: .m1, section: .monthUpper, displayOrder: 27),
         FilterMenu(searchName: "2月", filterCondition: .m2, section: .monthUpper, displayOrder: 28),
@@ -309,6 +310,18 @@ struct FilterHelper {
                 .font: boldFont,
             ],
             .nakayama: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
+            .funabashi: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
+            .kawasaki: [
+                .backgroundColor: commonHighlight,
+                .font: boldFont,
+            ],
+            .morioka: [
                 .backgroundColor: commonHighlight,
                 .font: boldFont,
             ],

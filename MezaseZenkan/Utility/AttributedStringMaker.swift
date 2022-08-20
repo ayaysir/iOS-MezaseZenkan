@@ -76,6 +76,7 @@ func attributedRaceStringMaker(from race: Race, filterConditions: Set<FilterCond
         .place1: 5,
         .place2: 5,
         .place3: 5,
+        .place4: 5,
         .terrain: 7,
         .lengthType: 11,
         .direction: 14,
