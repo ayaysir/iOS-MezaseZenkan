@@ -1,0 +1,6 @@
+framework module Pods_MezaseZenkanTests {
+  umbrella header "Pods-MezaseZenkanTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -79,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		20314C079A130ED9CB5518DB /* Pods-MezaseZenkan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan.release.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan.release.xcconfig"; sourceTree = "<group>"; };
+		4403A5E72E26749D009E9D49 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		440D7311281065B10092BD7A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		440D73132810672A0092BD7A /* SampleRacesData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleRacesData.json; sourceTree = "<group>"; };
 		440D7315281067A80092BD7A /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
@@ -178,6 +179,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4403A5E62E266D32009E9D49 /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				440D73132810672A0092BD7A /* SampleRacesData.json */,
+				440D78B1281844EE0092BD7A /* SampleMusumesData.json */,
+			);
+			path = Unused;
+			sourceTree = "<group>";
+		};
 		440D7895281187050092BD7A /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,15 +243,14 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		440D78B0281844D70092BD7A /* samples */ = {
+		440D78B0281844D70092BD7A /* ResourceData */ = {
 			isa = PBXGroup;
 			children = (
-				440D73132810672A0092BD7A /* SampleRacesData.json */,
-				440D78B1281844EE0092BD7A /* SampleMusumesData.json */,
+				4403A5E62E266D32009E9D49 /* Unused */,
 				44169EAE282669FC0029ADCA /* Product-MusumeData.json */,
 				44FD513B28B001510097AC8E /* RaceData_20220819.json */,
 			);
-			path = samples;
+			path = ResourceData;
 			sourceTree = "<group>";
 		};
 		440D78B728185D030092BD7A /* ViewController */ = {
@@ -269,6 +278,7 @@
 		4471F692281045C4001EAC58 = {
 			isa = PBXGroup;
 			children = (
+				4403A5E72E26749D009E9D49 /* .gitignore */,
 				4471F69D281045C4001EAC58 /* MezaseZenkan */,
 				4471F6B7281045C6001EAC58 /* MezaseZenkanTests */,
 				4471F6C1281045C6001EAC58 /* MezaseZenkanUITests */,
@@ -295,7 +305,7 @@
 				4433A15928257C1B001FDF41 /* Firebase */,
 				44A5B76F28256CA300FF2A14 /* MezaseZenkan Manual */,
 				440D78B728185D030092BD7A /* ViewController */,
-				440D78B0281844D70092BD7A /* samples */,
+				440D78B0281844D70092BD7A /* ResourceData */,
 				440D78A92815ACE70092BD7A /* Service */,
 				440D78A62815AB3A0092BD7A /* ViewModel */,
 				440D78A52815AAB30092BD7A /* ValueObject */,
@@ -415,7 +425,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					4471F69A281045C4001EAC58 = {
 						CreatedOnToolsVersion = 13.1;
@@ -495,9 +505,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -534,9 +548,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -686,6 +704,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -717,8 +736,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 6S2SA26VAN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -747,6 +768,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -778,8 +800,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 6S2SA26VAN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -804,11 +828,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = 6S2SA26VAN;
+				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MezaseZenkan/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
+				INFOPLIST_KEY_NSCameraUsageDescription = "キャラクターリストでユーザーの写真を使用するには、カメラの権限が必要です。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "キャラクターリストでユーザーの写真を使用するには、フォトライブラリの権限が必要です。";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "同意すると、ユーザー情報に一致するカスタムバナー広告が表示されます。 同意しなくてもカスタマイズされていない一般広告が表示されます。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -821,9 +848,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bgsmm.MezaseZenkan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -836,11 +864,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = 6S2SA26VAN;
+				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MezaseZenkan/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
+				INFOPLIST_KEY_NSCameraUsageDescription = "キャラクターリストでユーザーの写真を使用するには、カメラの権限が必要です。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "キャラクターリストでユーザーの写真を使用するには、フォトライブラリの権限が必要です。";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "同意すると、ユーザー情報に一致するカスタムバナー広告が表示されます。 同意しなくてもカスタマイズされていない一般広告が表示されます。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -853,9 +884,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bgsmm.MezaseZenkan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -866,11 +898,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A4D1CFAA6A5013FC8531FBE /* Pods-MezaseZenkanTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6S2SA26VAN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -892,11 +922,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A69BFFE8E907FAA537C01F81 /* Pods-MezaseZenkanTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6S2SA26VAN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -918,10 +946,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 50068F5BB17842F27C1B1C63 /* Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6S2SA26VAN;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -942,10 +968,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 90E2260AA6AA0C216C600C73 /* Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6S2SA26VAN;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

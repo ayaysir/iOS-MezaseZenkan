@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>キャラクターリストでユーザーの写真を使用するには、カメラの権限が必要です。</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>キャラクターリストでユーザーの写真を使用するには、フォトライブラリの権限が必要です。</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-6364767349592629~8068030817</string>
 	<key>UIApplicationSceneManifest</key>
