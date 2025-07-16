@@ -13,7 +13,7 @@ import Foundation
 ///  ```swift
 ///  let musume = try? newJSONDecoder().decode(Musume.self, from: jsonData)
 ///  ```
-struct Musume: Codable {
+struct Musume: Codable, Equatable {
     let name, nameEn, cv, birthday: String
     let height: Int
     let weight: String

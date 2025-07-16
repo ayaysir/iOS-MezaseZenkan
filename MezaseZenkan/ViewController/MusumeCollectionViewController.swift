@@ -11,10 +11,9 @@ protocol MusumeCollectionVCDelegate: AnyObject {
   func didChangedMusume(_ controller: MusumeCollectionViewController, musume: Musume)
 }
 
-private let reuseIdentifier = "MusumeCell"
+fileprivate let reuseIdentifier = "MusumeCell"
 
 class MusumeCollectionViewController: UICollectionViewController {
-  
   weak var delegate: MusumeCollectionVCDelegate?
   
   var musumeViewModel: MusumeViewModel!
@@ -25,7 +24,6 @@ class MusumeCollectionViewController: UICollectionViewController {
     
     TrackingTransparencyPermissionRequest()
   }
-  
   
   // MARK: UICollectionViewDataSource
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -41,7 +39,8 @@ class MusumeCollectionViewController: UICollectionViewController {
     // Configure the cell
     let musume = musumeViewModel.getMusumeBy(index: indexPath.row)
     let finishedRaceCount = raceStateViewModel?.getFinishedRaceNamesBy(musumeName: musume.name).count ?? 0
-    cell.update(musume: musume, finishedRaceCount: finishedRaceCount)
+    let isCurrentSelected = musumeViewModel.currentMusume == musume
+    cell.update(musume: musume, finishedRaceCount: finishedRaceCount, isCurrent: isCurrentSelected)
     return cell
   }
   
@@ -106,11 +105,13 @@ class MusumeCell: UICollectionViewCell {
   @IBOutlet weak var lblMusumeName: UILabel!
   @IBOutlet weak var lblRaceStatus: UILabel!
   
-  func update(musume: Musume, finishedRaceCount: Int) {
+  func update(musume: Musume, finishedRaceCount: Int, isCurrent: Bool = false) {
     imgViewProfile.layer.cornerRadius = imgViewProfile.frame.width * 0
     imgViewProfile.image = MusumeHelper.getImage(of: musume)
     
     lblMusumeName.text = musume.name
     lblRaceStatus.text = "\(finishedRaceCount)"
+    
+    self.backgroundColor = isCurrent ? .systemPink.withAlphaComponent(0.5) : .clear
   }
 }
