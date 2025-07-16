@@ -1,10 +1,12 @@
 //
-//  RaceState.swift
+//  GlobalVariables.swift
 //  MezaseZenkan
 //
-//  Created by yoonbumtae on 2022/04/26.
+//  Created by 윤범태 on 7/16/25.
 //
 
 import Foundation
+
+// MARK: - Type Aliases
 
 typealias RaceStates = [String: [String: Bool]]

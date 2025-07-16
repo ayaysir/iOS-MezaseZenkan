@@ -13,21 +13,19 @@ protocol PageViewDelegate: AnyObject {
 }
 
 class PageViewController: UIPageViewController, UIGestureRecognizerDelegate {
-  
   weak var containerDelegate: PageViewDelegate?
   
   var raceViewModel: RaceViewModel!
   var raceStateViewModel: RaceStateViewModel!
   var filterViewModel: FilterViewModel!
-  
   var currentMusume: Musume!
-  
   var currentLongPressedCell: RaceCell?
   
   lazy var vcArray: [UIViewController] = {
     let array = (0...raceViewModel.totalTagsCount - 1).map { index in
       return self.vcInstance(tag: index)
     }
+    
     return array
   }()
   
@@ -126,7 +124,6 @@ class PageViewController: UIPageViewController, UIGestureRecognizerDelegate {
 }
 
 extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
-  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     raceViewModel.getViewCountBy(tag: collectionView.tag)
   }
@@ -162,7 +159,6 @@ extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension PageViewController: UICollectionViewDelegateFlowLayout {
-  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let width = collectionView.frame.width
     let height = collectionView.frame.height
@@ -182,7 +178,6 @@ extension PageViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension PageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-  
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
     // 배열에서 현재 페이지의 컨트롤러를 찾아서 해당 인덱스를 현재 인덱스로 기록
     guard let vcIndex = vcArray.firstIndex(of: viewController) else { return nil }
@@ -233,7 +228,6 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
       containerDelegate?.didPageMoved(self, currentGrade: raceViewModel.getGradeBy(tag: currentCVTag), currentTag: currentCVTag)
     }
   }
-  
 }
 
 class RaceCell: UICollectionViewCell {
