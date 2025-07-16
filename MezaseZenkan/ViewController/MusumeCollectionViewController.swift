@@ -47,6 +47,7 @@ class MusumeCollectionViewController: UICollectionViewController {
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let musume = musumeViewModel.getMusumeBy(index: indexPath.row)
+
     if let delegate = delegate {
       delegate.didChangedMusume(self, musume: musume)
       self.dismiss(animated: true, completion: nil)

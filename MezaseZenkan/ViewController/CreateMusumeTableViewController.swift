@@ -51,14 +51,37 @@ class CreateMusumeTableViewController: UITableViewController {
     if let delegate = delegate {
       let imgProfileName = currentFileName
       let imgDirectory = currentFileDirectory
-      let musume = Musume(name: name, nameEn: "", cv: "", birthday: "", height: 0, weight: "", b: 0, w: 0, h: 0, comment: "", catchphrase: "", imgProfile: imgProfileName, imgDirectory: imgDirectory, isAvailable: true)
+      let regionCode = switch pkvSelectRegion.selectedRow(inComponent: 0) {
+      case 0:
+        GameAppRegion.ja.code
+      case 1:
+        GameAppRegion.ko.code
+      default:
+        ""
+      }
+      
+      let musume = Musume(
+        name: name,
+        nameEn: "",
+        cv: "",
+        birthday: "",
+        height: 0,
+        weight: "",
+        b: 0,
+        w: 0,
+        h: 0,
+        comment: "region:\(regionCode)|",
+        catchphrase: "",
+        imgProfile: imgProfileName,
+        imgDirectory: imgDirectory,
+        isAvailable: true
+      )
       musumeViewModel.addMusume(musume)
       
       simpleAlert(self, message: "新しいキャラクター追加が完了しました。", title: "完了") { action in
         delegate.didAddedMusume(self, addedMusume: musume)
         self.dismiss(animated: true, completion: nil)
       }
-      
     }
   }
   

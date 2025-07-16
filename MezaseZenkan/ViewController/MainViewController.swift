@@ -13,10 +13,18 @@ class MainViewController: UIViewController {
   
   let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
   
-  let raceViewModel = RaceViewModel()
+  // 여기서 raceViewModel을 생성하면 PageVC, RotationVC에서 사용
+  var raceViewModel: RaceViewModel!
   let raceStateViewModel = RaceStateViewModel()
   let musumeViewModel = MusumeViewModel()
   let filterViewModel = FilterViewModel()
+  
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+    // print(musumeViewModel.currentMusume.comment)
+    let region: GameAppRegion = MusumeHelper.extractGameAppRegion(from: musumeViewModel.currentMusume.comment)
+    raceViewModel = RaceViewModel(region: region)
+  }
   
   var pageVC: PageViewController!
   var currentSegIndex = 0
@@ -37,6 +45,8 @@ class MainViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    raceViewModel = RaceViewModel(region: .ja)
     
     imgViewMusume.layer.cornerRadius = imgViewMusume.frame.width * 0.5
     btnRotationView.layer.cornerRadius = 10
@@ -90,7 +100,6 @@ class MainViewController: UIViewController {
   }
   
   private func initImageTouch() {
-    
     let gesture = UITapGestureRecognizer(target: self, action: #selector(handleImageTouch(gesture:)))
     imgViewMusume.isUserInteractionEnabled = true
     imgViewMusume.addGestureRecognizer(gesture)
@@ -163,7 +172,6 @@ class MainViewController: UIViewController {
   }
   
   private func updateViewStatus() {
-    
     if let currentMusume = musumeViewModel.currentMusume {
       
       lblMusumeName.text = currentMusume.name
@@ -217,8 +225,12 @@ extension MainViewController: PageViewDelegate {
 
 extension MainViewController: MusumeCollectionVCDelegate {
   func didChangedMusume(_ controller: MusumeCollectionViewController, musume: Musume) {
+    let region = MusumeHelper.extractGameAppRegion(from: musume.comment)
+    raceViewModel.changeRaceData(to: region)
+    
     musumeViewModel.currentMusume = musume
     pageVC.currentMusume = musume
+    pageVC.raceViewModel = raceViewModel
     pageVC.reload()
     updateViewStatus()
   }

@@ -21,13 +21,7 @@ class PageViewController: UIPageViewController, UIGestureRecognizerDelegate {
   var currentMusume: Musume!
   var currentLongPressedCell: RaceCell?
   
-  lazy var vcArray: [UIViewController] = {
-    let array = (0...raceViewModel.totalTagsCount - 1).map { index in
-      return self.vcInstance(tag: index)
-    }
-    
-    return array
-  }()
+  lazy var vcArray: [UIViewController] = generateVCArray()
   
   private func vcInstance(tag: Int) -> UIViewController{
     let collectionVC: UICollectionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SubRaceCollectionVC") as! UICollectionViewController
@@ -116,11 +110,18 @@ class PageViewController: UIPageViewController, UIGestureRecognizerDelegate {
   }
   
   func reload() {
-    vcArray.forEach({ vc in
+    vcArray.forEach { vc in
       (vc as! UICollectionViewController).collectionView.reloadData()
-    })
+    }
   }
   
+  private func generateVCArray() -> [UIViewController] {
+    let array = (0...raceViewModel.totalTagsCount - 1).map { index in
+      return self.vcInstance(tag: index)
+    }
+    
+    return array
+  }
 }
 
 extension PageViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
@@ -275,7 +276,6 @@ class RaceCell: UICollectionViewCell {
       lblTitle.font = UIFont.systemFont(ofSize: fontScale * 17, weight: .bold)
       lblTitle.minimumScaleFactor = 0.7
       lblInfo.font = UIFont.systemFont(ofSize: fontScale * 0.85 * 14)
-      
     }
   }
   

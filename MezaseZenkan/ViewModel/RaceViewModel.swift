@@ -8,7 +8,6 @@
 import Foundation
 
 class RaceViewModel {
-  
   private var apiService: APIService!
   private var totalRaceData: [Race]!
   
@@ -36,9 +35,18 @@ class RaceViewModel {
             "G3": tagRaceInfo.firstIndex(of: "G3")!]
   }
   
-  init() {
-    self.apiService =  APIService()
-    getRaceDataFromServer()
+  // init() {
+  //   self.apiService =  APIService()
+  //   // getRaceDataFromServer()
+  // }
+  
+  init(region: GameAppRegion) {
+    self.apiService = APIService()
+    getRaceDataFromServer(region: region)
+  }
+  
+  func changeRaceData(to region: GameAppRegion) {
+    getRaceDataFromServer(region: region)
   }
   
   func getViewCountBy(tag: Int) -> Int {
@@ -74,7 +82,11 @@ class RaceViewModel {
   }
   
   private func getRaceDataFromServer() {
-    apiService.getRaceData { races in
+    getRaceDataFromServer(region: .ja)
+  }
+  
+  private func getRaceDataFromServer(region: GameAppRegion) {
+    apiService.getRaceData(from: region) { races in
       self.totalRaceData = races
       self.g1Races = self.getRaceByGrade(grade: "G1")
       self.g2Races = self.getRaceByGrade(grade: "G2")
@@ -123,6 +135,7 @@ class RaceViewModel {
         break
       }
       
+      // TODO: 앱 판에 따라 바뀌어야 됨
       let targetHalf = fraction == 0 ? "前半" : "後半"
       monthCondition = (race.month == whole && race.half == targetHalf)
       

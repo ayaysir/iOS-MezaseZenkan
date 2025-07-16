@@ -12,6 +12,9 @@
 		4403A5EC2E26963A009E9D49 /* ja_RaceData_20250715.json in Resources */ = {isa = PBXBuildFile; fileRef = 4403A5EA2E269542009E9D49 /* ja_RaceData_20250715.json */; };
 		4403A5EF2E279FC1009E9D49 /* GameAppRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4403A5EE2E279FBC009E9D49 /* GameAppRegion.swift */; };
 		4403A5F22E27A41F009E9D49 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4403A5F12E27A41B009E9D49 /* GlobalVariables.swift */; };
+		4403A5F62E27A9CB009E9D49 /* FilterCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4403A5F52E27A9CB009E9D49 /* FilterCondition.swift */; };
+		4403A5F82E27AB34009E9D49 /* FilterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4403A5F72E27AB34009E9D49 /* FilterSection.swift */; };
+		4403A5FA2E27AB59009E9D49 /* FilterStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4403A5F92E27AB59009E9D49 /* FilterStyle.swift */; };
 		440D7312281065B10092BD7A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 440D7311281065B10092BD7A /* GoogleService-Info.plist */; };
 		440D73142810672A0092BD7A /* SampleRacesData.json in Sources */ = {isa = PBXBuildFile; fileRef = 440D73132810672A0092BD7A /* SampleRacesData.json */; };
 		440D7316281067A80092BD7A /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D7315281067A80092BD7A /* Race.swift */; };
@@ -87,6 +90,9 @@
 		4403A5EA2E269542009E9D49 /* ja_RaceData_20250715.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ja_RaceData_20250715.json; sourceTree = "<group>"; };
 		4403A5EE2E279FBC009E9D49 /* GameAppRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAppRegion.swift; sourceTree = "<group>"; };
 		4403A5F12E27A41B009E9D49 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		4403A5F52E27A9CB009E9D49 /* FilterCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCondition.swift; sourceTree = "<group>"; };
+		4403A5F72E27AB34009E9D49 /* FilterSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSection.swift; sourceTree = "<group>"; };
+		4403A5F92E27AB59009E9D49 /* FilterStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStyle.swift; sourceTree = "<group>"; };
 		440D7311281065B10092BD7A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		440D73132810672A0092BD7A /* SampleRacesData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleRacesData.json; sourceTree = "<group>"; };
 		440D7315281067A80092BD7A /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
@@ -198,6 +204,8 @@
 		4403A5ED2E279F99009E9D49 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				4403A5F72E27AB34009E9D49 /* FilterSection.swift */,
+				4403A5F52E27A9CB009E9D49 /* FilterCondition.swift */,
 				4403A5EE2E279FBC009E9D49 /* GameAppRegion.swift */,
 			);
 			path = Enum;
@@ -266,6 +274,7 @@
 				440D7315281067A80092BD7A /* Race.swift */,
 				440D78B32818457A0092BD7A /* Musume.swift */,
 				44ABDC49281DA1EC00306504 /* FilterMenu.swift */,
+				4403A5F92E27AB59009E9D49 /* FilterStyle.swift */,
 			);
 			path = ValueObject;
 			sourceTree = "<group>";
@@ -660,6 +669,7 @@
 				440D78BB281D6AF40092BD7A /* AttributedStringMaker.swift in Sources */,
 				44ABDC4A281DA1EC00306504 /* FilterMenu.swift in Sources */,
 				4403A5F22E27A41F009E9D49 /* GlobalVariables.swift in Sources */,
+				4403A5FA2E27AB59009E9D49 /* FilterStyle.swift in Sources */,
 				44169EB528268DE70029ADCA /* MusumeHelper.swift in Sources */,
 				4471F6A3281045C4001EAC58 /* MainViewController.swift in Sources */,
 				44876F5028269A7B0072EFE2 /* PhotoAuth.swift in Sources */,
@@ -673,6 +683,7 @@
 				440D78A02812EC9C0092BD7A /* Array+.swift in Sources */,
 				440D78A82815AC230092BD7A /* RaceViewModel.swift in Sources */,
 				44A5B77228256CCE00FF2A14 /* WebViewController.swift in Sources */,
+				4403A5F62E27A9CB009E9D49 /* FilterCondition.swift in Sources */,
 				440D78A42812F85B0092BD7A /* GrayscaleViewController.swift in Sources */,
 				440D789B281187990092BD7A /* RaceCell.swift in Sources */,
 				4403A5EF2E279FC1009E9D49 /* GameAppRegion.swift in Sources */,
@@ -683,6 +694,7 @@
 				440D78B928185D2D0092BD7A /* MusumeCollectionViewController.swift in Sources */,
 				4433A15D28257D2A001FDF41 /* TrackingTransparencyPermissionRequest.swift in Sources */,
 				4470896F2822DD63008177C0 /* RotationViewController.swift in Sources */,
+				4403A5F82E27AB34009E9D49 /* FilterSection.swift in Sources */,
 				440D7316281067A80092BD7A /* Race.swift in Sources */,
 				44169EB328268AF80029ADCA /* CreateMusumeTableViewController.swift in Sources */,
 				4471F6A1281045C4001EAC58 /* SceneDelegate.swift in Sources */,

@@ -9,9 +9,23 @@ import Foundation
 
 class APIService {
   /// 레이스 데이터 JSON를 가져옴(일본판)
-  func getRaceData(completion : @escaping ([Race]) -> ()) {
-    // let fileLocation = Bundle.main.url(forResource: "RaceData_20220819", withExtension: "json")
-    let fileLocation = Bundle.main.url(forResource: "ja_RaceData_20250715", withExtension: "json")
+  // func getRaceData(completion : @escaping ([Race]) -> ()) {
+  //   // let fileLocation = Bundle.main.url(forResource: "RaceData_20220819", withExtension: "json")
+  //   let fileLocation = Bundle.main.url(forResource: "ko_RaceData_20250715", withExtension: "json")
+  //   
+  //   do {
+  //     let data = try Data(contentsOf: fileLocation!)
+  //     let array = try JSONDecoder().decode(Array<Race>.self, from: data)
+  //     completion(array)
+  //   } catch {
+  //     print(error)
+  //   }
+  // }
+  
+  func getRaceData(from region: GameAppRegion, completion : @escaping ([Race]) -> ()) {
+    let fileNamePrefix = region == .ko ? "ko" : "ja"
+    
+    let fileLocation = Bundle.main.url(forResource: "\(fileNamePrefix)_RaceData_20250715", withExtension: "json")
     
     do {
       let data = try Data(contentsOf: fileLocation!)
@@ -63,9 +77,8 @@ class APIService {
       "フユウララ": [:],
     ]
     
-    let receivedStates = UserDefaults.standard.object(forKey: "RACE_STATES") as? RaceStates
-    if let states = receivedStates {
-      completion(states)
+    if let receivedStates = UserDefaults.standard.object(forKey: "RACE_STATES") as? RaceStates {
+      completion(receivedStates)
     } else {
       completion(sampleStates)
     }

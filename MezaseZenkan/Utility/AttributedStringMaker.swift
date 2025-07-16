@@ -14,6 +14,7 @@ func attributedRaceStringMaker(from race: Race, filterConditions: Set<FilterCond
    */
   
   let period = race.period
+  // TODO: - 로컬라이징 필요
   let month = "\(race.month)月"
   let half = race.half
   let place = race.place
@@ -70,6 +71,7 @@ func attributedRaceStringMaker(from race: Race, filterConditions: Set<FilterCond
     .place2: 5,
     .place3: 5,
     .place4: 5,
+    .place5: 5,
     .terrain: 7,
     .lengthType: 11,
     .direction: 14,
@@ -106,7 +108,6 @@ func attributedRaceStringMaker(from race: Race, filterConditions: Set<FilterCond
   
   // 3차 속성 - 컨디션별 고유 속성
   for condition in filterConditions {
-    
     let attribute: [NSAttributedString.Key: Any] = FilterHelper.getConditionStyle(condition: condition).style
     let sectionIndex = sectionStartIndex[FilterHelper.getSection(of: condition)]!
     

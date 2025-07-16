@@ -19,4 +19,13 @@ enum GameAppRegion: CaseIterable {
       return "loc.region_ko"
     }
   }
+  
+  var code: String {
+    switch self {
+    case .ja:
+      return "ja"
+    case .ko:
+      return "ko"
+    }
+  }
 }

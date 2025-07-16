@@ -7,56 +7,7 @@
 
 import UIKit
 
-enum FilterCondition: String {
-  case junior, classic, senior, g1, g2, g3, grass, dirt,
-       short, mile, intermediate, long,
-       m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, left, right,
-       firstHalf, secondHalf, reset, classicsenior,
-       tokyo,
-       nakayama,
-       sapporo,
-       oi,
-       hanshin,
-       kokura,
-       kyoto,
-       hakodate,
-       fukushima,
-       niigata,
-       chukyou,
-       kawasaki,
-       funabashi,
-       morioka,
-       emptyPlace,
-       emptyPlace2
-}
-
-
-// 川崎    船橋    盛岡
-
-enum FilterSection: Int {
-  case period
-  //    case place
-  case terrain
-  case lengthType
-  case monthUpper
-  case monthLower
-  case direction
-  case half
-  case grade
-  case place1
-  case place2
-  case place3
-  case place4
-  case reset
-}
-
-struct FilterStyle {
-  var targetSection: FilterSection
-  var style: [NSAttributedString.Key: Any]
-}
-
 struct FilterHelper {
-  
   private static let filterMenuArray: [FilterMenu] = [
     FilterMenu(searchName: "junior", filterCondition: .junior, section: .period, displayOrder: 0),
     FilterMenu(searchName: "classic", filterCondition: .classic, section: .period, displayOrder: 1),
@@ -73,12 +24,14 @@ struct FilterHelper {
     
     FilterMenu(searchName: "左", filterCondition: .left, section: .direction, displayOrder: 9),
     FilterMenu(searchName: "右", filterCondition: .right, section: .direction, displayOrder: 10),
+    FilterMenu(searchName: "直線", filterCondition: .straight, section: .direction, displayOrder: 11),
     
     /*
      東京    中山    札幌    大井
      阪神    小倉    京都    函館
      福島    新潟    中京
      川崎    船橋    盛岡
+     롱샹
      */
     FilterMenu(searchName: "東京", filterCondition: .tokyo, section: .place1, displayOrder: 11),
     FilterMenu(searchName: "中山", filterCondition: .nakayama, section: .place1, displayOrder: 12),
@@ -96,7 +49,9 @@ struct FilterHelper {
     FilterMenu(searchName: "川崎", filterCondition: .kawasaki, section: .place4, displayOrder: 23),
     FilterMenu(searchName: "船橋", filterCondition: .funabashi, section: .place4, displayOrder: 24),
     FilterMenu(searchName: "盛岡", filterCondition: .morioka, section: .place4, displayOrder: 25),
-    FilterMenu(searchName: "", filterCondition: .emptyPlace2, section: .place4, displayOrder: 26),
+    FilterMenu(searchName: "", filterCondition: .emptyPlace2, section: .place4, displayOrder: 27),
+    
+    FilterMenu(searchName: "ロンシャン", filterCondition: .ronchamp, section: .place5, displayOrder: 26),
     
     FilterMenu(searchName: "1月", filterCondition: .m1, section: .monthUpper, displayOrder: 27),
     FilterMenu(searchName: "2月", filterCondition: .m2, section: .monthUpper, displayOrder: 28),
@@ -134,7 +89,6 @@ struct FilterHelper {
   }()
   
   private static let conditionToSection: [FilterCondition: FilterSection] = {
-    
     return filterMenuArray.reduce(into: [FilterCondition: FilterSection]()) { partialResult, menu in
       partialResult[menu.filterCondition] = menu.section
     }
@@ -142,11 +96,18 @@ struct FilterHelper {
   
   
   static func getConditionStyle(condition: FilterCondition) -> FilterStyle {
-    
     let boldFont = UIFont(name: "HelveticaNeue-Bold", size: 14)!
-    let commonHighlight = RGB255(red: 255, green: 255, blue: 118).uiColor
+    let commonHighlight = RGB255(red: 0, green: 255, blue: 118).uiColor
     
     let conditionStyleMapper: [FilterCondition: [NSAttributedString.Key: Any]] = [
+      .straight: [
+        .backgroundColor: RGB255(red: 255, green: 198, blue: 194).uiColor,
+        .foregroundColor: UIColor.black,
+      ],
+      .ronchamp: [
+        .backgroundColor: commonHighlight,
+        .font: boldFont,
+      ],
       .junior: [
         .backgroundColor: RGB255(red: 240, green: 240, blue: 240).uiColor,
         .foregroundColor: RGB255(red: 16, green: 148, blue: 84).uiColor,
@@ -381,9 +342,7 @@ class FilterViewModel {
   }
   
   func getRefinedConditionsBy(race: Race) -> Set<FilterCondition> {
-    
     var refinedConditions = _currentFilterConditions.filter { condition in
-      
       let section = FilterHelper.getSection(of: condition)
       let menu = FilterHelper.getFilterMenuBy(condition: condition)
       
@@ -401,13 +360,16 @@ class FilterViewModel {
       case .direction:
         if menu.searchName == "右" {
           return race.direction.contains("右")
+        } else if menu.searchName == "左" {
+          return race.direction.contains("左")
         }
+        
         return menu.searchName == race.direction
       case .half:
         return menu.searchName == race.half
       case .reset:
         return false
-      case .place1, .place2, .place3, .place4:
+      case .place1, .place2, .place3, .place4, .place5:
         return menu.searchName == race.place
       }
     }

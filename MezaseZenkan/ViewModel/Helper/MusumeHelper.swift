@@ -28,6 +28,27 @@ class MusumeHelper {
     
     return UIImage(named: "fuyuurara")
   }
+  
+  static func extractRegionValue(from text: String) -> String? {
+    let components = text.split(separator: "|") // "|" 기준 분리
+    
+    for component in components {
+      let pair = component.split(separator: ":", maxSplits: 1)
+      if pair.count == 2, pair[0] == "region" {
+        return String(pair[1])
+      }
+    }
+    
+    return nil
+  }
+  
+  static func extractGameAppRegion(from comment: String) -> GameAppRegion {
+    return if let code = Self.extractRegionValue(from: comment), code == "ko" {
+      .ko
+    } else {
+      .ja
+    }
+  }
 }
 
 
