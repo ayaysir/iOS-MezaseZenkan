@@ -104,14 +104,25 @@ class MusumeCell: UICollectionViewCell {
   @IBOutlet weak var imgViewProfile: UIImageView!
   @IBOutlet weak var lblMusumeName: UILabel!
   @IBOutlet weak var lblRaceStatus: UILabel!
+  @IBOutlet weak var lblGameRegion: UILabel!
   
   func update(musume: Musume, finishedRaceCount: Int, isCurrent: Bool = false) {
-    imgViewProfile.layer.cornerRadius = imgViewProfile.frame.width * 0
+    imgViewProfile.layer.cornerRadius = imgViewProfile.frame.width * 0.5
     imgViewProfile.image = MusumeHelper.getImage(of: musume)
     
     lblMusumeName.text = musume.name
     lblRaceStatus.text = "\(finishedRaceCount)"
     
     self.backgroundColor = isCurrent ? .systemPink.withAlphaComponent(0.5) : .clear
+    
+    let region = MusumeHelper.extractGameAppRegion(from: musume.comment)
+    lblGameRegion.clipsToBounds = true
+    lblGameRegion.layer.cornerRadius = 3.5
+    lblGameRegion.text = switch region {
+    case .ja:
+      "🇯🇵ja"
+    case .ko:
+      "🇰🇷ko"
+    }
   }
 }

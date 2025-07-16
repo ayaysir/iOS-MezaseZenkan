@@ -262,14 +262,27 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌎ko" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EE3-MY-TFU">
+                                            <rect key="frame" x="86" y="0.0" width="20" height="11"/>
+                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="OLz-lo-jaW"/>
+                                                <constraint firstAttribute="height" constant="11" id="p44-sY-V90"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                            <color key="textColor" red="0.97311054360000004" green="0.97260212199999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="rOA-zM-uMU" secondAttribute="trailing" constant="9" id="0n4-gm-qjh"/>
                                         <constraint firstItem="QE3-kt-LYa" firstAttribute="leading" secondItem="I3Q-Vs-MaJ" secondAttribute="leading" id="1HJ-ZH-XrD"/>
+                                        <constraint firstAttribute="trailing" secondItem="EE3-MY-TFU" secondAttribute="trailing" id="FXc-DF-P0x"/>
                                         <constraint firstItem="rOA-zM-uMU" firstAttribute="top" secondItem="I3Q-Vs-MaJ" secondAttribute="top" id="GzX-77-TdW"/>
                                         <constraint firstItem="rOA-zM-uMU" firstAttribute="leading" secondItem="I3Q-Vs-MaJ" secondAttribute="leading" constant="9" id="PWF-6I-WjK"/>
                                         <constraint firstAttribute="trailing" secondItem="QE3-kt-LYa" secondAttribute="trailing" id="WDJ-3L-5Yo"/>
                                         <constraint firstItem="rOA-zM-uMU" firstAttribute="centerX" secondItem="I3Q-Vs-MaJ" secondAttribute="centerX" id="a9E-vu-zdB"/>
+                                        <constraint firstItem="EE3-MY-TFU" firstAttribute="top" secondItem="I3Q-Vs-MaJ" secondAttribute="top" id="apz-rs-CmT"/>
                                         <constraint firstAttribute="trailing" secondItem="G5b-ce-TdY" secondAttribute="trailing" id="gso-2W-rvr"/>
                                         <constraint firstItem="G5b-ce-TdY" firstAttribute="top" secondItem="rOA-zM-uMU" secondAttribute="bottom" id="hyi-Bz-sjj"/>
                                         <constraint firstItem="QE3-kt-LYa" firstAttribute="top" secondItem="G5b-ce-TdY" secondAttribute="bottom" constant="-1" id="kE9-lX-Xu4"/>
@@ -279,6 +292,7 @@
                                 <size key="customSize" width="106" height="122"/>
                                 <connections>
                                     <outlet property="imgViewProfile" destination="rOA-zM-uMU" id="uXF-sM-SLT"/>
+                                    <outlet property="lblGameRegion" destination="EE3-MY-TFU" id="NEu-VY-Tnz"/>
                                     <outlet property="lblMusumeName" destination="G5b-ce-TdY" id="CnQ-QR-FZP"/>
                                     <outlet property="lblRaceStatus" destination="QE3-kt-LYa" id="TF1-Ly-Oqs"/>
                                 </connections>
@@ -308,7 +322,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ujS-np-ttm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="761" y="69"/>
+            <point key="canvasLocation" x="760.546875" y="68.960468521229856"/>
         </scene>
         <!--Create Musume Table View Controller-->
         <scene sceneID="Mpt-C6-bif">
