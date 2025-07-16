@@ -16,6 +16,7 @@ class RaceViewModel {
   private var g3Races: [Race]!
   private var raceChunksByTag: [[Race]]!
   private var tagRaceInfo: [String] = []
+  private(set) var currentRegion: GameAppRegion = .ja
   
   var totalRaceCount: Int {
     return g1Races.count + g2Races.count + g3Races.count
@@ -43,10 +44,12 @@ class RaceViewModel {
   init(region: GameAppRegion) {
     self.apiService = APIService()
     getRaceDataFromServer(region: region)
+    currentRegion = region
   }
   
   func changeRaceData(to region: GameAppRegion) {
     getRaceDataFromServer(region: region)
+    currentRegion = region
   }
   
   func getViewCountBy(tag: Int) -> Int {
@@ -62,7 +65,6 @@ class RaceViewModel {
   }
   
   func getRaceGrade(name: String) -> String {
-    
     for race in totalRaceData {
       if race.name == name {
         return race.grade
@@ -135,8 +137,9 @@ class RaceViewModel {
         break
       }
       
-      // TODO: 앱 판에 따라 바뀌어야 됨
-      let targetHalf = fraction == 0 ? "前半" : "後半"
+      let firstHalfText = FilterCondition.firstHalf.regionDescription(of: currentRegion)
+      let secondHalfText = FilterCondition.secondHalf.regionDescription(of: currentRegion)
+      let targetHalf = fraction == 0 ? firstHalfText : secondHalfText
       monthCondition = (race.month == whole && race.half == targetHalf)
       
       return yearCondition && monthCondition && gradeCondition

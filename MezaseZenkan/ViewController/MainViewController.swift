@@ -24,6 +24,7 @@ class MainViewController: UIViewController {
     // print(musumeViewModel.currentMusume.comment)
     let region: GameAppRegion = MusumeHelper.extractGameAppRegion(from: musumeViewModel.currentMusume.comment)
     raceViewModel = RaceViewModel(region: region)
+    filterViewModel.racesRegion = region
   }
   
   var pageVC: PageViewController!
@@ -192,7 +193,6 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: PageViewDelegate {
-  
   func didChangedFinishedRaceCount(_ controller: PageViewController) {
     updateViewStatus()
   }
@@ -206,7 +206,6 @@ extension MainViewController: PageViewDelegate {
   }
   
   func moveSegment(currentGrade: String) {
-    
     switch currentGrade {
     case "G1":
       segRaceGrade.selectedSegmentIndex = 0
@@ -227,6 +226,8 @@ extension MainViewController: MusumeCollectionVCDelegate {
   func didChangedMusume(_ controller: MusumeCollectionViewController, musume: Musume) {
     let region = MusumeHelper.extractGameAppRegion(from: musume.comment)
     raceViewModel.changeRaceData(to: region)
+    filterViewModel.racesRegion = region
+    colViewFilter.reloadData()
     
     musumeViewModel.currentMusume = musume
     pageVC.currentMusume = musume
@@ -250,7 +251,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
     guard let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCell", for: indexPath) as? FilterCell else {
       return UICollectionViewCell()
     }
@@ -266,21 +266,20 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
     let menu = FilterHelper.getFilterMenuBy(row: indexPath.row)!
     
     if menu.filterCondition == .reset {
       filterViewModel.reset()
+      collectionView.reloadData()
       pageVC.reload()
       return
     }
     
     filterViewModel.toggleCurrentCondition(condition: menu.filterCondition)
     pageVC.reload()
-    print("currentFilterS:", filterViewModel.currentFilterConditions)
+    // print("currentFilterS:", filterViewModel.currentFilterConditions)
     
     if let cell = collectionView.cellForItem(at: indexPath) as? FilterCell {
-      
       if cell.backgroundColor == .clear {
         return
       }
@@ -288,11 +287,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
       collectionView.reloadItems(at: [indexPath])
     }
   }
-  
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
-  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
   }
@@ -344,9 +341,7 @@ class FilterCell: UICollectionViewCell {
     
   }
   
-  private func highlightCell(isOn: Bool) {
-    
-  }
+  private func highlightCell(isOn: Bool) { }
 }
 
 extension MainViewController: GADBannerViewDelegate {

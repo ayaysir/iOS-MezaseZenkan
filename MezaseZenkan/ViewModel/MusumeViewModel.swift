@@ -30,8 +30,6 @@ class MusumeViewModel {
     apiService.loadCurrentMusumeName { [self] musumeName in
       if let musumeName = musumeName {
         currentMusume = getMusumeBy(name: musumeName) ?? getMusumeBy(index: 0)
-        // TODO: - select app region
-        
       } else {
         currentMusume = getMusumeBy(index: 0)
       }

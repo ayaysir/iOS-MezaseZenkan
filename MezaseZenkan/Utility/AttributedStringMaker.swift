@@ -7,18 +7,17 @@
 
 import UIKit
 
-func attributedRaceStringMaker(from race: Race, filterConditions: Set<FilterCondition>) -> NSMutableAttributedString {
+func attributedRaceStringMaker(from race: Race, filterConditions: Set<FilterCondition>, region: GameAppRegion = .ja) -> NSMutableAttributedString {
   /*
    classicsenior | 9月後半 | G1
    芝 | 1200m(短距離) | 右外
    */
   
   let period = race.period
-  // TODO: - 로컬라이징 필요
-  let month = "\(race.month)月"
+  let month = "\(race.month)\(region.monthText)"
   let half = race.half
   let place = race.place
-  let grade = race.grade
+  // let grade = race.grade
   let terrain = race.terrain
   let length = "\(race.length)m"
   let lengthType = race.lengthType

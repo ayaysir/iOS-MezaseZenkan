@@ -263,7 +263,11 @@ class RaceCell: UICollectionViewCell {
     
     // ==== section: style ====
     
-    lblInfo.attributedText = attributedRaceStringMaker(from: race, filterConditions: filterConditions)
+    lblInfo.attributedText = attributedRaceStringMaker(
+      from: race,
+      filterConditions: filterConditions,
+      region: FilterHelper.region
+    )
     lblTitle.text = race.name
     
     cnstSubviewWidth.constant = self.frame.width
