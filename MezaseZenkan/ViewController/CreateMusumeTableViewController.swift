@@ -20,16 +20,27 @@ protocol CreateMusumeTVCDelegate: AnyObject {
 }
 
 class CreateMusumeTableViewController: UITableViewController {
+  let SECTION_NAME = 1
   let SECTION_APP_REGION = 2
+  let SECTION_PHOTO = 3
   
   enum Mode {
     case create, update
-    var submitText: String {
+    var localizedSubmitText: String {
       switch self {
       case .create:
-        "loc.button_create"
+        "loc.create".localized
       case .update:
-        "loc.button_update"
+        "loc.update".localized
+      }
+    }
+    
+    var localizedTitleText: String {
+      switch self {
+      case .create:
+        "loc.create_musume".localized
+      case .update:
+        "loc.update_musume".localized
       }
     }
   }
@@ -54,7 +65,11 @@ class CreateMusumeTableViewController: UITableViewController {
     imagePickerController.delegate = self
     pkvSelectRegion.delegate = self
     pkvSelectRegion.dataSource = self
-    btnSubmit.setTitle(mode.submitText, for: .normal)
+    
+    // Localization
+    btnSubmit.setTitle(mode.localizedSubmitText, for: .normal)
+    btnCancel.setTitle("loc.cancel".localized, for: .normal)
+    lblTitle.text = mode.localizedTitleText
     
     if mode == .update, let musumeToUpdate {
       txfName.text = musumeToUpdate.name
@@ -77,18 +92,18 @@ class CreateMusumeTableViewController: UITableViewController {
     // 공통: 유효성 검사
     
     guard let name = txfName.text else {
-      simpleAlert(self, message: "名前を入力する必要があります。")
+      simpleAlert(self, message: "loc.name_required".localized)
       return
     }
     
     guard name.count >= 1 && name.count <= 25 else {
-      simpleAlert(self, message: "名前は1文字以上25文字以下でなければなりません。")
+      simpleAlert(self, message: "loc.name_length_limit".localized)
       return
     }
     
     // 중복 검사
     if mode == .create && musumeViewModel.isNameDuplicated(name: name) {
-      simpleAlert(self, message: "すでに重複した名前があります。 別の名前で試してみてください。")
+      simpleAlert(self, message: "loc.name_duplicated".localized)
       return
     }
     
@@ -151,6 +166,19 @@ class CreateMusumeTableViewController: UITableViewController {
   }
   
   // MARK: - TableView Delegate
+  
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    switch section {
+    case SECTION_NAME:
+      "loc.section_name".localized
+    case SECTION_PHOTO:
+      "loc.section_photo".localized
+    case SECTION_APP_REGION:
+      "loc.section_app_region".localized
+    default:
+      super.tableView(tableView, titleForHeaderInSection: section)
+    }
+  }
 }
 
 extension CreateMusumeTableViewController {
@@ -179,7 +207,7 @@ extension CreateMusumeTableViewController {
     )
     musumeViewModel.addMusume(musume)
     
-    simpleAlert(self, message: "新しいキャラクター追加が完了しました。", title: "完了") { action in
+    simpleAlert(self, message: "loc.character_add_success".localized, title: "loc.complete".localized) { action in
       delegate.didAddedMusume(self, addedMusume: musume)
       self.dismiss(animated: true, completion: nil)
     }
@@ -202,7 +230,7 @@ extension CreateMusumeTableViewController {
     musumeToUpdate.imgDirectory = imgDirectory
     
     musumeViewModel.updateMusume(musumeToUpdate, replaceTo: index)
-    simpleAlert(self, message: "update completed", title: "完了") { action in
+    simpleAlert(self, message: "loc.update_success".localized, title: "loc.complete".localized) { action in
       delegate.didUpdatedMusume(self, updatedMusume: musumeToUpdate)
       self.dismiss(animated: true, completion: nil)
     }

@@ -89,7 +89,7 @@ struct FilterHelper {
       //        .g2: FilterMenu(searchName: "G2", filterCondition: .g2, section: .grade, displayOrder: 26),
       //        .g3: FilterMenu(searchName: "G3", filterCondition: .g3, section: .grade, displayOrder: 27),
       
-      FilterMenu(searchName: "loc.reset", filterCondition: .reset, section: .reset, displayOrder: 36),
+      FilterMenu(searchName: "loc.reset".localized, filterCondition: .reset, section: .reset, displayOrder: 36),
     ]
   }
   
@@ -326,7 +326,6 @@ struct FilterHelper {
   }
   
   static func getSectionCountOfIndex(row: Int) -> Int? {
-    
     if let filterCondition = getFilterMenuBy(row: row) {
       return getSectionCount(section: filterCondition.section)
     }

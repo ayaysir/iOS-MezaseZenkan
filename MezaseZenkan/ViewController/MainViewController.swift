@@ -47,6 +47,9 @@ class MainViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    // Localization
+    btnRotationView.setTitle("loc.btn_rotation_view".localized, for: .normal)
+    
     raceViewModel = RaceViewModel(region: .ja)
     
     imgViewMusume.layer.cornerRadius = imgViewMusume.frame.width * 0.5

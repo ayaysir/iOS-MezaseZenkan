@@ -9,6 +9,8 @@ import UIKit
 
 class RotationViewController: UIViewController {
   @IBOutlet weak var lblCurrentPeriod: UILabel!
+  @IBOutlet weak var lblIncludeOpRace: UILabel!
+  
   @IBOutlet weak var btnNextPeriodBigLeap: UIButton!
   @IBOutlet weak var btnPrevPeriodBigLeap: UIButton!
   @IBOutlet weak var btnPrevPeriod: UIButton!
@@ -30,6 +32,9 @@ class RotationViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    // Localization
+    lblIncludeOpRace.text = "loc.rv_include_op".localized
     
     tblViewRaceList.delegate = self
     tblViewRaceList.dataSource = self
@@ -70,7 +75,7 @@ class RotationViewController: UIViewController {
     currentRaces = raceViewModel.getRacesByPeriod(PeriodHelper.shared, isIncludeOP: isIncludeOP)
     tblViewRaceList.reloadData()
     
-    lblCurrentPeriod.text = PeriodHelper.shared.description
+    lblCurrentPeriod.text = PeriodHelper.shared.localizedDescription
     
     if PeriodHelper.shared.isLastPeriod {
       btnNextPeriodBigLeap.isEnabled = false
@@ -102,7 +107,12 @@ extension RotationViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     if currentRaces.count == 0 {
-      return tableView.dequeueReusableCell(withIdentifier: "BlankAlertCell") ?? UITableViewCell()
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "BlankAlertCell") as? BlankAlertCell else {
+        return UITableViewCell()
+      }
+      
+      cell.setupUI()
+      return cell
     }
     
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "RaceInfoTableCell") as? RaceInfoTableCell else {
@@ -128,10 +138,10 @@ class RaceInfoTableCell: UITableViewCell {
   @IBOutlet weak var lblPeriodDuplicated: UILabel!
   
   func update(race: Race, isFinished: Bool) {
-    if !UserDefaults.standard.bool(forKey: .cfgShowHighResBanner) {
-      imgViewRaceBanner.image = raceToBanner(race: race)
-    } else {
+    if UserDefaults.standard.bool(forKey: .cfgShowHighResBanner) && !race.bannerURL.isEmpty {
       imgViewRaceBanner.image = UIImage(named: "images/\(race.bannerURL)")
+    } else {
+      imgViewRaceBanner.image = raceToBanner(race: race)
     }
     
     lblTitle.text = race.name
@@ -161,7 +171,7 @@ class RaceInfoTableCell: UITableViewCell {
     if race.period == "classicsenior" {
       lblPeriodDuplicated.isHidden = false
       let periodText = PeriodHelper.shared.year == 3 ? "classic" : "senior"
-      lblPeriodDuplicated.text = "\(periodText)級に同じレースがあります。"
+      lblPeriodDuplicated.text = "loc.same_race_exist".localizedFormat(periodText)
     } else {
       lblPeriodDuplicated.isHidden = true
     }
@@ -181,5 +191,13 @@ class RaceInfoTableCell: UITableViewCell {
         self.backgroundColor = RGB255(red: 250, green: 220, blue: 142, alpha: 0.15).uiColor
       }
     }
+  }
+}
+
+class BlankAlertCell: UITableViewCell {
+  @IBOutlet weak var lblNoRace: UILabel!
+  
+  func setupUI() {
+    lblNoRace.text = "loc.rv_no_race".localized
   }
 }

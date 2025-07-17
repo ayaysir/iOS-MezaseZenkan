@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  MezaseZenkan
+
+  Created by 윤범태 on 7/18/25.
+  
+*/
+
+"loc.btn_rotation_view" = "ローテーションで見る";
+"loc.toggle_race_banner_res_to_high" = "レースバナーを高画質に交換";
+"loc.toggle_race_banner_res_to_normal" = "レースバナーを基本画像に交換";
+"loc.btn_send_mail_dev" = "開発者にメールを送信";
+"loc.lbl_how_web" = "タップして次のページに移動します。";
+"loc.mail_unavailable_msg" = "ユーザーのメールアカウントが設定されていないため、メールを送信できません。";
+"loc.mail_unavailable_title" = "Mail Unavailable";
+"loc.mail_title" = "Feedback of MezaseZenkan";
+"loc.btn_add_new_musume" = "+ 新規キャラクター追加";
+"loc.delete" = "삭제";
+"loc.update" = "업데이트";
+"loc.create" = "생성";
+"loc.create_musume" = "新規キャラクター追加";
+"loc.update_musume" = "アップデート";
+"loc.view_info" = "정보 보기";
+"loc.mc_btn_multiple_selection" = "다중 선택";
+"loc.mc_btn_delete_all" = "모두 삭제";
+"loc.confirm_delete_one" = "%@의 모든 레이스 정보를 삭제하시겠습니까? 이 명령은 되돌릴 수 없습니다.";
+"loc.confirm_delete_multi" = "선택한 %d명의 모든 레이스 정보를 삭제하시겠습니까? 이 명령은 되돌릴 수 없습니다.";
+"loc.alert_no_musume" = "선택한 캐릭터가 없습니다.";
+"loc.cancel" = "취소";
+"loc.complete" = "完了";
+"loc.name_required" = "名前を入力する必要があります。";
+"loc.name_length_limit" = "名前は1文字以上25文字以下でなければなりません。";
+"loc.name_duplicated" = "すでに重複した名前があります。別の名前で試してみてください。";
+"loc.character_add_success" = "新しいキャラクター追加が完了しました。";
+"loc.update_success" = "アップデートが完了しました。";
+"loc.section_name" = "Name";
+"loc.section_photo" = "Select a Photo";
+"loc.section_app_region" = "Select App Region Ver.";
+"loc.same_race_exists" = "%@級に同じレースがあります。";
+"loc.reset" = "リセット";

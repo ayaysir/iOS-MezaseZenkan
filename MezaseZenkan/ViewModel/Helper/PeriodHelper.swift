@@ -33,7 +33,7 @@ class PeriodHelper {
     return "\(whole)月 \(fraction == 0 ? "前半" : "後半")"
   }
   
-  var description: String {
+  var localizedDescription: String {
     return "\(yearText)級 \(monthText) "
   }
   

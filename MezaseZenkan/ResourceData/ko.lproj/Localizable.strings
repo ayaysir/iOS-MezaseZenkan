@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  MezaseZenkan
+
+  Created by 윤범태 on 7/18/25.
+  
+*/
+
+"loc.name_required" = "이름을 입력해야 합니다.";
+"loc.name_length_limit" = "이름은 1자 이상 25자 이하여야 합니다.";
+"loc.name_duplicated" = "이미 같은 이름이 존재합니다. 다른 이름을 사용해 주세요.";
+"loc.character_add_success" = "새 캐릭터 추가가 완료되었습니다.";
+"loc.update_success" = "업데이트가 완료되었습니다.";
+"loc.same_race_exists" = "%@급에 동일한 레이스가 존재합니다.";

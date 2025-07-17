@@ -14,15 +14,16 @@ protocol WebVCDelegate: AnyObject {
 }
 
 class WebViewController: UIViewController {
-  
   weak var delegate: WebVCDelegate?
   let toggleHighResButtonText = [
-    "レースバナーを高画質に交換",
-    "レースバナーを基本画像に交換",
+    "loc.toggle_race_banner_res_to_high".localized,
+    "loc.toggle_race_banner_res_to_normal".localized,
   ]
   
   @IBOutlet weak var webView: WKWebView!
   @IBOutlet weak var btnToggleRaceBannerRes: UIButton!
+  @IBOutlet weak var btnSendMailToDev: UIButton!
+  @IBOutlet weak var lblHowBrowseWeb: UILabel!
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -43,6 +44,10 @@ class WebViewController: UIViewController {
     super.viewDidLoad()
     TrackingTransparencyPermissionRequest()
     loadHelpPage()
+    
+    // localization
+    btnSendMailToDev.setTitle("loc.btn_send_mail_dev".localized, for: .normal)
+    lblHowBrowseWeb.text = "loc.lbl_how_web".localized
   }
   
   private func closeViewAndReload() {
@@ -94,23 +99,31 @@ extension WebViewController: WKUIDelegate, WKNavigationDelegate {
 extension WebViewController: MFMailComposeViewControllerDelegate {
   
   @IBAction func launchEmail(sender: UIButton) {
-    // 1
+    let emailTitle = "loc.mail_title".localized // 메일 제목
+    let messageBody =
+        """
+        OS Version: \(osVersion)
+        App Version: \(appVersion ?? "-")
+        
+        """
+    
     guard MFMailComposeViewController.canSendMail() else {
       // 사용자의 메일 계정이 설정되어 있지 않아 메일을 보낼 수 없다는 경고 메시지 추가
-      simpleAlert(self, message: "ユーザーのメールアカウントが設定されていないため、メールを送信できません。")
+      simpleYesAndNo(
+        self,
+        message: "loc.mail_unavailable_msg".localized,
+        title: "loc.mail_unavailable_title".localized) { _ in
+          // 외부 메일 앱 열기
+          let recipientEmail = "yoonbumtae@gmail.com"
+          let subject = emailTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+          let body = messageBody.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+          if let url = URL(string: "mailto:\(recipientEmail)?subject=\(subject)&body=\(body)") {
+            UIApplication.shared.open(url)
+          }
+        }
       return
     }
     
-    // 2
-    let emailTitle = "Feedback of MezaseZenkan" // 메일 제목
-    let messageBody =
-        """
-        OS Version: \(UIDevice.current.systemVersion)
-        
-        
-        """
-    
-    // 3
     let toRecipents = ["yoonbumtae@gmail.com"]
     let mc: MFMailComposeViewController = MFMailComposeViewController()
     mc.mailComposeDelegate = self
@@ -121,7 +134,6 @@ extension WebViewController: MFMailComposeViewControllerDelegate {
     self.present(mc, animated: true, completion: nil)
   }
   
-  // 4
   @objc(mailComposeController:didFinishWithResult:error:)
   func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult,error: Error?) {
     controller.dismiss(animated: true)

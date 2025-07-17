@@ -14,6 +14,8 @@ protocol MusumeCollectionVCDelegate: AnyObject {
 fileprivate let reuseIdentifier = "MusumeCell"
 
 class MusumeCollectionViewController: UICollectionViewController {
+  
+  
   weak var delegate: MusumeCollectionVCDelegate?
   
   var musumeViewModel: MusumeViewModel!
@@ -25,33 +27,14 @@ class MusumeCollectionViewController: UICollectionViewController {
   private var selectedMusumeIndexes: Set<Int> = []
   private var selectMode: SelectMode = .normal {
     didSet {
-      guard let headerView = collectionView.supplementaryView(
-        forElementKind: UICollectionView.elementKindSectionHeader,
-        at: IndexPath(row: 0, section: 0)
-      ) as? MusumeCollectionHeaderCell else {
-        print("headerView not found")
-        return
-      }
-      
-      collectionView.reloadData()
-      
-      switch selectMode {
-      case .normal:
-        headerView.btnCancel.isHidden = true
-        headerView.btnModeSelect_Delete.setTitle("다중 선택", for: .normal)
-        headerView.btnModeSelect_Delete.setTitleColor(nil, for: .normal)
-      case .multipleSelect:
-        headerView.btnCancel.isHidden = false
-        headerView.btnModeSelect_Delete.setTitle("모두 삭제", for: .normal)
-        headerView.btnModeSelect_Delete.setTitleColor(.systemRed, for: .normal)
-      }
+      didSetSelectMode()
     }
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     TrackingTransparencyPermissionRequest()
+    
   }
   
   // MARK: - UICollectionViewDataSource
@@ -109,6 +92,18 @@ class MusumeCollectionViewController: UICollectionViewController {
       }
       
       headerView.delegate = self
+      headerView.btnAddNewMusume.setTitle(
+        "loc.btn_add_new_musume".localized,
+        for: .normal
+      )
+      headerView.btnCancel.setTitle(
+        "loc.cancle".localized,
+        for: .normal
+      )
+      headerView.btnModeSelect_Delete.setTitle(
+        "loc.mc_btn_multiple_selection".localized,
+        for: .normal
+      )
       return headerView
       
     default:
@@ -130,7 +125,7 @@ class MusumeCollectionViewController: UICollectionViewController {
       let isCurrentMusume = selectedMusume == musumeViewModel.currentMusume
       let deleteActionAttributes: UIMenuElement.Attributes = (isCurrentMusume ? .disabled : .destructive)
       let deleteAction = UIAction(
-        title: "삭제",
+        title: "loc.delete".localized,
         image: UIImage(systemName: "trash"),
         attributes: deleteActionAttributes
       ) { action in
@@ -140,13 +135,16 @@ class MusumeCollectionViewController: UICollectionViewController {
       }
       
       let updateAction = UIAction(
-        title: "업데이트",
+        title: "loc.update".localized,
         image: UIImage(systemName: "play")
       ) { [unowned self] action in
         performSegue(withIdentifier: "UpdateMusume", sender: selectedMusume)
       }
       
-      let infoAction = UIAction(title: "정보 보기", image: UIImage(systemName: "info.circle")) { [unowned self] action in
+      let infoAction = UIAction(
+        title: "loc.view_info".localized,
+        image: UIImage(systemName: "info.circle")
+      ) { [unowned self] action in
         // print("정보: \(firstIndexPath)")
         selectMusume(of: firstIndexPath.row)
       }
@@ -208,6 +206,35 @@ extension MusumeCollectionViewController: CreateMusumeTVCDelegate {
 }
 
 extension MusumeCollectionViewController {
+  func didSetSelectMode() {
+    guard let headerView = collectionView.supplementaryView(
+      forElementKind: UICollectionView.elementKindSectionHeader,
+      at: IndexPath(row: 0, section: 0)
+    ) as? MusumeCollectionHeaderCell else {
+      print("headerView not found")
+      return
+    }
+    
+    collectionView.reloadData()
+    
+    switch selectMode {
+    case .normal:
+      headerView.btnCancel.isHidden = true
+      headerView.btnModeSelect_Delete.setTitle(
+        "loc.mc_btn_multiple_selection".localized,
+        for: .normal
+      )
+      headerView.btnModeSelect_Delete.setTitleColor(nil, for: .normal)
+    case .multipleSelect:
+      headerView.btnCancel.isHidden = false
+      headerView.btnModeSelect_Delete.setTitle(
+        "loc.mc_btn_delete_all".localized,
+        for: .normal
+      )
+      headerView.btnModeSelect_Delete.setTitleColor(.systemRed, for: .normal)
+    }
+  }
+  
   /// 캐릭터 선택 후 시트를 닫고 정보 표시
   func selectMusume(of index: Int) {
     let musume = musumeViewModel.getMusumeBy(index: index)
@@ -222,8 +249,8 @@ extension MusumeCollectionViewController {
   func showAlertDelete(of musume: Musume) {
     simpleDestructiveYesAndNo(
       self,
-      message: "\(musume.name)의 모든 정보를 삭제하시겠습니까? 이 명령은 되돌릴 수 없습니다.",
-      title: "삭제") { [weak self] _ in
+      message: "loc.confirm_delete_one".localizedFormat(musume.name),
+      title: "loc.delete".localized) { [weak self] _ in
         guard let self else { return }
         removeInfo(of: musume)
       }
@@ -264,14 +291,14 @@ extension MusumeCollectionViewController: MusumeColletionHeaderDelegate {
     } else {
       // 삭제 작업
       guard !selectedMusumeIndexes.isEmpty else {
-        simpleAlert(self, message: "선택한 캐릭터가 없습니다.")
+        simpleAlert(self, message: "loc.alert_no_musume".localized)
         return
       }
       
       simpleDestructiveYesAndNo(
         self,
-        message: "선택한 \(selectedMusumeIndexes.count)개의 모든 정보를 삭제하시겠습니까? 이 명령은 되돌릴 수 없습니다.",
-        title: "삭제") { [weak self] _ in
+        message: "loc.confirm_delete_multi".localizedFormat(selectedMusumeIndexes.count),
+        title: "loc.delete".localized) { [weak self] _ in
           guard let self else { return }
           removeSelectedInfo()
         }
@@ -350,6 +377,7 @@ protocol MusumeColletionHeaderDelegate: AnyObject {
 class MusumeCollectionHeaderCell: UICollectionReusableView {
   @IBOutlet weak var btnModeSelect_Delete: UIButton!
   @IBOutlet weak var btnCancel: UIButton!
+  @IBOutlet weak var btnAddNewMusume: UIButton!
   
   weak var delegate: MusumeColletionHeaderDelegate?
   
