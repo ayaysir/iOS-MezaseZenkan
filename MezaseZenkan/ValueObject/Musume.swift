@@ -14,11 +14,11 @@ import Foundation
 ///  let musume = try? newJSONDecoder().decode(Musume.self, from: jsonData)
 ///  ```
 struct Musume: Codable, Equatable, Hashable {
-    let name, nameEn, cv, birthday: String
+    var name, nameEn, cv, birthday: String
     let height: Int
     let weight: String
     let b, w, h: Int
-    let comment, catchphrase, imgProfile, imgDirectory: String
+    var comment, catchphrase, imgProfile, imgDirectory: String
     let isAvailable: Bool
 
     enum CodingKeys: String, CodingKey {

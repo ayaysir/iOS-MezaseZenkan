@@ -39,7 +39,7 @@ class MusumeCollectionViewController: UICollectionViewController {
     // Configure the cell
     let musume = musumeViewModel.getMusumeBy(index: indexPath.row)
     let finishedRaceCount = raceStateViewModel?.getFinishedRaceNamesBy(musumeName: musume.name).count ?? 0
-    let isCurrentSelected = musumeViewModel.currentMusume == musume
+    let isCurrentSelected = musumeViewModel.currentMusume.name == musume.name
     cell.update(musume: musume, finishedRaceCount: finishedRaceCount, isCurrent: isCurrentSelected)
     return cell
   }
@@ -83,12 +83,19 @@ class MusumeCollectionViewController: UICollectionViewController {
         self.showAlertDelete(of: selectedMusume)
       }
       
+      let updateAction = UIAction(
+        title: "업데이트",
+        image: UIImage(systemName: "play")
+      ) { [unowned self] action in
+        performSegue(withIdentifier: "UpdateMusume", sender: selectedMusume)
+      }
+      
       let infoAction = UIAction(title: "정보 보기", image: UIImage(systemName: "info.circle")) { [unowned self] action in
         // print("정보: \(firstIndexPath)")
         selectMusume(of: firstIndexPath.row)
       }
       
-      return UIMenu(title: "", children: [infoAction, deleteAction])
+      return UIMenu(title: "", children: [infoAction, updateAction, deleteAction])
     }
   }
   
@@ -98,6 +105,13 @@ class MusumeCollectionViewController: UICollectionViewController {
       let vc = segue.destination as! CreateMusumeTableViewController
       vc.delegate = self
       vc.musumeViewModel = musumeViewModel
+      vc.mode = .create
+    case "UpdateMusume":
+      let vc = segue.destination as! CreateMusumeTableViewController
+      vc.delegate = self
+      vc.musumeViewModel = musumeViewModel
+      vc.mode = .update
+      vc.musumeToUpdate = sender as? Musume
     default:
       break
     }
@@ -122,6 +136,18 @@ extension MusumeCollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension MusumeCollectionViewController: CreateMusumeTVCDelegate {
+  func didUpdatedMusume(_ controller: CreateMusumeTableViewController, updatedMusume: Musume) {
+    // - 현재 캐릭터가 아니면 컬렉션 뷰만 리로드
+    // - 현재 캐릭터를 업데이트했다면
+    //   - 2. 사진이 바뀌었다면 사진 업데이트
+    
+    if musumeViewModel.currentMusume.name == updatedMusume.name {
+      delegate?.didChangedMusume(self, musume: updatedMusume)
+    }
+    
+    collectionView.reloadData()
+  }
+  
   func didAddedMusume(_ controller: CreateMusumeTableViewController, addedMusume: Musume) {
     collectionView.reloadData()
   }
@@ -159,6 +185,7 @@ extension MusumeCollectionViewController {
   func removeInfo(of musume: Musume) {
     musumeViewModel.removeMusume([musume])
     raceStateViewModel.removeAllStates(of: musume.name)
+    deleteFile(named: "\(musume.name).png")
     collectionView.reloadData()
   }
 }

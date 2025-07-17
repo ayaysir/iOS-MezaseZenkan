@@ -319,6 +319,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="sEg-EH-VbQ"/>
+                    <connections>
+                        <segue destination="hUa-5t-P6V" kind="show" identifier="UpdateMusume" id="Xws-H8-suH"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ujS-np-ttm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -487,8 +490,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hph-7g-d23">
-                                                    <rect key="frame" x="20" y="0.0" width="500" height="49"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hph-7g-d23">
+                                                    <rect key="frame" x="0.0" y="0.0" width="540" height="49"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="CANCEL"/>
                                                     <connections>
@@ -503,6 +506,12 @@
                                                 <constraint firstItem="hph-7g-d23" firstAttribute="leading" secondItem="4he-4Y-AfR" secondAttribute="leading" constant="20" symbolic="YES" id="g44-eS-fzq"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="hph-7g-d23" firstAttribute="top" secondItem="QXA-5T-PY3" secondAttribute="top" id="6ID-yQ-515"/>
+                                            <constraint firstAttribute="bottom" secondItem="hph-7g-d23" secondAttribute="bottom" id="Nh1-EA-zVu"/>
+                                            <constraint firstAttribute="trailing" secondItem="hph-7g-d23" secondAttribute="trailing" constant="20" symbolic="YES" id="Z0A-Qe-FCj"/>
+                                            <constraint firstItem="hph-7g-d23" firstAttribute="leading" secondItem="QXA-5T-PY3" secondAttribute="leading" constant="20" symbolic="YES" id="oAw-sp-SLg"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -514,7 +523,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="eoi-nY-5bw"/>
                     <connections>
+                        <outlet property="btnCancel" destination="hph-7g-d23" id="Wgx-NF-XUU"/>
+                        <outlet property="btnSubmit" destination="ZKo-Eb-QbQ" id="OgC-I5-yh8"/>
                         <outlet property="imgViewProfile" destination="oZE-jn-B2s" id="OTa-cu-uyF"/>
+                        <outlet property="lblTitle" destination="aBw-FO-PzX" id="Po2-Di-A1R"/>
                         <outlet property="pkvSelectRegion" destination="tFX-Km-Fiz" id="IUj-Pw-L0c"/>
                         <outlet property="txfName" destination="gk3-n0-3y8" id="RIv-a5-LcQ"/>
                     </connections>
@@ -900,6 +912,9 @@
             <point key="canvasLocation" x="697" y="-680"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Xws-H8-suH"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Hydrangeas" width="1024" height="768"/>
         <image name="arrow.down.square.fill" catalog="system" width="128" height="114"/>

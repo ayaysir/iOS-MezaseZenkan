@@ -100,3 +100,23 @@ func raceToBanner(race: Race) -> UIImage {
   let point = CGPoint(x: 0, y: yPos)
   return textToImage(drawText: race.name, inImage: blankBanner, atPoint: point, textFont: textFont)
 }
+
+func deleteFile(named fileName: String) {
+  let fileManager = FileManager.default
+
+  // Document 디렉토리 경로 구하기
+  if let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
+    let fileURL = documentsDirectory.appendingPathComponent(fileName)
+
+    if fileManager.fileExists(atPath: fileURL.path) {
+      do {
+        try fileManager.removeItem(at: fileURL)
+        print("\(fileName) 삭제 완료")
+      } catch {
+        print("파일 삭제 실패: \(error)")
+      }
+    } else {
+      print("파일이 존재하지 않음: \(fileName)")
+    }
+  }
+}
