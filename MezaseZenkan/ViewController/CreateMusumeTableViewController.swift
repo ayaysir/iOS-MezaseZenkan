@@ -115,7 +115,6 @@ extension CreateMusumeTableViewController: CropViewControllerDelegate {
   }
   
   func cropViewControllerDidCancel(_ cropViewController: CropViewController, original: UIImage) {
-    print(#function)
     cropViewController.dismiss(animated: true, completion: nil)
   }
   

@@ -53,7 +53,7 @@ class PageViewController: UIPageViewController, UIGestureRecognizerDelegate {
     if gestureRecognizer.state == .began {
       
       if let indexPath = collectionView.indexPathForItem(at: location) {
-        print("Long press at item began: \(indexPath.row)")
+        // print("Long press at item began: \(indexPath.row)")
         
         // animation
         UIView.animate(withDuration: 0.2) {
@@ -64,9 +64,9 @@ class PageViewController: UIPageViewController, UIGestureRecognizerDelegate {
         }
       }
     } else if gestureRecognizer.state == .ended {
-      print("lt ended")
+      // print("lt ended")
       if let indexPath = collectionView.indexPathForItem(at: location) {
-        print("Long press at item end: \(indexPath.row)")
+        // print("Long press at item end: \(indexPath.row)")
         
         // animation
         UIView.animate(withDuration: 0.2) {

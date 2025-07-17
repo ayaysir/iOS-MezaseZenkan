@@ -45,12 +45,7 @@ class MusumeCollectionViewController: UICollectionViewController {
   }
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let musume = musumeViewModel.getMusumeBy(index: indexPath.row)
-
-    if let delegate = delegate {
-      delegate.didChangedMusume(self, musume: musume)
-      self.dismiss(animated: true, completion: nil)
-    }
+    selectMusume(of: indexPath.row)
   }
   
   override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -62,6 +57,38 @@ class MusumeCollectionViewController: UICollectionViewController {
       
     default:
       return UICollectionReusableView()
+    }
+  }
+  
+  override func collectionView(
+    _ collectionView: UICollectionView,
+    contextMenuConfigurationForItemsAt indexPaths: [IndexPath],
+    point: CGPoint
+  ) -> UIContextMenuConfiguration? {
+    UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { [unowned self] _ in
+      guard let firstIndexPath = indexPaths.first else {
+        return nil
+      }
+      
+      let selectedMusume = musumeViewModel.getMusumeBy(index: firstIndexPath.row)
+      let isCurrentMusume = selectedMusume == musumeViewModel.currentMusume
+      let deleteActionAttributes: UIMenuElement.Attributes = (isCurrentMusume ? .disabled : .destructive)
+      let deleteAction = UIAction(
+        title: "삭제",
+        image: UIImage(systemName: "trash"),
+        attributes: deleteActionAttributes
+      ) { action in
+        print("삭제: \(firstIndexPath)")
+        // 삭제 창 띄우기
+        self.showAlertDelete(of: selectedMusume)
+      }
+      
+      let infoAction = UIAction(title: "정보 보기", image: UIImage(systemName: "info.circle")) { [unowned self] action in
+        // print("정보: \(firstIndexPath)")
+        selectMusume(of: firstIndexPath.row)
+      }
+      
+      return UIMenu(title: "", children: [infoAction, deleteAction])
     }
   }
   
@@ -96,6 +123,42 @@ extension MusumeCollectionViewController: UICollectionViewDelegateFlowLayout {
 
 extension MusumeCollectionViewController: CreateMusumeTVCDelegate {
   func didAddedMusume(_ controller: CreateMusumeTableViewController, addedMusume: Musume) {
+    collectionView.reloadData()
+  }
+}
+
+extension MusumeCollectionViewController {
+  /// 캐릭터 선택 후 시트를 닫고 정보 표시
+  func selectMusume(of index: Int) {
+    let musume = musumeViewModel.getMusumeBy(index: index)
+
+    if let delegate {
+      delegate.didChangedMusume(self, musume: musume)
+      self.dismiss(animated: true, completion: nil)
+    }
+  }
+  
+  /// 삭제 여부 묻는 얼럿 표시
+  func showAlertDelete(of musume: Musume) {
+    let deleteAction = UIAlertAction(title: "삭제", style: .destructive) { [weak self] _ in
+      guard let self else { return }
+      removeInfo(of: musume)
+    }
+    let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+    let alert = UIAlertController(
+      title: "삭제",
+      message: "\(musume.name)의 모든 정보를 삭제하시겠습니까? 이 명령은 되돌릴 수 없습니다.",
+      preferredStyle: .alert
+    )
+    alert.addAction(cancelAction)
+    alert.addAction(deleteAction)
+    present(alert, animated: true)
+  }
+  
+  /// Musume, RaceStates 정보 삭제 명령 호출
+  func removeInfo(of musume: Musume) {
+    musumeViewModel.removeMusume([musume])
+    raceStateViewModel.removeAllStates(of: musume.name)
     collectionView.reloadData()
   }
 }

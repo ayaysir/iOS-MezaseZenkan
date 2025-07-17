@@ -41,9 +41,8 @@ class MusumeViewModel {
   }
   
   private func getMusumeDataFromServer() {
-    
     apiService.loadMusumeData { musumes in
-      print(musumes)
+      // print(musumes)
       self.totalMusumeData = musumes
     }
   }
@@ -68,5 +67,12 @@ class MusumeViewModel {
   
   func addMusume(_ musume: Musume) {
     totalMusumeData.append(musume)
+  }
+  
+  /// Musume 삭제
+  /// - totalMusumeData가 갱신되면 UserDefaults에 자동 저장
+  func removeMusume(_ musumes: [Musume]) {
+    let musumesToRemove = Set(musumes)
+    totalMusumeData = totalMusumeData.filter { !musumes.contains($0) }
   }
 }

@@ -350,7 +350,7 @@ extension MainViewController: GADBannerViewDelegate {
     
     viewBannerAds.layoutIfNeeded()
     let bannerWidth = viewBannerAds.frame.width
-    print("bw:", bannerWidth)
+    // print("bw:", bannerWidth)
     let adSize = GADAdSizeFromCGSize(CGSize(width: bannerWidth, height: viewBannerAds.frame.height))
     let bannerView = GADBannerView(adSize: adSize)
     

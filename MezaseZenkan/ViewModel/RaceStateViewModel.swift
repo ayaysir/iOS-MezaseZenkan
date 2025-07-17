@@ -45,7 +45,6 @@ class RaceStateViewModel {
   }
   
   func getFinishedRaceNamesBy(musumeName: String) -> [String] {
-    
     let keys = raceStateData[musumeName]?.filter { (raceName: String, finished: Bool) in
       finished
     }.keys
@@ -61,6 +60,7 @@ class RaceStateViewModel {
     if let musume = raceStateData[musumeName] {
       return musume[raceName] ?? false
     }
+    
     return false
   }
   
@@ -71,5 +71,10 @@ class RaceStateViewModel {
   func toggleFinishResult(musumeName: String, raceName: String) {
     let prevFinishResult = self.getFinishedBy(musumeName: musumeName, raceName: raceName)
     self.setFinish(musumeName: musumeName, raceName: raceName, isFinished: !prevFinishResult)
+  }
+  
+  /// 특정 Musume의 레이스 정보 모두 삭제
+  func removeAllStates(of musumeName: String) {
+    raceStateData.removeValue(forKey: musumeName)
   }
 }
