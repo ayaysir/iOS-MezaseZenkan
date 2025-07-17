@@ -273,6 +273,14 @@
                                             <color key="textColor" red="0.97311054360000004" green="0.97260212199999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuW-YC-QXi">
+                                            <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" image="checkmark" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="10" scale="default" weight="regular"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="rOA-zM-uMU" secondAttribute="trailing" constant="9" id="0n4-gm-qjh"/>
@@ -291,6 +299,7 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="106" height="122"/>
                                 <connections>
+                                    <outlet property="btnCheck" destination="DuW-YC-QXi" id="zaI-h9-dBY"/>
                                     <outlet property="imgViewProfile" destination="rOA-zM-uMU" id="uXF-sM-SLT"/>
                                     <outlet property="lblGameRegion" destination="EE3-MY-TFU" id="NEu-VY-Tnz"/>
                                     <outlet property="lblMusumeName" destination="G5b-ce-TdY" id="CnQ-QR-FZP"/>
@@ -298,7 +307,7 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlusHeader" id="9mo-Mn-q7E">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlusHeader" id="9mo-Mn-q7E" customClass="MusumeCollectionHeaderCell" customModule="MezaseZenkan" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="580" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -311,7 +320,41 @@
                                         <segue destination="hUa-5t-P6V" kind="show" identifier="CreateMusume" id="VHU-gp-0Jc"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FJ-GB-Cjc">
+                                    <rect key="frame" x="497" y="8" width="75" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="75" id="v0Y-dV-2od"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="다중 선택"/>
+                                    <connections>
+                                        <action selector="btnActMultiSelect_Delete:" destination="9mo-Mn-q7E" eventType="touchUpInside" id="HdJ-FJ-zSP"/>
+                                    </connections>
+                                </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTU-Nn-6jq">
+                                    <rect key="frame" x="438" y="8" width="51" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="51" id="aKV-Dc-KU1"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="취소"/>
+                                    <connections>
+                                        <action selector="btnActCancel:" destination="9mo-Mn-q7E" eventType="touchUpInside" id="YOH-uv-kRV"/>
+                                    </connections>
+                                </button>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="QTU-Nn-6jq" firstAttribute="bottom" secondItem="6FJ-GB-Cjc" secondAttribute="bottom" id="6YW-yI-pSj"/>
+                                <constraint firstAttribute="bottom" secondItem="6FJ-GB-Cjc" secondAttribute="bottom" constant="7" id="P9d-9F-ZCg"/>
+                                <constraint firstItem="QTU-Nn-6jq" firstAttribute="top" secondItem="6FJ-GB-Cjc" secondAttribute="top" id="UZR-S0-O1C"/>
+                                <constraint firstAttribute="trailing" secondItem="6FJ-GB-Cjc" secondAttribute="trailing" constant="8" id="jSk-35-4kQ"/>
+                                <constraint firstItem="6FJ-GB-Cjc" firstAttribute="leading" secondItem="QTU-Nn-6jq" secondAttribute="trailing" constant="8" symbolic="YES" id="p2G-az-vSg"/>
+                                <constraint firstItem="6FJ-GB-Cjc" firstAttribute="top" secondItem="9mo-Mn-q7E" secondAttribute="top" constant="8" id="wKd-ya-Vm3"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="btnCancel" destination="QTU-Nn-6jq" id="EJ8-r0-gVf"/>
+                                <outlet property="btnModeSelect_Delete" destination="6FJ-GB-Cjc" id="g6M-w8-BON"/>
+                            </connections>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="MOP-82-xuw" id="Z3S-bx-j7s"/>
@@ -509,8 +552,8 @@
                                         <constraints>
                                             <constraint firstItem="hph-7g-d23" firstAttribute="top" secondItem="QXA-5T-PY3" secondAttribute="top" id="6ID-yQ-515"/>
                                             <constraint firstAttribute="bottom" secondItem="hph-7g-d23" secondAttribute="bottom" id="Nh1-EA-zVu"/>
-                                            <constraint firstAttribute="trailing" secondItem="hph-7g-d23" secondAttribute="trailing" constant="20" symbolic="YES" id="Z0A-Qe-FCj"/>
-                                            <constraint firstItem="hph-7g-d23" firstAttribute="leading" secondItem="QXA-5T-PY3" secondAttribute="leading" constant="20" symbolic="YES" id="oAw-sp-SLg"/>
+                                            <constraint firstAttribute="trailing" secondItem="hph-7g-d23" secondAttribute="trailing" symbolic="YES" id="Z0A-Qe-FCj"/>
+                                            <constraint firstItem="hph-7g-d23" firstAttribute="leading" secondItem="QXA-5T-PY3" secondAttribute="leading" symbolic="YES" id="oAw-sp-SLg"/>
                                         </constraints>
                                     </tableViewCell>
                                 </cells>
@@ -922,6 +965,7 @@
         <image name="arrowtriangle.right.fill" catalog="system" width="128" height="113"/>
         <image name="backward.fill" catalog="system" width="128" height="76"/>
         <image name="checkma" width="128" height="128"/>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="forward.fill" catalog="system" width="128" height="76"/>
         <image name="fuyuurara" width="500" height="500"/>
         <image name="i_race1.png" width="320" height="170"/>

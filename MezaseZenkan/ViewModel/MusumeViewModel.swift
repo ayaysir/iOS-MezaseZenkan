@@ -76,6 +76,23 @@ class MusumeViewModel {
     totalMusumeData = totalMusumeData.filter { !musumesToRemove.contains($0) }
   }
   
+  /// Musume 삭제 (index로)
+  /// - totalMusumeData가 갱신되면 UserDefaults에 자동 저장
+  func removeMusume(by indexes: Set<Int>) {
+    guard var localTotalMusumeData = totalMusumeData else {
+      return
+    }
+    // 인덱스를 오름차순으로 정렬한 후 뒤에서부터 삭제해야 index 오류 방지됨
+    let sortedIndexes = indexes.sorted(by: >)
+    
+    for index in sortedIndexes {
+      guard localTotalMusumeData.indices.contains(index) else { continue }
+      localTotalMusumeData.remove(at: index)
+    }
+    
+    self.totalMusumeData = localTotalMusumeData
+  }
+  
   /// Musume 업데이트
   /// - totalMusumeData 배열에서 기존 무스메를 인덱스로 찾아 교체
   func updateMusume(_ musume: Musume, replaceTo index: Int) {

@@ -19,13 +19,43 @@ class MusumeCollectionViewController: UICollectionViewController {
   var musumeViewModel: MusumeViewModel!
   var raceStateViewModel: RaceStateViewModel!
   
+  enum SelectMode {
+    case normal, multipleSelect
+  }
+  private var selectedMusumeIndexes: Set<Int> = []
+  private var selectMode: SelectMode = .normal {
+    didSet {
+      guard let headerView = collectionView.supplementaryView(
+        forElementKind: UICollectionView.elementKindSectionHeader,
+        at: IndexPath(row: 0, section: 0)
+      ) as? MusumeCollectionHeaderCell else {
+        print("headerView not found")
+        return
+      }
+      
+      collectionView.reloadData()
+      
+      switch selectMode {
+      case .normal:
+        headerView.btnCancel.isHidden = true
+        headerView.btnModeSelect_Delete.setTitle("다중 선택", for: .normal)
+        headerView.btnModeSelect_Delete.setTitleColor(nil, for: .normal)
+      case .multipleSelect:
+        headerView.btnCancel.isHidden = false
+        headerView.btnModeSelect_Delete.setTitle("모두 삭제", for: .normal)
+        headerView.btnModeSelect_Delete.setTitleColor(.systemRed, for: .normal)
+      }
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     TrackingTransparencyPermissionRequest()
   }
   
-  // MARK: UICollectionViewDataSource
+  // MARK: - UICollectionViewDataSource
+  
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return musumeViewModel.totalCount
   }
@@ -40,23 +70,49 @@ class MusumeCollectionViewController: UICollectionViewController {
     let musume = musumeViewModel.getMusumeBy(index: indexPath.row)
     let finishedRaceCount = raceStateViewModel?.getFinishedRaceNamesBy(musumeName: musume.name).count ?? 0
     let isCurrentSelected = musumeViewModel.currentMusume.name == musume.name
-    cell.update(musume: musume, finishedRaceCount: finishedRaceCount, isCurrent: isCurrentSelected)
+    let isMultiSelected = selectedMusumeIndexes.contains(indexPath.row)
+    cell.update(
+      musume: musume,
+      finishedRaceCount: finishedRaceCount,
+      isCurrent: isCurrentSelected,
+      selectMode: selectMode,
+      isMultiSelected: isMultiSelected
+    )
     return cell
   }
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    selectMusume(of: indexPath.row)
+    switch selectMode {
+    case .normal:
+      selectMusume(of: indexPath.row)
+    case .multipleSelect:
+      guard musumeViewModel.currentMusume != musumeViewModel.getMusumeBy(index: indexPath.row) else {
+        return
+      }
+      
+      if selectedMusumeIndexes.contains(indexPath.row) {
+        selectedMusumeIndexes.remove(indexPath.row)
+      } else {
+        selectedMusumeIndexes.insert(indexPath.row)
+      }
+      
+      collectionView.reloadItems(at: [indexPath])
+    }
   }
   
   override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     
     switch kind {
     case UICollectionView.elementKindSectionHeader:
-      let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PlusHeader", for: indexPath)
+      guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PlusHeader", for: indexPath) as? MusumeCollectionHeaderCell else {
+        return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
+      }
+      
+      headerView.delegate = self
       return headerView
       
     default:
-      return UICollectionReusableView()
+      return super.collectionView(collectionView, viewForSupplementaryElementOfKind: kind, at: indexPath)
     }
   }
   
@@ -138,9 +194,7 @@ extension MusumeCollectionViewController: UICollectionViewDelegateFlowLayout {
 extension MusumeCollectionViewController: CreateMusumeTVCDelegate {
   func didUpdatedMusume(_ controller: CreateMusumeTableViewController, updatedMusume: Musume) {
     // - 현재 캐릭터가 아니면 컬렉션 뷰만 리로드
-    // - 현재 캐릭터를 업데이트했다면
-    //   - 2. 사진이 바뀌었다면 사진 업데이트
-    
+    // - 현재 캐릭터를 업데이트했다면: 사진이 바뀌었다면 사진 업데이트
     if musumeViewModel.currentMusume.name == updatedMusume.name {
       delegate?.didChangedMusume(self, musume: updatedMusume)
     }
@@ -166,27 +220,62 @@ extension MusumeCollectionViewController {
   
   /// 삭제 여부 묻는 얼럿 표시
   func showAlertDelete(of musume: Musume) {
-    let deleteAction = UIAlertAction(title: "삭제", style: .destructive) { [weak self] _ in
-      guard let self else { return }
-      removeInfo(of: musume)
-    }
-    let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-    let alert = UIAlertController(
-      title: "삭제",
+    simpleDestructiveYesAndNo(
+      self,
       message: "\(musume.name)의 모든 정보를 삭제하시겠습니까? 이 명령은 되돌릴 수 없습니다.",
-      preferredStyle: .alert
-    )
-    alert.addAction(cancelAction)
-    alert.addAction(deleteAction)
-    present(alert, animated: true)
+      title: "삭제") { [weak self] _ in
+        guard let self else { return }
+        removeInfo(of: musume)
+      }
   }
   
   /// Musume, RaceStates 정보 삭제 명령 호출
   func removeInfo(of musume: Musume) {
-    musumeViewModel.removeMusume([musume])
     raceStateViewModel.removeAllStates(of: musume.name)
     deleteFile(named: "\(musume.name).png")
+    musumeViewModel.removeMusume([musume])
     collectionView.reloadData()
+  }
+  
+  func removeSelectedInfo() {
+    selectedMusumeIndexes.forEach { index in
+      let name = musumeViewModel.getMusumeBy(index: index).name
+      raceStateViewModel.removeAllStates(of: name)
+      deleteFile(named: "\(name).png")
+    }
+    
+    musumeViewModel.removeMusume(by: selectedMusumeIndexes)
+    collectionView.reloadData()
+    selectMode = .normal
+  }
+}
+
+extension MusumeCollectionViewController: MusumeColletionHeaderDelegate {
+  func didTriggeredBtnActCancel() {
+    if selectMode == .multipleSelect {
+      selectMode = .normal
+      selectedMusumeIndexes = []
+    }
+  }
+  
+  func didTriggeredBtnActMultiSelect_Delete() {
+    if selectMode == .normal {
+      selectMode = .multipleSelect
+    } else {
+      // 삭제 작업
+      guard !selectedMusumeIndexes.isEmpty else {
+        simpleAlert(self, message: "선택한 캐릭터가 없습니다.")
+        return
+      }
+      
+      simpleDestructiveYesAndNo(
+        self,
+        message: "선택한 \(selectedMusumeIndexes.count)개의 모든 정보를 삭제하시겠습니까? 이 명령은 되돌릴 수 없습니다.",
+        title: "삭제") { [weak self] _ in
+          guard let self else { return }
+          removeSelectedInfo()
+        }
+    }
   }
 }
 
@@ -195,8 +284,44 @@ class MusumeCell: UICollectionViewCell {
   @IBOutlet weak var lblMusumeName: UILabel!
   @IBOutlet weak var lblRaceStatus: UILabel!
   @IBOutlet weak var lblGameRegion: UILabel!
+  @IBOutlet weak var btnCheck: UIButton!
   
-  func update(musume: Musume, finishedRaceCount: Int, isCurrent: Bool = false) {
+  func update(
+    musume: Musume,
+    finishedRaceCount: Int,
+    isCurrent: Bool,
+    selectMode: MusumeCollectionViewController.SelectMode,
+    isMultiSelected: Bool
+  ) {
+    btnCheck.layer.borderWidth = 1
+    btnCheck.layer.borderColor = UIColor.gray.cgColor
+    
+    if selectMode == .multipleSelect && !isCurrent {
+      btnCheck.isHidden = false
+      btnCheck.isEnabled = true
+      
+      if isMultiSelected {
+        let symbolConfig = UIImage.SymbolConfiguration(
+          pointSize: 10,
+          weight: .regular,
+          scale: .default
+        )
+        btnCheck.setImage(
+          UIImage(
+            systemName: "checkmark",
+            withConfiguration: symbolConfig
+          ),
+          for: .normal
+        )
+      } else {
+        btnCheck.setImage(nil, for: .normal)
+      }
+    } else {
+      btnCheck.isHidden = true
+      btnCheck.isEnabled = false
+    }
+    
+    
     imgViewProfile.layer.cornerRadius = imgViewProfile.frame.width * 0.5
     imgViewProfile.image = MusumeHelper.getImage(of: musume)
     
@@ -214,5 +339,27 @@ class MusumeCell: UICollectionViewCell {
     case .ko:
       "🇰🇷ko"
     }
+  }
+}
+
+protocol MusumeColletionHeaderDelegate: AnyObject {
+  func didTriggeredBtnActMultiSelect_Delete()
+  func didTriggeredBtnActCancel()
+}
+
+class MusumeCollectionHeaderCell: UICollectionReusableView {
+  @IBOutlet weak var btnModeSelect_Delete: UIButton!
+  @IBOutlet weak var btnCancel: UIButton!
+  
+  weak var delegate: MusumeColletionHeaderDelegate?
+  
+  // MARK: - IBActions
+  
+  @IBAction func btnActMultiSelect_Delete(_ sender: UIButton) {
+    delegate?.didTriggeredBtnActMultiSelect_Delete()
+  }
+  
+  @IBAction func btnActCancel(_ sender: UIButton) {
+    delegate?.didTriggeredBtnActCancel()
   }
 }
