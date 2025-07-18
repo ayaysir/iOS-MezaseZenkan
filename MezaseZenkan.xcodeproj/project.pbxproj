@@ -18,6 +18,7 @@
 		4403A5FC2E27F29A009E9D49 /* FilterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4403A5FB2E27F29A009E9D49 /* FilterHelper.swift */; };
 		4403A5FE2E2954B5009E9D49 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4403A5FD2E2954AB009E9D49 /* String+Localized.swift */; };
 		4403A6022E295503009E9D49 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4403A6002E295503009E9D49 /* Localizable.strings */; };
+		4403A6062E2AB3AE009E9D49 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4403A6052E2AB3AE009E9D49 /* PrivacyInfo.xcprivacy */; };
 		440D7312281065B10092BD7A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 440D7311281065B10092BD7A /* GoogleService-Info.plist */; };
 		440D73142810672A0092BD7A /* SampleRacesData.json in Sources */ = {isa = PBXBuildFile; fileRef = 440D73132810672A0092BD7A /* SampleRacesData.json */; };
 		440D7316281067A80092BD7A /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440D7315281067A80092BD7A /* Race.swift */; };
@@ -101,6 +102,7 @@
 		4403A6012E295503009E9D49 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4403A6032E295508009E9D49 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4403A6042E29550D009E9D49 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4403A6052E2AB3AE009E9D49 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		440D7311281065B10092BD7A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		440D73132810672A0092BD7A /* SampleRacesData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleRacesData.json; sourceTree = "<group>"; };
 		440D7315281067A80092BD7A /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 		4471F69D281045C4001EAC58 /* MezaseZenkan */ = {
 			isa = PBXGroup;
 			children = (
+				4403A6052E2AB3AE009E9D49 /* PrivacyInfo.xcprivacy */,
 				44169EAC282651A80029ADCA /* ProductImages */,
 				44A5B76F28256CA300FF2A14 /* MezaseZenkan Manual */,
 				440D788F281079240092BD7A /* images */,
@@ -534,6 +537,7 @@
 				440D7312281065B10092BD7A /* GoogleService-Info.plist in Resources */,
 				440D78B2281844EE0092BD7A /* SampleMusumesData.json in Resources */,
 				4471F6AB281045C6001EAC58 /* Assets.xcassets in Resources */,
+				4403A6062E2AB3AE009E9D49 /* PrivacyInfo.xcprivacy in Resources */,
 				4403A5E92E267745009E9D49 /* ko_RaceData_20250715.json in Resources */,
 				4403A5EC2E26963A009E9D49 /* ja_RaceData_20250715.json in Resources */,
 				44169EAF282669FC0029ADCA /* Product-MusumeData.json in Resources */,
