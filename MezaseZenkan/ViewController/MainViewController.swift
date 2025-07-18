@@ -81,15 +81,15 @@ class MainViewController: UIViewController {
     checkAppFirstrunOrUpdateStatus {
       
     } updated: {
-      let msg1_01_1 = """
-            以下が更新されました。 (Ver 1.01.1)
-             • 川崎、船橋、盛岡のレース場追加に伴うレース情報追加とフィルター追加
-             • レースバナー画像を高画質バナーに置き換える機能を追加（タイトルのヘルプボタンを押すと対応する機能があります。）
-             • バグ修正と機能改善
-            
-            このメッセージは現在のバージョンでは再表示されません。
-            """
-      simpleAlert(self, message: msg1_01_1, title: "バージョンの更新", handler: nil)
+      // let msg1_01_1 = """
+      //       以下が更新されました。 (Ver 1.01.1)
+      //        • 川崎、船橋、盛岡のレース場追加に伴うレース情報追加とフィルター追加
+      //        • レースバナー画像を高画質バナーに置き換える機能を追加（タイトルのヘルプボタンを押すと対応する機能があります。）
+      //        • バグ修正と機能改善
+      //       
+      //       このメッセージは現在のバージョンでは再表示されません。
+      //       """
+      // simpleAlert(self, message: msg1_01_1, title: "バージョンの更新", handler: nil)
     } nothingChanged: {
       
     }

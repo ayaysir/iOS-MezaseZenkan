@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3CA48A56F7CA7CDB765FD08B /* Pods_MezaseZenkan_MezaseZenkanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DEA7A2005E07B93ACA1FAA0 /* Pods_MezaseZenkan_MezaseZenkanUITests.framework */; };
 		4403A5E92E267745009E9D49 /* ko_RaceData_20250715.json in Resources */ = {isa = PBXBuildFile; fileRef = 4403A5E82E267736009E9D49 /* ko_RaceData_20250715.json */; };
 		4403A5EC2E26963A009E9D49 /* ja_RaceData_20250715.json in Resources */ = {isa = PBXBuildFile; fileRef = 4403A5EA2E269542009E9D49 /* ja_RaceData_20250715.json */; };
 		4403A5EF2E279FC1009E9D49 /* GameAppRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4403A5EE2E279FBC009E9D49 /* GameAppRegion.swift */; };
@@ -66,8 +65,9 @@
 		44ABDC4A281DA1EC00306504 /* FilterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABDC49281DA1EC00306504 /* FilterMenu.swift */; };
 		44ABDC4C28202CBE00306504 /* ColorUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABDC4B28202CBE00306504 /* ColorUtility.swift */; };
 		44FD513C28B001510097AC8E /* RaceData_20220819.json in Resources */ = {isa = PBXBuildFile; fileRef = 44FD513B28B001510097AC8E /* RaceData_20220819.json */; };
-		53F43677C57FC7480384E89D /* Pods_MezaseZenkanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74BE9A44492FB5E4D9DA32F /* Pods_MezaseZenkanTests.framework */; };
-		E1A24D47CA7A3FDC7568A8E2 /* Pods_MezaseZenkan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D62A78F831CFF4DA519385CA /* Pods_MezaseZenkan.framework */; };
+		7C82A00F2EE615F9C0769B28 /* Pods_MezaseZenkanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4C15B50FCB6A578E08132D /* Pods_MezaseZenkanTests.framework */; };
+		CC2C4263BA67D0C145AA1D7C /* Pods_MezaseZenkan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B48BEEB1F433DE12C898118 /* Pods_MezaseZenkan.framework */; };
+		E704EED6BB568A6FB0632C9C /* Pods_MezaseZenkan_MezaseZenkanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF84712246FDB5A24D2FE1C /* Pods_MezaseZenkan_MezaseZenkanUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +88,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		20314C079A130ED9CB5518DB /* Pods-MezaseZenkan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan.release.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan.release.xcconfig"; sourceTree = "<group>"; };
+		1AF84712246FDB5A24D2FE1C /* Pods_MezaseZenkan_MezaseZenkanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MezaseZenkan_MezaseZenkanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2164E8F73D92D45366750808 /* Pods-MezaseZenkan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan.debug.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan.debug.xcconfig"; sourceTree = "<group>"; };
 		4403A5E72E26749D009E9D49 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4403A5E82E267736009E9D49 /* ko_RaceData_20250715.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ko_RaceData_20250715.json; sourceTree = "<group>"; };
 		4403A5EA2E269542009E9D49 /* ja_RaceData_20250715.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ja_RaceData_20250715.json; sourceTree = "<group>"; };
@@ -153,14 +154,13 @@
 		44ABDC49281DA1EC00306504 /* FilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMenu.swift; sourceTree = "<group>"; };
 		44ABDC4B28202CBE00306504 /* ColorUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtility.swift; sourceTree = "<group>"; };
 		44FD513B28B001510097AC8E /* RaceData_20220819.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RaceData_20220819.json; sourceTree = "<group>"; };
-		50068F5BB17842F27C1B1C63 /* Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		5A4D1CFAA6A5013FC8531FBE /* Pods-MezaseZenkanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkanTests.debug.xcconfig"; path = "Target Support Files/Pods-MezaseZenkanTests/Pods-MezaseZenkanTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6DEA7A2005E07B93ACA1FAA0 /* Pods_MezaseZenkan_MezaseZenkanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MezaseZenkan_MezaseZenkanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		90E2260AA6AA0C216C600C73 /* Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig"; sourceTree = "<group>"; };
-		9DAA25A3778CB1B75883CE28 /* Pods-MezaseZenkan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan.debug.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan.debug.xcconfig"; sourceTree = "<group>"; };
-		A69BFFE8E907FAA537C01F81 /* Pods-MezaseZenkanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkanTests.release.xcconfig"; path = "Target Support Files/Pods-MezaseZenkanTests/Pods-MezaseZenkanTests.release.xcconfig"; sourceTree = "<group>"; };
-		B74BE9A44492FB5E4D9DA32F /* Pods_MezaseZenkanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MezaseZenkanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D62A78F831CFF4DA519385CA /* Pods_MezaseZenkan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MezaseZenkan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EFE22901EDBC5ED2A657991 /* Pods-MezaseZenkan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan.release.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan.release.xcconfig"; sourceTree = "<group>"; };
+		63335B3AAEA654AA42C9E9F0 /* Pods-MezaseZenkanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkanTests.release.xcconfig"; path = "Target Support Files/Pods-MezaseZenkanTests/Pods-MezaseZenkanTests.release.xcconfig"; sourceTree = "<group>"; };
+		7E4C15B50FCB6A578E08132D /* Pods_MezaseZenkanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MezaseZenkanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B48BEEB1F433DE12C898118 /* Pods_MezaseZenkan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MezaseZenkan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6FD11BF1C6933BAC69A3E6D /* Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BC6CAEAE8A6CF2742489F000 /* Pods-MezaseZenkanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkanTests.debug.xcconfig"; path = "Target Support Files/Pods-MezaseZenkanTests/Pods-MezaseZenkanTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CE8A4DF39597647696E91CED /* Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig"; path = "Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1A24D47CA7A3FDC7568A8E2 /* Pods_MezaseZenkan.framework in Frameworks */,
+				CC2C4263BA67D0C145AA1D7C /* Pods_MezaseZenkan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53F43677C57FC7480384E89D /* Pods_MezaseZenkanTests.framework in Frameworks */,
+				7C82A00F2EE615F9C0769B28 /* Pods_MezaseZenkanTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,23 +184,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CA48A56F7CA7CDB765FD08B /* Pods_MezaseZenkan_MezaseZenkanUITests.framework in Frameworks */,
+				E704EED6BB568A6FB0632C9C /* Pods_MezaseZenkan_MezaseZenkanUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		154226C4070A076870D55D58 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D62A78F831CFF4DA519385CA /* Pods_MezaseZenkan.framework */,
-				6DEA7A2005E07B93ACA1FAA0 /* Pods_MezaseZenkan_MezaseZenkanUITests.framework */,
-				B74BE9A44492FB5E4D9DA32F /* Pods_MezaseZenkanTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		4403A5E62E266D32009E9D49 /* Unused */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,7 +342,7 @@
 				4471F69D281045C4001EAC58 /* MezaseZenkan */,
 				4471F69C281045C4001EAC58 /* Products */,
 				CF4D0D5864B4B4F8B3852A9A /* Pods */,
-				154226C4070A076870D55D58 /* Frameworks */,
+				674C87ACF9371D9E404FA4D1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -407,15 +397,25 @@
 			path = MezaseZenkanUITests;
 			sourceTree = "<group>";
 		};
+		674C87ACF9371D9E404FA4D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B48BEEB1F433DE12C898118 /* Pods_MezaseZenkan.framework */,
+				1AF84712246FDB5A24D2FE1C /* Pods_MezaseZenkan_MezaseZenkanUITests.framework */,
+				7E4C15B50FCB6A578E08132D /* Pods_MezaseZenkanTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CF4D0D5864B4B4F8B3852A9A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9DAA25A3778CB1B75883CE28 /* Pods-MezaseZenkan.debug.xcconfig */,
-				20314C079A130ED9CB5518DB /* Pods-MezaseZenkan.release.xcconfig */,
-				50068F5BB17842F27C1B1C63 /* Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig */,
-				90E2260AA6AA0C216C600C73 /* Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig */,
-				5A4D1CFAA6A5013FC8531FBE /* Pods-MezaseZenkanTests.debug.xcconfig */,
-				A69BFFE8E907FAA537C01F81 /* Pods-MezaseZenkanTests.release.xcconfig */,
+				2164E8F73D92D45366750808 /* Pods-MezaseZenkan.debug.xcconfig */,
+				4EFE22901EDBC5ED2A657991 /* Pods-MezaseZenkan.release.xcconfig */,
+				CE8A4DF39597647696E91CED /* Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig */,
+				B6FD11BF1C6933BAC69A3E6D /* Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig */,
+				BC6CAEAE8A6CF2742489F000 /* Pods-MezaseZenkanTests.debug.xcconfig */,
+				63335B3AAEA654AA42C9E9F0 /* Pods-MezaseZenkanTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -427,11 +427,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4471F6C8281045C6001EAC58 /* Build configuration list for PBXNativeTarget "MezaseZenkan" */;
 			buildPhases = (
-				C043DAD3CA5D17997C36E007 /* [CP] Check Pods Manifest.lock */,
+				8B8BE907BC691540E2DFAF3A /* [CP] Check Pods Manifest.lock */,
 				4471F697281045C4001EAC58 /* Sources */,
 				4471F698281045C4001EAC58 /* Frameworks */,
 				4471F699281045C4001EAC58 /* Resources */,
-				59DAECDE5251DDA0BDBCEA41 /* [CP] Embed Pods Frameworks */,
+				BA479A2B3034F01E372E8A82 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -446,7 +446,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4471F6CB281045C6001EAC58 /* Build configuration list for PBXNativeTarget "MezaseZenkanTests" */;
 			buildPhases = (
-				6B7A6A81A660844B4D1B2180 /* [CP] Check Pods Manifest.lock */,
+				597FA19DFA5D06A96D8D284C /* [CP] Check Pods Manifest.lock */,
 				4471F6B0281045C6001EAC58 /* Sources */,
 				4471F6B1281045C6001EAC58 /* Frameworks */,
 				4471F6B2281045C6001EAC58 /* Resources */,
@@ -465,11 +465,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4471F6CE281045C6001EAC58 /* Build configuration list for PBXNativeTarget "MezaseZenkanUITests" */;
 			buildPhases = (
-				428538C37B36CCF54E3535A6 /* [CP] Check Pods Manifest.lock */,
+				F93B4C62DFB5002AE124606C /* [CP] Check Pods Manifest.lock */,
 				4471F6BA281045C6001EAC58 /* Sources */,
 				4471F6BB281045C6001EAC58 /* Frameworks */,
 				4471F6BC281045C6001EAC58 /* Resources */,
-				206DEE86018B9028EF649BE2 /* [CP] Embed Pods Frameworks */,
+				7B49067DE70D08EBE954A42D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -567,71 +567,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		206DEE86018B9028EF649BE2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		428538C37B36CCF54E3535A6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MezaseZenkan-MezaseZenkanUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		59DAECDE5251DDA0BDBCEA41 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6B7A6A81A660844B4D1B2180 /* [CP] Check Pods Manifest.lock */ = {
+		597FA19DFA5D06A96D8D284C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -653,7 +589,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C043DAD3CA5D17997C36E007 /* [CP] Check Pods Manifest.lock */ = {
+		7B49067DE70D08EBE954A42D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan-MezaseZenkanUITests/Pods-MezaseZenkan-MezaseZenkanUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B8BE907BC691540E2DFAF3A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -669,6 +622,45 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-MezaseZenkan-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA479A2B3034F01E372E8A82 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MezaseZenkan/Pods-MezaseZenkan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F93B4C62DFB5002AE124606C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MezaseZenkan-MezaseZenkanUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -910,7 +902,7 @@
 		};
 		4471F6C9281045C6001EAC58 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9DAA25A3778CB1B75883CE28 /* Pods-MezaseZenkan.debug.xcconfig */;
+			baseConfigurationReference = 2164E8F73D92D45366750808 /* Pods-MezaseZenkan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -946,7 +938,7 @@
 		};
 		4471F6CA281045C6001EAC58 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20314C079A130ED9CB5518DB /* Pods-MezaseZenkan.release.xcconfig */;
+			baseConfigurationReference = 4EFE22901EDBC5ED2A657991 /* Pods-MezaseZenkan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -982,7 +974,7 @@
 		};
 		4471F6CC281045C6001EAC58 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A4D1CFAA6A5013FC8531FBE /* Pods-MezaseZenkanTests.debug.xcconfig */;
+			baseConfigurationReference = BC6CAEAE8A6CF2742489F000 /* Pods-MezaseZenkanTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1006,7 +998,7 @@
 		};
 		4471F6CD281045C6001EAC58 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A69BFFE8E907FAA537C01F81 /* Pods-MezaseZenkanTests.release.xcconfig */;
+			baseConfigurationReference = 63335B3AAEA654AA42C9E9F0 /* Pods-MezaseZenkanTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1030,7 +1022,7 @@
 		};
 		4471F6CF281045C6001EAC58 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50068F5BB17842F27C1B1C63 /* Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig */;
+			baseConfigurationReference = CE8A4DF39597647696E91CED /* Pods-MezaseZenkan-MezaseZenkanUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1052,7 +1044,7 @@
 		};
 		4471F6D0281045C6001EAC58 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90E2260AA6AA0C216C600C73 /* Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig */;
+			baseConfigurationReference = B6FD11BF1C6933BAC69A3E6D /* Pods-MezaseZenkan-MezaseZenkanUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
