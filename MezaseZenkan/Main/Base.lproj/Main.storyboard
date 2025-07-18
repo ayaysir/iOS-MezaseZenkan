@@ -321,9 +321,9 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FJ-GB-Cjc">
-                                    <rect key="frame" x="497" y="8" width="75" height="35"/>
+                                    <rect key="frame" x="472" y="8" width="100" height="35"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="75" id="v0Y-dV-2od"/>
+                                        <constraint firstAttribute="width" constant="100" id="v0Y-dV-2od"/>
                                     </constraints>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="다중 선택"/>
@@ -332,9 +332,9 @@
                                     </connections>
                                 </button>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTU-Nn-6jq">
-                                    <rect key="frame" x="438" y="8" width="51" height="35"/>
+                                    <rect key="frame" x="389" y="8" width="75" height="35"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="51" id="aKV-Dc-KU1"/>
+                                        <constraint firstAttribute="width" constant="75" id="aKV-Dc-KU1"/>
                                     </constraints>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="취소"/>
@@ -381,30 +381,31 @@
                         <sections>
                             <tableViewSection id="apK-Lf-Px0" userLabel="Title Section">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="aBw-FO-PzX" style="IBUITableViewCellStyleDefault" id="lvC-w5-zue">
-                                        <rect key="frame" x="20" y="18" width="540" height="81.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="aBw-FO-PzX" rowHeight="50" style="IBUITableViewCellStyleDefault" id="lvC-w5-zue">
+                                        <rect key="frame" x="20" y="18" width="540" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lvC-w5-zue" id="SUJ-7s-GHZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="540" height="81.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="540" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="新規キャラクター追加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aBw-FO-PzX">
-                                                    <rect key="frame" x="16" y="0.0" width="508" height="81.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="508" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.96848052740000001" green="0.95510637359999995" blue="0.85805373370000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Name" id="aQV-2K-Bcz">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="51" id="fGB-2t-I5n">
-                                        <rect key="frame" x="20" y="155.5" width="540" height="51"/>
+                                        <rect key="frame" x="20" y="124" width="540" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fGB-2t-I5n" id="izl-57-uPi">
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="51"/>
@@ -429,7 +430,7 @@
                             <tableViewSection headerTitle="Select App Region Version" id="iuK-mH-fiQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="100" id="kTp-eW-Xdd">
-                                        <rect key="frame" x="20" y="262.5" width="540" height="100"/>
+                                        <rect key="frame" x="20" y="231" width="540" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kTp-eW-Xdd" id="pL9-6x-WXc">
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="100"/>
@@ -452,7 +453,7 @@
                             <tableViewSection headerTitle="Photo" id="KOj-nQ-Le3">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="213" id="lFC-eo-I9b">
-                                        <rect key="frame" x="20" y="418.5" width="540" height="213"/>
+                                        <rect key="frame" x="20" y="387" width="540" height="213"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lFC-eo-I9b" id="sqB-nt-ASa">
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="213"/>
@@ -503,7 +504,7 @@
                             <tableViewSection id="gza-4T-LzY" userLabel="Button Section">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="47" id="gm5-wv-l3o">
-                                        <rect key="frame" x="20" y="667.5" width="540" height="47"/>
+                                        <rect key="frame" x="20" y="636" width="540" height="47"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gm5-wv-l3o" id="zQA-bX-JRm">
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="47"/>
@@ -528,13 +529,13 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="49" id="QXA-5T-PY3">
-                                        <rect key="frame" x="20" y="714.5" width="540" height="49"/>
+                                        <rect key="frame" x="20" y="683" width="540" height="49"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QXA-5T-PY3" id="4he-4Y-AfR">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QXA-5T-PY3" id="4he-4Y-AfR">
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hph-7g-d23">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hph-7g-d23">
                                                     <rect key="frame" x="0.0" y="0.0" width="540" height="49"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="CANCEL"/>
@@ -999,6 +1000,9 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

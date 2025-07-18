@@ -14,8 +14,6 @@ protocol MusumeCollectionVCDelegate: AnyObject {
 fileprivate let reuseIdentifier = "MusumeCell"
 
 class MusumeCollectionViewController: UICollectionViewController {
-  
-  
   weak var delegate: MusumeCollectionVCDelegate?
   
   var musumeViewModel: MusumeViewModel!
@@ -34,7 +32,6 @@ class MusumeCollectionViewController: UICollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     TrackingTransparencyPermissionRequest()
-    
   }
   
   // MARK: - UICollectionViewDataSource
@@ -97,13 +94,22 @@ class MusumeCollectionViewController: UICollectionViewController {
         for: .normal
       )
       headerView.btnCancel.setTitle(
-        "loc.cancle".localized,
+        "loc.cancel".localized,
         for: .normal
       )
-      headerView.btnModeSelect_Delete.setTitle(
-        "loc.mc_btn_multiple_selection".localized,
-        for: .normal
-      )
+      
+      if selectMode == .multipleSelect {
+        headerView.btnModeSelect_Delete.setTitle(
+          "loc.mc_btn_delete_all".localized,
+          for: .normal
+        )
+      } else {
+        headerView.btnModeSelect_Delete.setTitle(
+          "loc.mc_btn_multiple_selection".localized,
+          for: .normal
+        )
+      }
+      
       return headerView
       
     default:

@@ -30,11 +30,11 @@ class PeriodHelper {
   var monthText: String {
     let whole = Int(modf(month).0)
     let fraction = modf(month).1
-    return "\(whole)月 \(fraction == 0 ? "前半" : "後半")"
+    return "\(whole)\("loc.month_short".localized) \(fraction == 0 ? "loc.first_half".localized : "loc.last_half".localized)"
   }
   
   var localizedDescription: String {
-    return "\(yearText)級 \(monthText) "
+    return "\(yearText)\("loc.grade_short".localized) \(monthText) "
   }
   
   var isLastPeriod: Bool {

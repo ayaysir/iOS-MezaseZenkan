@@ -13,8 +13,8 @@ enum GameAppRegion: String, CaseIterable {
   
   var localizedDescription: String {
     switch self {
-    case .ja: "loc.region_ja"
-    case .ko: "loc.region_ko"
+    case .ja: "loc.region_ja".localized
+    case .ko: "loc.region_ko".localized
     }
   }
   

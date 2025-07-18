@@ -105,7 +105,6 @@ extension RotationViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
     if currentRaces.count == 0 {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: "BlankAlertCell") as? BlankAlertCell else {
         return UITableViewCell()
@@ -171,7 +170,7 @@ class RaceInfoTableCell: UITableViewCell {
     if race.period == "classicsenior" {
       lblPeriodDuplicated.isHidden = false
       let periodText = PeriodHelper.shared.year == 3 ? "classic" : "senior"
-      lblPeriodDuplicated.text = "loc.same_race_exist".localizedFormat(periodText)
+      lblPeriodDuplicated.text = "loc.same_race_exists".localizedFormat(periodText)
     } else {
       lblPeriodDuplicated.isHidden = true
     }

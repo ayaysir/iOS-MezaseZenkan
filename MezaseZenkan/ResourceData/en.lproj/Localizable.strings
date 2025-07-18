@@ -6,9 +6,48 @@
   
 */
 
+"loc.btn_rotation_view" = "View in rotation";
+"loc.toggle_race_banner_res_to_high" = "Switch race banner to high resolution";
+"loc.toggle_race_banner_res_to_normal" = "Switch race banner to standard image";
+"loc.btn_send_mail_dev" = "Send email to developer";
+"loc.lbl_how_web" = "Tap to go to the next page.";
+"loc.mail_unavailable_msg" = "Mail cannot be sent because no mail account is set up on the device.";
+"loc.mail_unavailable_title" = "Mail Unavailable";
+"loc.mail_title" = "Feedback about MezaseZenkan";
+"loc.btn_add_new_musume" = "+ Add New Character";
+"loc.delete" = "Delete";
+"loc.update" = "Update";
+"loc.create" = "Add";
+"loc.create_musume" = "Add New Character";
+"loc.update_musume" = "Update";
+"loc.view_info" = "View Info";
+"loc.mc_btn_multiple_selection" = "Multi-select";
+"loc.mc_btn_delete_all" = "Delete All";
+"loc.confirm_delete_one" = "Delete all race data for %@? This action cannot be undone.";
+"loc.confirm_delete_multi" = "Delete all race data for %d selected characters? This action cannot be undone.";
+"loc.alert_no_musume" = "No character selected.";
+"loc.cancel" = "Cancel";
+"loc.complete" = "Done";
+
+"loc.section_name" = "Name";
+"loc.section_photo" = "Select or take a photo";
+"loc.section_app_region" = "Select game release region";
+"loc.reset" = "Reset";
+
 "loc.name_required" = "You must enter a name.";
 "loc.name_length_limit" = "The name must be between 1 and 25 characters.";
 "loc.name_duplicated" = "This name already exists. Please try another one.";
 "loc.character_add_success" = "The new character has been added successfully.";
 "loc.update_success" = "The update has been completed.";
 "loc.same_race_exists" = "A race already exists in the %@ class.";
+
+"loc.rv_no_race" = "There are no races scheduled during this period.";
+"loc.rv_include_op" = "Show including OP/Pre-OP races";
+
+"loc.region_ja" = "🇯🇵 Japanese version (Released on Feb 24, 2021)";
+"loc.region_ko" = "🇰🇷 Korean version (Released on Jun 20, 2022)";
+
+"loc.month_short" = "Mo";
+"loc.first_half" = "1st Half";
+"loc.last_half" = "2nd Half";
+"loc.grade_short" = "";

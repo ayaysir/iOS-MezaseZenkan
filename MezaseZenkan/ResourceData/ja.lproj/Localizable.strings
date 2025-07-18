@@ -12,29 +12,42 @@
 "loc.btn_send_mail_dev" = "開発者にメールを送信";
 "loc.lbl_how_web" = "タップして次のページに移動します。";
 "loc.mail_unavailable_msg" = "ユーザーのメールアカウントが設定されていないため、メールを送信できません。";
-"loc.mail_unavailable_title" = "Mail Unavailable";
-"loc.mail_title" = "Feedback of MezaseZenkan";
+"loc.mail_unavailable_title" = "メール利用不可";
+"loc.mail_title" = "MezaseZenkanに関するフィードバック";
 "loc.btn_add_new_musume" = "+ 新規キャラクター追加";
-"loc.delete" = "삭제";
-"loc.update" = "업데이트";
-"loc.create" = "생성";
+"loc.delete" = "削除";
+"loc.update" = "更新";
+"loc.create" = "追加";
 "loc.create_musume" = "新規キャラクター追加";
 "loc.update_musume" = "アップデート";
-"loc.view_info" = "정보 보기";
-"loc.mc_btn_multiple_selection" = "다중 선택";
-"loc.mc_btn_delete_all" = "모두 삭제";
-"loc.confirm_delete_one" = "%@의 모든 레이스 정보를 삭제하시겠습니까? 이 명령은 되돌릴 수 없습니다.";
-"loc.confirm_delete_multi" = "선택한 %d명의 모든 레이스 정보를 삭제하시겠습니까? 이 명령은 되돌릴 수 없습니다.";
-"loc.alert_no_musume" = "선택한 캐릭터가 없습니다.";
-"loc.cancel" = "취소";
+"loc.view_info" = "情報を見る";
+"loc.mc_btn_multiple_selection" = "複数選択";
+"loc.mc_btn_delete_all" = "すべて削除";
+"loc.confirm_delete_one" = "%@のすべてのレース情報を削除しますか？このコマンドは元に戻すことはできません。";
+"loc.confirm_delete_multi" = "選択した％d人のすべてのレース情報を削除しますか？このコマンドは元に戻せません。";
+"loc.alert_no_musume" = "選択したキャラクターがありません。";
+"loc.cancel" = "キャンセル";
 "loc.complete" = "完了";
+
+"loc.section_name" = "名前";
+"loc.section_photo" = "写真を選択または撮影";
+"loc.section_app_region" = "ゲーム発売地域を選択";
+"loc.reset" = "リセット";
+
 "loc.name_required" = "名前を入力する必要があります。";
 "loc.name_length_limit" = "名前は1文字以上25文字以下でなければなりません。";
 "loc.name_duplicated" = "すでに重複した名前があります。別の名前で試してみてください。";
 "loc.character_add_success" = "新しいキャラクター追加が完了しました。";
 "loc.update_success" = "アップデートが完了しました。";
-"loc.section_name" = "Name";
-"loc.section_photo" = "Select a Photo";
-"loc.section_app_region" = "Select App Region Ver.";
 "loc.same_race_exists" = "%@級に同じレースがあります。";
-"loc.reset" = "リセット";
+
+"loc.rv_no_race" = "この期間に開催されるレースはありません。";
+"loc.rv_include_op" = "OP/Pre-OPレースを含めて表示";
+
+"loc.region_ja" = "🇯🇵 日本版（2021年2月24日リリース）";
+"loc.region_ko" = "🇰🇷 韓国版（2022年6月20日リリース）";
+
+"loc.month_short" = "月";
+"loc.first_half" = "前半";
+"loc.last_half" = "後半";
+"loc.grade_short" = "級";
